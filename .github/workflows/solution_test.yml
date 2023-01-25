@@ -1,4 +1,4 @@
-name: Cargo Build & Test
+name: Solution Build & Test
 
 on: [pull_request, push]
 jobs:
