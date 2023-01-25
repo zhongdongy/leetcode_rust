@@ -6,7 +6,7 @@ authors = ["Zhongdong Yang <zhongdong_y@outlook.com>"]
 categories = ["problems", "algorithm"]
 keywords = ["leetcode"]
 description = "Personal solutions to LeetCode problems using Rust language"
-repository = "https://github.com/zhongdongy/leetcode-rust"
+repository = "https://github.com/zhongdongy/leetcode_rust"
 
 [dependencies]
 

@@ -1,4 +1,5 @@
 # LeetCode Solutions in Rust
+![CI Status](https://github.com/zhongdongy/leetcode_rust/actions/workflows/cargo_test.yml/badge.svg)
 
 ## Test
 
