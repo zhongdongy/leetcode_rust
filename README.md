@@ -1,6 +1,6 @@
 # LeetCode Solutions in Rust
-![CI Status](https://github.com/zhongdongy/leetcode_rust/actions/workflows/solution_test.yml/badge.svg)
-![CI Status (CN)](https://github.com/zhongdongy/leetcode_rust/actions/workflows/solution_test_cn.yml/badge.svg)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&logo=github&style=plastic)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&logo=github&style=plastic)
 
 ## Test
 
