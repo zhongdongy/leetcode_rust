@@ -1,5 +1,24 @@
+/// Find longest palindrome of a given string.
+///
+/// It's possible to have multiple correct answer.
+/// See `tests/cases/c000_0xx/c000_005.rs` for more info.
+///
+/// ### Arguments
+/// * `s` - original string to search.
+///
+/// ```
+/// use leetcode_rust::problems::p000_0xx::p000_005::longest_palindrome;
+/// let mut result_value = longest_palindrome(String::from("abbab"));
+/// assert_eq!(result_value, String::from("abba"));
+/// ```
 pub fn longest_palindrome(s: String) -> String {
     by_array_index(&s).to_string()
+}
+
+#[cfg(test)]
+#[test]
+fn test_longest_palindrome() {
+    assert!(longest_palindrome(String::from("abbbabbbac")) == String::from("abbbabbba"));
 }
 
 #[allow(unused_assignments)]
@@ -44,4 +63,11 @@ fn by_array_index(s: &str) -> &str {
         }
     }
     &s[cur_longest_start_idx..(cur_longest_end_idx + 1)]
+}
+
+#[cfg(test)]
+#[test]
+fn test_by_array_index() {
+    assert!(by_array_index("QQ") == String::from("QQ"));
+    assert!(by_array_index("QAQ") == String::from("QAQ"));
 }

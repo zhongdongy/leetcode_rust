@@ -27,6 +27,12 @@ pub fn zigzag_conversion(s: String, n_rows: i32, alg: Option<Algorithm>) -> Stri
     }
 }
 
+#[cfg(test)]
+#[test]
+fn test_zigzag_conversion() {
+    assert!(zigzag_conversion(String::from("PAPAL"), 1, None) == String::from("PAPAL"));
+}
+
 /// Compose a ZigZag matrix using row-first algorithm.
 ///
 /// Note the given row count has been mapped to column count in argument
@@ -105,11 +111,17 @@ fn convert_s1(s: String, n_cols: usize) -> String {
     String::from_utf8(output.to_vec()).unwrap()
 }
 
+#[cfg(test)]
+#[test]
+fn test_conversion_s1() {
+    assert!(convert_s1(String::from("PAPAL"), 1) == String::from("PAPAL"));
+}
+
 /// Convert using string stacks
-/// 
+///
 /// Considering the parameter constraints of input string length and
 /// row count, we can use stacks to do fast conversion.
-/// 
+///
 /// ### Arguments
 /// * `s` input string
 /// * `num_rows` number of rows to layout
@@ -137,4 +149,10 @@ fn convert_s2(s: String, num_rows: i32) -> String {
     }
 
     rows.join("").to_string()
+}
+
+#[cfg(test)]
+#[test]
+fn test_conversion_s2() {
+    assert!(convert_s2(String::from("PAPAL"), 2) == String::from("PPLAA"));
 }
