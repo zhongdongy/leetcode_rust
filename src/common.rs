@@ -3,8 +3,8 @@ use std::fmt;
 /// Test case wrapper struct
 ///
 /// ### Generics
-/// * `T` type of expectations, must implement `PartialEq` and `Display` traits
-/// * `G` type of optional parameters
+/// * `T` - type of expectations, must implement `PartialEq` and `Display` traits
+/// * `G` - type of optional parameters
 pub struct Case<T, G> {
     /// Input value of test case
     pub input: T,
@@ -23,8 +23,8 @@ where
     /// Create new test case with no parameters
     ///
     /// ### Arguments
-    /// * `input` test input
-    /// * `values` expected values, accept single- or multi-value vector
+    /// * `input` - test input
+    /// * `values` - expected values, accept single- or multi-value vector
     pub fn new(input: T, values: Vec<T>) -> Case<T, G> {
         Case {
             input: input,
@@ -36,9 +36,9 @@ where
     /// Create new test case with parameters
     ///
     /// ### Arguments
-    /// * `input` test input
-    /// * `params` test parameters that vary among different cases
-    /// * `values` expected values, accept single- or multi-value vector
+    /// * `input` - test input
+    /// * `params` - test parameters that vary among different cases
+    /// * `values` - expected values, accept single- or multi-value vector
     pub fn new_params(input: T, params: Vec<G>, values: Vec<T>) -> Case<T, G> {
         Case {
             input: input,
@@ -50,8 +50,8 @@ where
     /// Check if solution output matches any expectations
     ///
     /// ### Arguments
-    /// * `&self` inmutable borrow to object itself
-    /// * `result` solution output
+    /// * `&self` - inmutable borrow to object itself
+    /// * `result` - solution output
     ///
     /// ```
     /// use leetcode_rust::common::Case;

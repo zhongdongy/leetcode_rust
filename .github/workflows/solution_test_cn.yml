@@ -1,0 +1,18 @@
+name: 解法构建和验证
+
+on: [pull_request, push]
+jobs:
+  build_and_test:
+    name: Rust toolchain CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: "力扣解法的文档测试"
+        run: "cargo test --doc problems_cn::"
+      - name: "力扣解法的单元测试"
+        run: "cargo test --lib problems_cn:: --release"
+      - name: "力扣解法的整合测试"
+        run: "cargo test --test solutions_cn --release"

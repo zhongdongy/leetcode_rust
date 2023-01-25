@@ -10,6 +10,9 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - run: cargo build --release --all-features
-      - run: cargo test --doc
-      - run: cargo test --tests --release
+      - name: "Doctest for LeetCode solutions"
+        run: "cargo test --doc problems::"
+      - name: "Unit test for LeetCode solutions"
+        run: "cargo test --lib problems:: --release"
+      - name: "Targeted test for LeetCode solutions"
+        run: "cargo test --test solutions --release"

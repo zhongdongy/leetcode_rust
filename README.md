@@ -1,5 +1,6 @@
 # LeetCode Solutions in Rust
 ![CI Status](https://github.com/zhongdongy/leetcode_rust/actions/workflows/solution_test.yml/badge.svg)
+![CI Status (CN)](https://github.com/zhongdongy/leetcode_rust/actions/workflows/solution_test_cn.yml/badge.svg)
 
 ## Test
 
@@ -14,7 +15,8 @@ function.
 To run all solution tests, simply run:
 
 ```bash
-cargo test --test solutions
+cargo test --test solutions # LeetCode problems
+cargo test --test solutions_cn # 力扣题库
 ```
 
 ### Run documentation tests
