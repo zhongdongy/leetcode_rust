@@ -12,7 +12,7 @@ pub enum Algorithm {
 /// * `n_rows` - total ROWs to layout the characters.
 ///
 /// ```
-/// use leetcode_rust::problems::p000_006::zigzag_conversion;
+/// use leetcode_rust::problems::p000_0xx::p000_006::zigzag_conversion;
 /// let mut result_value = zigzag_conversion(String::from("PAYPALISHIRING"), 1, None);
 /// assert_eq!(result_value, String::from("PAYPALISHIRING"));
 /// result_value = zigzag_conversion(String::from("PAYPALISHIRING"), 2, None);

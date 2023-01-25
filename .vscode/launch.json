@@ -34,7 +34,7 @@
           "--package=leetcode_rust"
         ],
         "filter": {
-          "name": "problems",
+          "name": "solutions",
           "kind": "test"
         }
       },
