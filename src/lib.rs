@@ -69,8 +69,7 @@
 //! 
 //! ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&logo=github&style=plastic)
 //!
-//! 关于 Crate 提供的各个解法的 Rust 文档，请参阅 [https://leetcode-rust.zhongdongy.com](https://leetcode-rust.zhongdongy.com) 
-//! 或 [https://leetcode-rust.pages.dev/](https://leetcode-rust.pages.dev/).
+//! 关于 Crate 提供的各个解法的 Rust 文档，请参阅 [https://leetcode-rust.dongs.xyz/](https://leetcode-rust.dongs.xyz/)。
 //!
 //! ## 文档
 //!
