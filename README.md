@@ -1,6 +1,9 @@
 # LeetCode Solutions in Rust
+
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&logo=github&style=plastic)
+
+[阅读中文内容](#rust-语言下的力扣解法非官方)
 
 Rust documentations see [https://leetcode-rust.zhongdongy.com](https://leetcode-rust.zhongdongy.com) 
 or [https://leetcode-rust.pages.dev/](https://leetcode-rust.pages.dev/).
@@ -70,6 +73,8 @@ cargo test --test solutions p000_005
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&=github&style=plastic)
+
+[For English readers](#leetcode-solutions-in-rust)
 
 关于 Crate 提供的各个解法的 Rust 文档，请参阅 [https://leetcode-rust.dongs.xyz/](https://leetcode-rust.dongs.xyz/)。
 
