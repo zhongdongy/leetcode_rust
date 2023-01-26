@@ -18,4 +18,4 @@ jobs:
           endpoint: ${{ secrets.S3_ENDPOINT }}
           region: ${{ secrets.S3_REGION }}
           bucket: ${{ secrets.S3_BUCKET }}
-          path-format: /$(file)
+          path-format: $(file)
