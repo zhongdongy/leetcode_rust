@@ -2,16 +2,21 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&logo=github&style=plastic)
 
+Rust documentations see [https://leetcode-rust.zhongdongy.com](https://leetcode-rust.zhongdongy.com).
+
 ## Documentation
 
 Run `cargo doc` and find the documentation inside `target/doc/leetcode_rust/` directory. 
 
 ### Build documentations
 
-This command will empty the `docs/` directory and place newly generated docs there.
+This command will empty the `docs/` directory and place newly generated docs 
+there. The documentations are deployed to Cloudflare Pages. Due to build 
+environment limitations, the docs must be built before pushing to GitHub (so
+Cloudflare directly fetches the contents and build on Pages).
 
 ```bash
-mkdir -p ./docs && rm -rf ./docs/* && cargo doc && cp -r target/doc/leetcode_rust/* ./docs/
+mkdir -p ./docs && rm -rf ./docs/* && cargo doc && cp -r target/doc/* ./docs/
 ```
 
 ## Test
