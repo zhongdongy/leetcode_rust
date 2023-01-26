@@ -8,11 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: 'find ./docs -iname ".*" -delete'
+      - run: 'cd docs'
       - name: Upload to Amazon S3
         uses: Noelware/s3-action@2.1.0
         with:
-          directories: |
-            ./docs
+          directories: "."
           access-key-id: ${{ secrets.S3_ACCESS_KEY }}
           secret-key: ${{ secrets.S3_SECRET_KEY }}
           endpoint: ${{ secrets.S3_ENDPOINT }}
