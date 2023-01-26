@@ -3,8 +3,38 @@
 /// Exchange front and end digits (not bits) one by one, return zero if
 /// overflow
 ///
+/// ### Description
+///
+/// Given a signed 32-bit integer x, return x with its digits reversed.
+/// If reversing x causes the value to go outside the signed 32-bit integer
+/// range [-231, 231 - 1], then return 0.
+///
+/// Assume the environment does not allow you to store 64-bit integers (signed or /// unsigned).
+///
+///  
+///
+/// Example 1:
+///
+/// Input: x = 123
+/// Output: 321
+/// Example 2:
+///
+/// Input: x = -123
+/// Output: -321
+/// Example 3:
+///
+/// Input: x = 120
+/// Output: 21
+///  
+///
+/// Constraints:
+///
+/// -231 <= x <= 231 - 1
+///
+/// Source: https://leetcode.com/problems/reverse-integer/description/
+///
 /// ### Argument
-/// * `x` - 32-bit integer to alter
+/// * `x` - 32-bit signed integer to alter
 ///
 /// ```
 /// use leetcode_rust::problems::p000_0xx::p000_007::reverse_integer;
@@ -20,12 +50,12 @@ pub fn reverse_integer(x: i32) -> i32 {
 /// Reverse an integer (32-bit long) and check for overflow.
 ///
 /// ### Argument
-/// * `x` - 32-bit integer to alter
+/// * `x` - 32-bit signed integer to alter
 fn reverse_s1(x: i32) -> i32 {
     let mut temp_stack: Vec<u8> = vec![];
     // Convert integer to digits.
     for ch in x.to_string().as_bytes() {
-        if *ch as char != '-' {
+        if *ch != 45 {
             temp_stack.push(*ch);
         }
     }
@@ -33,7 +63,7 @@ fn reverse_s1(x: i32) -> i32 {
         // Remove trailing zeros if present
         match temp_stack.last() {
             Some(last_ch) => {
-                if *last_ch as char == '0' && temp_stack.len() > 1 {
+                if *last_ch == 48 && temp_stack.len() > 1 {
                     temp_stack.pop();
                 } else {
                     break;
@@ -44,17 +74,18 @@ fn reverse_s1(x: i32) -> i32 {
     }
     temp_stack.reverse();
 
-    let mut overflow_at: i32 = 2147483647;
+    // 2147483647 for positive numbers
+    let mut overflow_at_u8: [u8; 10] = [50, 49, 52, 55, 52, 56, 51, 54, 52, 55];
     let mut target: Vec<u8> = vec![];
     // Detect sign of input number and update overflow threshold if needed.
     if x < 0 {
         target.push('-' as u8);
-        overflow_at = 2147483647;
+
+        // 2147483648 for negative numbers (without sign)
+        overflow_at_u8 = [50, 49, 52, 55, 52, 56, 51, 54, 52, 56];
     }
 
     // Check overflow regardless of the sign
-    let overflow_at_str = overflow_at.to_string();
-    let overflow_at_u8 = overflow_at_str.as_bytes();
     if temp_stack.len() >= overflow_at_u8.len() {
         for idx in 0..overflow_at_u8.len() {
             if temp_stack[idx] < overflow_at_u8[idx] {
