@@ -7,11 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Upload file to bucket
-        uses: koraykoska/s3-upload-github-action@master
-        env:
-          FILE: ./docs/
-          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
-          S3_BUCKET: ${{ secrets.S3_BUCKET }}
-          S3_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
-          S3_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
+      - name: Deploy OSS
+        uses: taixw2/deploy-aliyun-oss@v1
+        with:
+          # aliyun config
+          region: ${{ secrets.S3_REGION }} # Full endpoint path from Aliyun Console
+          access-key-id: ${{ secrets.S3_ACCESS_KEY }}
+          access-key-secret: ${{ secrets.S3_SECRET_KEY }}
+          bucket: ${{ secrets.S3_BUCKET }}
+          secure: true
+          # deploy config
+          entry: docs/**/* # glob pattern
+          remote-dir: /
+          path-rewrite: ^docs/
