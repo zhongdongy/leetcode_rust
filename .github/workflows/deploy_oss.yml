@@ -15,3 +15,4 @@ jobs:
           secret-key: ${{ secrets.S3_SECRET_KEY }}
           endpoint: ${{ secrets.S3_ENDPOINT }}
           region: ${{ secrets.S3_REGION }}
+          bucket: ${{ secrets.S3_BUCKET }}
