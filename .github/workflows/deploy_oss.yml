@@ -18,3 +18,4 @@ jobs:
           region: ${{ secrets.S3_REGION }}
           bucket: ${{ secrets.S3_BUCKET }}
           path-format: /$(file)
+          exclude: "**/.*"
