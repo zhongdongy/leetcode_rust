@@ -1,4 +1,4 @@
-name: 解法验证
+name: Docs Build & Test
 
 on: [pull_request, push]
 jobs:
@@ -10,7 +10,5 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - name: "力扣解法的单元测试"
-        run: "cargo test --lib problems_cn:: --release"
-      - name: "力扣解法的整合测试"
-        run: "cargo test --test solutions_cn --release"
+      - name: "Doctest for all solutions"
+        run: "cargo test --doc"

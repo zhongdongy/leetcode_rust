@@ -1,5 +1,6 @@
 # LeetCode Solutions in Rust
 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/doc_test.yml?label=Doctest&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&logo=github&style=plastic)
 
@@ -71,6 +72,7 @@ cargo test --test solutions p000_005
 
 # Rust 语言下的力扣解法（非官方）
 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/doc_test.yml?label=文档测试&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&=github&style=plastic)
 
