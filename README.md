@@ -2,6 +2,18 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&logo=github&style=plastic)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&logo=github&style=plastic)
 
+## Documentation
+
+Run `cargo doc` and find the documentation inside `target/doc/leetcode_rust/` directory. 
+
+### Build documentations
+
+This command will empty the `docs/` directory and place newly generated docs there.
+
+```bash
+mkdir -p ./docs && rm -rf ./docs/* && cargo doc && cp -r target/doc/leetcode_rust/* ./docs/
+```
+
 ## Test
 
 Solution tests are located in `test/problems` directory, and grouped by its 

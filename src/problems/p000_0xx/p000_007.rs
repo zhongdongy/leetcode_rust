@@ -33,7 +33,7 @@
 ///
 /// - `-2^31 <= x <= 2^31 - 1`
 ///
-/// Source: https://leetcode.com/problems/reverse-integer/description/
+/// Source: <https://leetcode.com/problems/reverse-integer/description/>
 ///
 /// ### Argument
 /// * `x` - 32-bit signed integer to alter

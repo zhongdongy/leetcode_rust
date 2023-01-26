@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["reverse_integer","Reverse an integer (32-bit long) and check for overflow."]]};

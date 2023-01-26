@@ -48,14 +48,13 @@ pub enum Algorithm {
 /// | :-- |
 /// | Input: s = "A", numRows = 1 |
 /// | Output: "A" |
-///  
 /// 
 /// Constraints:
 /// - `1 <= s.length <= 1000`
 /// - `s` consists of English letters (lower-case and upper-case), ',' and '.'.
 /// - `1 <= numRows <= 1000`
 /// 
-/// Source: https://leetcode.com/problems/zigzag-conversion/
+/// Source: <https://leetcode.com/problems/zigzag-conversion/>
 ///
 /// ### Arguments
 /// * `s` - original string to convert.

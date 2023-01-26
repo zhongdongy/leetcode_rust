@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["longest_palindrome","Find longest palindrome of a given string."]]};

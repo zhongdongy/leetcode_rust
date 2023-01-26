@@ -1,5 +1,8 @@
 pub enum Algorithm {
+    /// 使用栈数组实现的字形变换
     STACK = 0,
+
+    /// 使用二维数组实现的字形变换
     MATRIX = 1,
 }
 
@@ -24,7 +27,6 @@ pub enum Algorithm {
 /// 请你实现这个将字符串进行指定行数变换的函数：
 /// 
 /// `string convert(string s, int numRows);`
-///  
 /// 
 /// | 示例 1 |
 /// | :-- |
@@ -35,7 +37,6 @@ pub enum Algorithm {
 /// | :-- |
 /// | 输入：s = "PAYPALISHIRING", numRows = 4 |
 /// | 输出："PINALSIGYAHRPI" |
-/// 
 /// 
 /// 解释：
 /// 
@@ -50,16 +51,14 @@ pub enum Algorithm {
 /// | :-- |
 /// | 输入： s = "A", numRows = 1 |
 /// | 输出："A" |
-///  
+/// 
 /// 提示：
 /// 
 /// - `1 <= s.length <= 1000`
 /// - `s` 由英文字母（小写和大写）、',' 和 '.' 组成
 /// - `1 <= numRows <= 1000`
 /// 
-/// 来源：力扣（LeetCode）
-/// 链接：https://leetcode.cn/problems/zigzag-conversion
-/// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+/// 来源：<https://leetcode.cn/problems/zigzag-conversion>
 ///
 /// ### Arguments
 /// * `s` - 等待变换的字符串

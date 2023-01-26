@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["Case","Test case wrapper struct"]]};

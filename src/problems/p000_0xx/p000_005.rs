@@ -23,7 +23,7 @@
 /// - `1 <= s.length <= 1000`
 /// - `s` consist of only digits and English letters.
 /// 
-/// Source: https://leetcode.com/problems/longest-palindromic-substring/
+/// Source: <https://leetcode.com/problems/longest-palindromic-substring/>
 ///
 /// ### Arguments
 /// * `s` - original string to search.

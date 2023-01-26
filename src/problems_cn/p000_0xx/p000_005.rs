@@ -20,15 +20,12 @@
 /// | :-- |
 /// | 输入：s = "cbbd" |
 /// | 输出："bb" |
-///  
 /// 
 /// 提示：
 /// - `1 <= s.length <= 1000`
 /// - `s` 仅由数字和英文字母组成
 /// 
-/// 来源：力扣（LeetCode）
-/// 链接：https://leetcode.cn/problems/longest-palindromic-substring
-/// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+/// 来源：<https://leetcode.cn/problems/longest-palindromic-substring>
 ///
 /// ### Arguments
 /// * `s` - 待搜索的原始字符串.
