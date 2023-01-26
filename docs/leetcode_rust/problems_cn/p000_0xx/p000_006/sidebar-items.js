@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":[["Algorithm",""]],"fn":[["zigzag_conversion","Z 字形变换"]]};
+window.SIDEBAR_ITEMS = {"enum":[["Algorithm","用于选择要执行的算法的 Enum"]],"fn":[["zigzag_conversion","Z 字形变换"]]};

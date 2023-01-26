@@ -93,34 +93,38 @@
 <span id="93">93</span>
 <span id="94">94</span>
 <span id="95">95</span>
-</pre><pre class="rust"><code><span class="doccomment">/// Find longest palindrome of a given string.
+<span id="96">96</span>
+<span id="97">97</span>
+</pre><pre class="rust"><code><span class="doccomment">//! # Description
+//! 
+//! Given a string `s`, return the longest palindromic substring in `s`.
+//! 
+//! | Example 1 |
+//! | :-- |
+//! | Input: s = &quot;babad&quot; |
+//! | Output: &quot;bab&quot; |
+//! 
+//! Explanation: &quot;aba&quot; is also a valid answer.
+//! 
+//! | Example 2 |
+//! | :-- |
+//! | Input: s = &quot;cbbd&quot; |
+//! | Output: &quot;bb&quot; |
+//!  
+//! Constraints:
+//! - `1 &lt;= s.length &lt;= 1000`
+//! - `s` consist of only digits and English letters.
+//! 
+//! Source: &lt;https://leetcode.com/problems/longest-palindromic-substring/&gt;
+
+</span><span class="comment">////////////////////////////////////////////////////////////////////////////////
+
+</span><span class="doccomment">/// Find longest palindrome of a given string.
 ///
 /// It&#39;s possible to have multiple correct answer.
 /// See `tests/cases/c000_0xx/c000_005.rs` for more info.
 /// 
-/// ### Description
-/// 
-/// Given a string `s`, return the longest palindromic substring in `s`.
-/// 
-/// | Example 1 |
-/// | :-- |
-/// | Input: s = &quot;babad&quot; |
-/// | Output: &quot;bab&quot; |
-/// 
-/// Explanation: &quot;aba&quot; is also a valid answer.
-/// 
-/// | Example 2 |
-/// | :-- |
-/// | Input: s = &quot;cbbd&quot; |
-/// | Output: &quot;bb&quot; |
-///  
-/// Constraints:
-/// - `1 &lt;= s.length &lt;= 1000`
-/// - `s` consist of only digits and English letters.
-/// 
-/// Source: &lt;https://leetcode.com/problems/longest-palindromic-substring/&gt;
-///
-/// ### Arguments
+/// # Arguments
 /// * `s` - original string to search.
 ///
 /// ```

@@ -1,7 +1,276 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../leetcode_rust/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
-</pre><pre class="rust"><code><span class="kw">pub mod </span>problems;
+<span id="4">4</span>
+<span id="5">5</span>
+<span id="6">6</span>
+<span id="7">7</span>
+<span id="8">8</span>
+<span id="9">9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
+<span id="87">87</span>
+<span id="88">88</span>
+<span id="89">89</span>
+<span id="90">90</span>
+<span id="91">91</span>
+<span id="92">92</span>
+<span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
+<span id="96">96</span>
+<span id="97">97</span>
+<span id="98">98</span>
+<span id="99">99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+</pre><pre class="rust"><code><span class="doccomment">//! # LeetCode Solutions in Rust
+//! 
+//! ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&amp;logo=github&amp;style=plastic)
+//!
+//! Rust documentations see [https://leetcode-rust.zhongdongy.com](https://leetcode-rust.zhongdongy.com) 
+//! or [https://leetcode-rust.pages.dev/](https://leetcode-rust.pages.dev/).
+//!
+//! ## Documentation
+//!
+//! Run `cargo doc` and find the documentation inside `target/doc/leetcode_rust/` directory.
+//!
+//! ### Build documentations
+//!
+//! This command will empty the `docs/` directory and place newly generated docs
+//! there. The documentations are deployed to Cloudflare Pages. Due to build
+//! environment limitations, the docs must be built before pushing to GitHub (so
+//! Cloudflare directly fetches the contents and build on Pages).
+//!
+//! ```bash
+//! mkdir -p ./docs &amp;&amp; rm -rf ./docs/* &amp;&amp; cargo doc &amp;&amp; cp -r target/doc/* ./docs/
+//! ```
+//!
+//! ## Test
+//!
+//! Solution tests are located in `tests/problems` directory, and grouped by its
+//! problem numbers. Each problem test group (e.g. `p000_0xxx.rs`) corresponds to a
+//! test case module directory (e.g. `cases/c000_0xx/`). Each problem test has its
+//! own case definitions, to use the test cases, just import and call `use_case()`
+//! function.
+//!
+//! ### Test all solutions
+//!
+//! To run all solution tests, simply run:
+//!
+//! ```bash
+//! cargo test --test solutions # LeetCode problems
+//! cargo test --test solutions_cn # 力扣题库
+//! ```
+//!
+//! ### Run documentation tests
+//!
+//! ```bash
+//! cargo test --doc
+//! ```
+//!
+//! ### Run unit tests
+//!
+//! ```bash
+//! cargo test --lib
+//! ```
+//!
+//! ### Run unit tests and all solutions together
+//!
+//! ```bash
+//! cargo test --tests
+//! ```
+//!
+//! ### Run tests for specific problem
+//!
+//! Suppose you would like to test solution for problem #5, run:
+//!
+//! ```bash
+//! cargo test --test solutions p000_005
+//! ```
+//! 
+//! ---
+//! 
+//! # Rust 语言下的力扣解法（非官方）
+//! 
+//! ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test_cn.yml?label=力扣解法验证&amp;logo=github&amp;style=plastic)
+//!
+//! 关于 Crate 提供的各个解法的 Rust 文档，请参阅 [https://leetcode-rust.zhongdongy.com](https://leetcode-rust.zhongdongy.com) 
+//! 或 [https://leetcode-rust.pages.dev/](https://leetcode-rust.pages.dev/).
+//!
+//! ## 文档
+//!
+//! 在项目根目录执行 `cargo doc` 命令，然后访问 `target/doc/leetcode_rust/` 目录可以
+//! 找到生成的最新文档。
+//!
+//! ### 构建文档
+//!
+//! 下述命令将会清空您本地项目目录下的 `docs/` 文件夹，然后将新生成的内容放入其中。由于此文档
+//! 部署在 Cloudflare Pages 服务上，而该服务暂不支持使用 Cargo 构建，所以必须在每次推送
+//! 最新更改到 GitHub 之前执行本地文档构建。
+//!
+//! ```bash
+//! mkdir -p ./docs &amp;&amp; rm -rf ./docs/* &amp;&amp; cargo doc &amp;&amp; cp -r target/doc/* ./docs/
+//! ```
+//!
+//! ## 解法验证
+//!
+//! 所有的解法验证程序都位于 `tests/problems` 目录下，并按照题目编号进行分组。
+//! 每个问题组（如 `p000_0xx.rs` 代表编号 000 到 099 的题目）对应一个单独的测试用例目录
+//! （如 `cases/c000_0xx/`）。每个问题的验证程序都提供了国际版、国内版两组测试用例，但其中的
+//! 大部分都相同样的。要使用某个问题的测试用例，只需要将其引入，然后调用公有的 `use_case()` 
+//! 函数，它的返回值就是测试用例列表。
+//!
+//! ### 验证所有的问题的解法
+//!
+//! 执行下面的命令来执行所有问题的解法:
+//!
+//! ```bash
+//! cargo test --test solutions # LeetCode 国际版题库
+//! cargo test --test solutions_cn # 力扣题库
+//! ```
+//!
+//! ### 执行文档测试
+//!
+//! ```bash
+//! cargo test --doc
+//! ```
+//!
+//! ### 执行单元测试
+//!
+//! ```bash
+//! cargo test --lib
+//! ```
+//!
+//! ### 同时执行单元测试和验证解法
+//!
+//! ```bash
+//! cargo test --tests
+//! ```
+//!
+//! ### 单独验证某个问题的解法
+//!
+//! 假设您想要验证问题 #5 的解，那么可以执行下面的命令:
+//!
+//! ```bash
+//! cargo test --test solutions p000_005
+//! ```
+ 
+</span><span class="comment">////////////////////////////////////////////////////////////////////////////////
+
+</span><span class="kw">pub mod </span>common;
+<span class="kw">pub mod </span>problems;
 <span class="kw">pub mod </span>problems_cn;
-<span class="kw">pub mod </span>common;</code></pre></div>
+</code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="leetcode_rust" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.66.1 (90743e729 2023-01-10)" ></div></body></html>

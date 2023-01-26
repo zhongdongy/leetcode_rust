@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["p000_005",""],["p000_006",""],["p000_007",""]]};
+window.SIDEBAR_ITEMS = {"mod":[["p000_005","Problem #5 Longest Parlindrome Substring"],["p000_006","Problem #6 ZigZag Conversion"],["p000_007","Problem #7 Reverse Integer"]]};

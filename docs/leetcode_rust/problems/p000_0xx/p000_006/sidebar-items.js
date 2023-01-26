@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":[["Algorithm",""]],"fn":[["zigzag_conversion","Get a ZigZag matrix using given string and column-first algorithm."]]};
+window.SIDEBAR_ITEMS = {"enum":[["Algorithm","Enum choosing algorithm for the solution"]],"fn":[["zigzag_conversion","Get a ZigZag matrix using given string and column-first algorithm."]]};

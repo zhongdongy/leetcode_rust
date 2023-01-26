@@ -205,65 +205,75 @@
 <span id="205">205</span>
 <span id="206">206</span>
 <span id="207">207</span>
-</pre><pre class="rust"><code><span class="kw">pub enum </span>Algorithm {
-    STACK = <span class="number">0</span>,
-    MATRIX = <span class="number">1</span>,
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+</pre><pre class="rust"><code><span class="doccomment">//! # Description
+//! 
+//! The string &quot;PAYPALISHIRING&quot; is written in a zigzag pattern on a given 
+//! number of rows like this: (you may want to display this pattern in a fixed 
+//! font for better legibility)
+//! 
+//! ```plain
+//! P   A   H   N
+//! A P L S I I G
+//! Y   I   R
+//! ```
+//! 
+//! And then read line by line: &quot;PAHNAPLSIIGYIR&quot;
+//! 
+//! Write the code that will take a string and make this conversion given a 
+//! number of rows:
+//! 
+//! string convert(string `s`, int `numRows`);
+//!  
+//! | Example 1 |
+//! | :-- |
+//! | Input: s = &quot;PAYPALISHIRING&quot;, numRows = 3 |
+//! | Output: &quot;PAHNAPLSIIGYIR&quot; |
+//! 
+//! | Example 2 |
+//! | :-- |
+//! | Input: s = &quot;PAYPALISHIRING&quot;, numRows = 4 |
+//! | Output: &quot;PINALSIGYAHRPI&quot; |
+//! 
+//! Explanation: 
+//! ```plain
+//! P     I    N 
+//! A   L S  I G 
+//! Y A   H R 
+//! P     I 
+//! ``` 
+//! 
+//! | Example 3 |
+//! | :-- |
+//! | Input: s = &quot;A&quot;, numRows = 1 |
+//! | Output: &quot;A&quot; |
+//! 
+//! Constraints:
+//! - `1 &lt;= s.length &lt;= 1000`
+//! - `s` consists of English letters (lower-case and upper-case), &#39;,&#39; and &#39;.&#39;.
+//! - `1 &lt;= numRows &lt;= 1000`
+//! 
+//! Source: &lt;https://leetcode.com/problems/zigzag-conversion/&gt;
+
+</span><span class="comment">////////////////////////////////////////////////////////////////////////////////
+
+</span><span class="doccomment">/// Enum choosing algorithm for the solution
+</span><span class="kw">pub enum </span>Algorithm {
+    <span class="doccomment">/// String stacks
+    </span>STACK = <span class="number">0</span>,
+    <span class="doccomment">/// Char 2D array
+    </span>MATRIX = <span class="number">1</span>,
 }
 
 <span class="doccomment">/// Get a ZigZag matrix using given string and column-first algorithm.
 ///
 /// Two solutions available, use second argument to decide which to use.
-/// 
-/// ### Description
-/// 
-/// The string &quot;PAYPALISHIRING&quot; is written in a zigzag pattern on a given 
-/// number of rows like this: (you may want to display this pattern in a fixed 
-/// font for better legibility)
-/// 
-/// ```plain
-/// P   A   H   N
-/// A P L S I I G
-/// Y   I   R
-/// ```
-/// 
-/// And then read line by line: &quot;PAHNAPLSIIGYIR&quot;
-/// 
-/// Write the code that will take a string and make this conversion given a 
-/// number of rows:
-/// 
-/// string convert(string `s`, int `numRows`);
-///  
-/// | Example 1 |
-/// | :-- |
-/// | Input: s = &quot;PAYPALISHIRING&quot;, numRows = 3 |
-/// | Output: &quot;PAHNAPLSIIGYIR&quot; |
-/// 
-/// | Example 2 |
-/// | :-- |
-/// | Input: s = &quot;PAYPALISHIRING&quot;, numRows = 4 |
-/// | Output: &quot;PINALSIGYAHRPI&quot; |
-/// 
-/// Explanation: 
-/// ```plain
-/// P     I    N 
-/// A   L S  I G 
-/// Y A   H R 
-/// P     I 
-/// ``` 
-/// 
-/// | Example 3 |
-/// | :-- |
-/// | Input: s = &quot;A&quot;, numRows = 1 |
-/// | Output: &quot;A&quot; |
-/// 
-/// Constraints:
-/// - `1 &lt;= s.length &lt;= 1000`
-/// - `s` consists of English letters (lower-case and upper-case), &#39;,&#39; and &#39;.&#39;.
-/// - `1 &lt;= numRows &lt;= 1000`
-/// 
-/// Source: &lt;https://leetcode.com/problems/zigzag-conversion/&gt;
 ///
-/// ### Arguments
+/// # Arguments
 /// * `s` - original string to convert.
 /// * `n_rows` - total ROWs to layout the characters.
 ///
@@ -293,7 +303,7 @@
 ///
 /// Note the given row count has been mapped to column count in argument
 ///
-/// ### Arguments
+/// # Arguments
 /// * `s` - original string to convert.
 /// * `n_cols` - total ROWs to layout the characters.
 </span><span class="attribute">#[allow(unused_assignments)]
@@ -378,7 +388,7 @@
 /// Considering the parameter constraints of input string length and
 /// row count, we can use stacks to do fast conversion.
 ///
-/// ### Arguments
+/// # Arguments
 /// * `s` input string
 /// * `num_rows` number of rows to layout
 </span><span class="kw">fn </span>convert_s2(s: String, num_rows: i32) -&gt; String {

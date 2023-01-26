@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["p000_0xx",""]]};
+window.SIDEBAR_ITEMS = {"mod":[["p000_0xx","Problems #000 - #099"]]};

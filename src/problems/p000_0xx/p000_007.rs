@@ -1,41 +1,43 @@
+//! # Description
+//!
+//! Given a signed 32-bit integer `x`, return `x` with its digits reversed.
+//! If reversing `x` causes the value to go outside the signed 32-bit integer
+//! range \[-2^31, 2^31 - 1\], then return 0.
+//!
+//! Assume the environment does not allow you to store 64-bit integers (signed 
+//! or unsigned).
+//!
+//!
+//! | Example 1 |
+//! | :-- |
+//! | Input: x = 123 |
+//! | Output: 321 |
+//!
+//! | Example 2 |
+//! | :-- |
+//! | Input: x = -123 |
+//! | Output: -321 |
+//! 
+//! | Example 3 |
+//! | :-- |
+//! | Input: x = 120 |
+//! | Output: 21 |
+//!  
+//!
+//! Constraints:
+//!
+//! - `-2^31 <= x <= 2^31 - 1`
+//!
+//! Source: <https://leetcode.com/problems/reverse-integer/description/>
+
+////////////////////////////////////////////////////////////////////////////////
+
 /// Reverse an integer (32-bit long) and check for overflow.
 ///
 /// Exchange front and end digits (not bits) one by one, return zero if
 /// overflow
 ///
-/// ### Description
-///
-/// Given a signed 32-bit integer `x`, return `x` with its digits reversed.
-/// If reversing `x` causes the value to go outside the signed 32-bit integer
-/// range \[-2^31, 2^31 - 1\], then return 0.
-///
-/// Assume the environment does not allow you to store 64-bit integers (signed 
-/// or unsigned).
-///
-///
-/// | Example 1 |
-/// | :-- |
-/// | Input: x = 123 |
-/// | Output: 321 |
-///
-/// | Example 2 |
-/// | :-- |
-/// | Input: x = -123 |
-/// | Output: -321 |
-/// 
-/// | Example 3 |
-/// | :-- |
-/// | Input: x = 120 |
-/// | Output: 21 |
-///  
-///
-/// Constraints:
-///
-/// - `-2^31 <= x <= 2^31 - 1`
-///
-/// Source: <https://leetcode.com/problems/reverse-integer/description/>
-///
-/// ### Argument
+/// # Argument
 /// * `x` - 32-bit signed integer to alter
 ///
 /// ```
@@ -51,7 +53,7 @@ pub fn reverse_integer(x: i32) -> i32 {
 
 /// Reverse an integer (32-bit long) and check for overflow.
 ///
-/// ### Argument
+/// # Argument
 /// * `x` - 32-bit signed integer to alter
 fn reverse_s1(x: i32) -> i32 {
     let mut temp_stack: Vec<u8> = vec![];

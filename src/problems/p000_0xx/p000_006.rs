@@ -1,62 +1,67 @@
+//! # Description
+//! 
+//! The string "PAYPALISHIRING" is written in a zigzag pattern on a given 
+//! number of rows like this: (you may want to display this pattern in a fixed 
+//! font for better legibility)
+//! 
+//! ```plain
+//! P   A   H   N
+//! A P L S I I G
+//! Y   I   R
+//! ```
+//! 
+//! And then read line by line: "PAHNAPLSIIGYIR"
+//! 
+//! Write the code that will take a string and make this conversion given a 
+//! number of rows:
+//! 
+//! string convert(string `s`, int `numRows`);
+//!  
+//! | Example 1 |
+//! | :-- |
+//! | Input: s = "PAYPALISHIRING", numRows = 3 |
+//! | Output: "PAHNAPLSIIGYIR" |
+//! 
+//! | Example 2 |
+//! | :-- |
+//! | Input: s = "PAYPALISHIRING", numRows = 4 |
+//! | Output: "PINALSIGYAHRPI" |
+//! 
+//! Explanation: 
+//! ```plain
+//! P     I    N 
+//! A   L S  I G 
+//! Y A   H R 
+//! P     I 
+//! ``` 
+//! 
+//! | Example 3 |
+//! | :-- |
+//! | Input: s = "A", numRows = 1 |
+//! | Output: "A" |
+//! 
+//! Constraints:
+//! - `1 <= s.length <= 1000`
+//! - `s` consists of English letters (lower-case and upper-case), ',' and '.'.
+//! - `1 <= numRows <= 1000`
+//! 
+//! Source: <https://leetcode.com/problems/zigzag-conversion/>
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// Enum choosing algorithm for the solution
 pub enum Algorithm {
+    /// String stacks
     STACK = 0,
+    /// Char 2D array
     MATRIX = 1,
 }
 
 /// Get a ZigZag matrix using given string and column-first algorithm.
 ///
 /// Two solutions available, use second argument to decide which to use.
-/// 
-/// ### Description
-/// 
-/// The string "PAYPALISHIRING" is written in a zigzag pattern on a given 
-/// number of rows like this: (you may want to display this pattern in a fixed 
-/// font for better legibility)
-/// 
-/// ```plain
-/// P   A   H   N
-/// A P L S I I G
-/// Y   I   R
-/// ```
-/// 
-/// And then read line by line: "PAHNAPLSIIGYIR"
-/// 
-/// Write the code that will take a string and make this conversion given a 
-/// number of rows:
-/// 
-/// string convert(string `s`, int `numRows`);
-///  
-/// | Example 1 |
-/// | :-- |
-/// | Input: s = "PAYPALISHIRING", numRows = 3 |
-/// | Output: "PAHNAPLSIIGYIR" |
-/// 
-/// | Example 2 |
-/// | :-- |
-/// | Input: s = "PAYPALISHIRING", numRows = 4 |
-/// | Output: "PINALSIGYAHRPI" |
-/// 
-/// Explanation: 
-/// ```plain
-/// P     I    N 
-/// A   L S  I G 
-/// Y A   H R 
-/// P     I 
-/// ``` 
-/// 
-/// | Example 3 |
-/// | :-- |
-/// | Input: s = "A", numRows = 1 |
-/// | Output: "A" |
-/// 
-/// Constraints:
-/// - `1 <= s.length <= 1000`
-/// - `s` consists of English letters (lower-case and upper-case), ',' and '.'.
-/// - `1 <= numRows <= 1000`
-/// 
-/// Source: <https://leetcode.com/problems/zigzag-conversion/>
 ///
-/// ### Arguments
+/// # Arguments
 /// * `s` - original string to convert.
 /// * `n_rows` - total ROWs to layout the characters.
 ///
@@ -86,7 +91,7 @@ fn test_zigzag_conversion() {
 ///
 /// Note the given row count has been mapped to column count in argument
 ///
-/// ### Arguments
+/// # Arguments
 /// * `s` - original string to convert.
 /// * `n_cols` - total ROWs to layout the characters.
 #[allow(unused_assignments)]
@@ -171,7 +176,7 @@ fn test_conversion_s1() {
 /// Considering the parameter constraints of input string length and
 /// row count, we can use stacks to do fast conversion.
 ///
-/// ### Arguments
+/// # Arguments
 /// * `s` input string
 /// * `num_rows` number of rows to layout
 fn convert_s2(s: String, num_rows: i32) -> String {

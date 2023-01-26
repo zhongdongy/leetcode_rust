@@ -1,8 +1,20 @@
+//! # Common Contents
+//! 
+//! This module provide common structs, enums and functions used in solutions, 
+//! test cases, test suites.
+//! 
+//! # 公共内容
+//! 
+//! 此模块提供用于解法、测试用例、测试程序使用的公共 Struct、Enum 和函数。
+//! 
+
+////////////////////////////////////////////////////////////////////////////////
+
 use std::fmt;
 
 /// Test case wrapper struct
 ///
-/// ### Generics
+/// # Generics
 /// * `T` - type of expectations, must implement `PartialEq` and `Display` traits
 /// * `G` - type of optional parameters
 pub struct Case<T, G> {
@@ -22,7 +34,7 @@ where
 {
     /// Create new test case with no parameters
     ///
-    /// ### Arguments
+    /// # Arguments
     /// * `input` - test input
     /// * `values` - expected values, accept single- or multi-value vector
     pub fn new(input: T, values: Vec<T>) -> Case<T, G> {
@@ -35,7 +47,7 @@ where
 
     /// Create new test case with parameters
     ///
-    /// ### Arguments
+    /// # Arguments
     /// * `input` - test input
     /// * `params` - test parameters that vary among different cases
     /// * `values` - expected values, accept single- or multi-value vector
@@ -49,7 +61,7 @@ where
 
     /// Check if solution output matches any expectations
     ///
-    /// ### Arguments
+    /// # Arguments
     /// * `&self` - inmutable borrow to object itself
     /// * `result` - solution output
     ///

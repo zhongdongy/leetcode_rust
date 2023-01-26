@@ -95,36 +95,42 @@
 <span id="95">95</span>
 <span id="96">96</span>
 <span id="97">97</span>
-</pre><pre class="rust"><code><span class="doccomment">/// 最长回文子串
+<span id="98">98</span>
+<span id="99">99</span>
+<span id="100">100</span>
+</pre><pre class="rust"><code><span class="doccomment">//! # 题目描述
+//! 
+//! 给你一个字符串 `s`，找到 `s` 中最长的回文子串。
+//! 
+//! 如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。
+//! 
+//! | 示例 1 | 
+//! | :-- |
+//! | 输入：s = &quot;babad&quot; |
+//! | 输出：&quot;bab&quot; |
+//! 
+//! 解释：&quot;aba&quot; 同样是符合题意的答案。
+//! 
+//! | 示例 2 |
+//! | :-- |
+//! | 输入：s = &quot;cbbd&quot; |
+//! | 输出：&quot;bb&quot; |
+//! 
+//! 提示：
+//! - `1 &lt;= s.length &lt;= 1000`
+//! - `s` 仅由数字和英文字母组成
+//! 
+//! 来源：&lt;https://leetcode.cn/problems/longest-palindromic-substring&gt;
+
+</span><span class="comment">////////////////////////////////////////////////////////////////////////////////
+
+</span><span class="doccomment">/// 最长回文子串
 ///
 /// 可能出现同一个字符串有多个最长回文子串的现象
 /// 参照 `tests/cases_cn/c000_0xx/c000_005.rs` 了解测试用例
 /// 
-/// ### 题目描述
-/// 
-/// 给你一个字符串 `s`，找到 `s` 中最长的回文子串。
-/// 
-/// 如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。
-/// 
-/// | 示例 1 | 
-/// | :-- |
-/// | 输入：s = &quot;babad&quot; |
-/// | 输出：&quot;bab&quot; |
-/// 
-/// 解释：&quot;aba&quot; 同样是符合题意的答案。
-/// 
-/// | 示例 2 |
-/// | :-- |
-/// | 输入：s = &quot;cbbd&quot; |
-/// | 输出：&quot;bb&quot; |
-/// 
-/// 提示：
-/// - `1 &lt;= s.length &lt;= 1000`
-/// - `s` 仅由数字和英文字母组成
-/// 
-/// 来源：&lt;https://leetcode.cn/problems/longest-palindromic-substring&gt;
 ///
-/// ### Arguments
+/// # 参数
 /// * `s` - 待搜索的原始字符串.
 ///
 /// ```

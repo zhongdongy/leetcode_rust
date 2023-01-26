@@ -107,44 +107,48 @@
 <span id="107">107</span>
 <span id="108">108</span>
 <span id="109">109</span>
-</pre><pre class="rust"><code><span class="doccomment">/// Reverse an integer (32-bit long) and check for overflow.
+<span id="110">110</span>
+<span id="111">111</span>
+</pre><pre class="rust"><code><span class="doccomment">//! # Description
+//!
+//! Given a signed 32-bit integer `x`, return `x` with its digits reversed.
+//! If reversing `x` causes the value to go outside the signed 32-bit integer
+//! range \[-2^31, 2^31 - 1\], then return 0.
+//!
+//! Assume the environment does not allow you to store 64-bit integers (signed 
+//! or unsigned).
+//!
+//!
+//! | Example 1 |
+//! | :-- |
+//! | Input: x = 123 |
+//! | Output: 321 |
+//!
+//! | Example 2 |
+//! | :-- |
+//! | Input: x = -123 |
+//! | Output: -321 |
+//! 
+//! | Example 3 |
+//! | :-- |
+//! | Input: x = 120 |
+//! | Output: 21 |
+//!  
+//!
+//! Constraints:
+//!
+//! - `-2^31 &lt;= x &lt;= 2^31 - 1`
+//!
+//! Source: &lt;https://leetcode.com/problems/reverse-integer/description/&gt;
+
+</span><span class="comment">////////////////////////////////////////////////////////////////////////////////
+
+</span><span class="doccomment">/// Reverse an integer (32-bit long) and check for overflow.
 ///
 /// Exchange front and end digits (not bits) one by one, return zero if
 /// overflow
 ///
-/// ### Description
-///
-/// Given a signed 32-bit integer `x`, return `x` with its digits reversed.
-/// If reversing `x` causes the value to go outside the signed 32-bit integer
-/// range \[-2^31, 2^31 - 1\], then return 0.
-///
-/// Assume the environment does not allow you to store 64-bit integers (signed 
-/// or unsigned).
-///
-///
-/// | Example 1 |
-/// | :-- |
-/// | Input: x = 123 |
-/// | Output: 321 |
-///
-/// | Example 2 |
-/// | :-- |
-/// | Input: x = -123 |
-/// | Output: -321 |
-/// 
-/// | Example 3 |
-/// | :-- |
-/// | Input: x = 120 |
-/// | Output: 21 |
-///  
-///
-/// Constraints:
-///
-/// - `-2^31 &lt;= x &lt;= 2^31 - 1`
-///
-/// Source: &lt;https://leetcode.com/problems/reverse-integer/description/&gt;
-///
-/// ### Argument
+/// # Argument
 /// * `x` - 32-bit signed integer to alter
 ///
 /// ```
@@ -160,7 +164,7 @@
 
 <span class="doccomment">/// Reverse an integer (32-bit long) and check for overflow.
 ///
-/// ### Argument
+/// # Argument
 /// * `x` - 32-bit signed integer to alter
 </span><span class="kw">fn </span>reverse_s1(x: i32) -&gt; i32 {
     <span class="kw">let </span><span class="kw-2">mut </span>temp_stack: Vec&lt;u8&gt; = <span class="macro">vec!</span>[];

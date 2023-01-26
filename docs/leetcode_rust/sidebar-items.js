@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["common",""],["problems",""],["problems_cn",""]]};
+window.SIDEBAR_ITEMS = {"mod":[["common","Common Contents"],["problems","Solutions to LeetCode problems"],["problems_cn","适用于国内版力扣的问题解法"]]};
