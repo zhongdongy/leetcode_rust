@@ -1,0 +1,76 @@
+/// Reverse an integer (32-bit long) and check for overflow.
+///
+/// Exchange front and end digits (not bits) one by one, return zero if
+/// overflow
+///
+/// ### Argument
+/// * `x` - 32-bit integer to alter
+///
+/// ```
+/// use leetcode_rust::problems::p000_0xx::p000_007::reverse_integer;
+/// assert_eq!(reverse_integer(-2147483647), 0);
+/// assert_eq!(reverse_integer(123), 321);
+/// assert_eq!(reverse_integer(120), 21);
+/// assert_eq!(reverse_integer(-123), -321);
+/// ```
+pub fn reverse_integer(x: i32) -> i32 {
+    reverse_s1(x)
+}
+
+/// Reverse an integer (32-bit long) and check for overflow.
+///
+/// ### Argument
+/// * `x` - 32-bit integer to alter
+fn reverse_s1(x: i32) -> i32 {
+    let mut temp_stack: Vec<u8> = vec![];
+    // Convert integer to digits.
+    for ch in x.to_string().as_bytes() {
+        if *ch as char != '-' {
+            temp_stack.push(*ch);
+        }
+    }
+    loop {
+        // Remove trailing zeros if present
+        match temp_stack.last() {
+            Some(last_ch) => {
+                if *last_ch as char == '0' && temp_stack.len() > 1 {
+                    temp_stack.pop();
+                } else {
+                    break;
+                }
+            }
+            None => break,
+        }
+    }
+    temp_stack.reverse();
+
+    let mut overflow_at: i32 = 2147483647;
+    let mut target: Vec<u8> = vec![];
+    // Detect sign of input number and update overflow threshold if needed.
+    if x < 0 {
+        target.push('-' as u8);
+        overflow_at = 2147483647;
+    }
+
+    // Check overflow regardless of the sign
+    let overflow_at_str = overflow_at.to_string();
+    let overflow_at_u8 = overflow_at_str.as_bytes();
+    if temp_stack.len() >= overflow_at_u8.len() {
+        for idx in 0..overflow_at_u8.len() {
+            if temp_stack[idx] < overflow_at_u8[idx] {
+                // If current digit is smaller than overflow threshold, no
+                // need to test anymore.
+                break;
+            }
+            if temp_stack[idx] > overflow_at_u8[idx] {
+                // Previous digit (if exists) same between target and threshold,
+                // If current digit of target is greater than threshold, then
+                // overflow.
+                return 0;
+            }
+        }
+    }
+    // Combine sign and digits
+    target = [target, temp_stack].concat();
+    String::from_utf8(target).unwrap().parse::<i32>().unwrap()
+}

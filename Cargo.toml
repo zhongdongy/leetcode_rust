@@ -12,3 +12,6 @@ repository = "https://github.com/zhongdongy/leetcode_rust"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "leetcode_rust"
