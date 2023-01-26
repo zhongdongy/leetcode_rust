@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy OSS
-        uses: taixw2/deploy-aliyun-oss@1
+        uses: taixw2/deploy-aliyun-oss@main
         with:
           # aliyun config
           region: ${{ secrets.S3_REGION }} # Full endpoint path from Aliyun Console
