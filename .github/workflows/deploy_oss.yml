@@ -6,6 +6,7 @@ jobs:
     name: Deploy to Aliyun OSS
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Upload to Amazon S3
         uses: Noelware/s3-action@2.1.0
         with:
