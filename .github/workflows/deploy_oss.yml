@@ -7,16 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: "mv docs dist"
       - name: Deploy OSS
-        uses: taixw2/deploy-aliyun-oss@main
+        uses: JayMeDotDot/aliyun-OSS-deployer@v1.0.0
         with:
-          # aliyun config
-          region: ${{ secrets.S3_REGION }} # Full endpoint path from Aliyun Console
           access-key-id: ${{ secrets.S3_ACCESS_KEY }}
           access-key-secret: ${{ secrets.S3_SECRET_KEY }}
+          region: ${{ secrets.S3_REGION }}
           bucket: ${{ secrets.S3_BUCKET }}
-          secure: true
-          # deploy config
-          entry: docs/**/* # glob pattern
-          remote-dir: /
-          path-rewrite: ^docs/
+          endpoint: ${{ secrets.S3_ENDPOINT }}
