@@ -2,6 +2,28 @@
 ///
 /// It's possible to have multiple correct answer.
 /// See `tests/cases/c000_0xx/c000_005.rs` for more info.
+/// 
+/// ### Description
+/// 
+/// Given a string `s`, return the longest palindromic substring in `s`.
+/// 
+/// | Example 1 |
+/// | :-- |
+/// | Input: s = "babad" |
+/// | Output: "bab" |
+/// 
+/// Explanation: "aba" is also a valid answer.
+/// 
+/// | Example 2 |
+/// | :-- |
+/// | Input: s = "cbbd" |
+/// | Output: "bb" |
+///  
+/// Constraints:
+/// - `1 <= s.length <= 1000`
+/// - `s` consist of only digits and English letters.
+/// 
+/// Source: https://leetcode.com/problems/longest-palindromic-substring/
 ///
 /// ### Arguments
 /// * `s` - original string to search.
