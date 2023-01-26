@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload to Amazon S3
-        uses: Noelware/s3-action@v2
+        uses: Noelware/s3-action@2.1.0
         with:
           directories: |
             ./docs
