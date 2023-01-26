@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: 'find ./docs -iname ".*" -delete'
       - name: Upload to Amazon S3
         uses: Noelware/s3-action@2.1.0
         with:
@@ -18,4 +19,3 @@ jobs:
           region: ${{ secrets.S3_REGION }}
           bucket: ${{ secrets.S3_BUCKET }}
           path-format: /$(file)
-          exclude: "**/.*"
