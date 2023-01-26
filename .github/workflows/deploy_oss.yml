@@ -1,0 +1,17 @@
+name: Deployment
+
+on: [pull_request, push]
+jobs:
+  build_and_test:
+    name: Deploy to Aliyun OSS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload to Amazon S3
+        uses: Noelware/s3-action@v2
+        with:
+          directories: |
+            ./docs
+          access-key-id: ${{ secrets.S3_ACCESS_KEY }}
+          secret-key: ${{ secrets.S3_SECRET_KEY }}
+          endpoint: ${{ secrets.S3_ENDPOINT }}
+          region: ${{ secrets.S3_REGION }}
