@@ -1,0 +1,24 @@
+<script>
+  // Manipulate some page contents
+  window.addEventListener('DOMContentLoaded', function () {
+    try {
+      document.querySelector('nav.mobile-topbar > h2 > a').textContent = "LeetCode (Rust)";
+
+      document.querySelector('nav.sidebar > h2.location > a').textContent = "LeetCode (Rust)";
+    } catch (e) {
+    }
+
+    renderMathInElement(document.body, {
+      // customised options
+      // • auto-render specific keys, e.g.:
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      // • rendering keys, e.g.:
+      throwOnError: false
+    });
+  })
+</script>

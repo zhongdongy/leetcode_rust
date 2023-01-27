@@ -21,7 +21,10 @@ environment limitations, the docs must be built before pushing to GitHub (so
 Cloudflare directly fetches the contents and build on Pages).
 
 ```bash
-mkdir -p ./docs && rm -rf ./docs/* && cargo doc && cp -r target/doc/* ./docs/
+mkdir -p ./docs \
+  && rm -rf ./docs/* \
+  && RUSTDOCFLAGS='--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html' cargo doc \
+  && cp -r target/doc/* ./docs/
 ```
 
 ## Test
