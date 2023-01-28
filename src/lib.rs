@@ -7,6 +7,12 @@
 //! Rust documentations see [https://leetcode-rust.zhongdongy.com](https://leetcode-rust.zhongdongy.com) 
 //! or [https://leetcode-rust.pages.dev/](https://leetcode-rust.pages.dev/).
 //!
+//! Note: all problems descriptions collected from 
+//! [LeetCode website](https://leetcode.com/), [力扣](https://leetcode.cn/) and 
+//! all related credits go to LeetCode, 力扣 and its communities. Authors of 
+//! this repository CANNOT and WILL NOT guarantee the correctness of the 
+//! problem descriptions and solutions.
+//!
 //! ## Documentation
 //!
 //! Run `cargo doc` and find the documentation inside `target/doc/leetcode_rust/` directory.
@@ -19,7 +25,10 @@
 //! Cloudflare directly fetches the contents and build on Pages).
 //!
 //! ```bash
-//! mkdir -p ./docs && rm -rf ./docs/* && cargo doc && cp -r target/doc/* ./docs/
+//! mkdir -p ./docs \
+//! && rm -rf ./docs/* \
+//! && RUSTDOCFLAGS='--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html' cargo doc \
+//! && cp -r target/doc/* ./docs/
 //! ```
 //!
 //! ## Test
@@ -74,6 +83,10 @@
 //! [For English readers](#leetcode-solutions-in-rust)
 //! 
 //! 关于 Crate 提供的各个解法的 Rust 文档，请参阅 [https://leetcode-rust.dongs.xyz/](https://leetcode-rust.dongs.xyz/)。
+//! 
+//! 请注意，所有的题目来源于 [LeetCode 网站](https://leetcode.com/)和
+//! [力扣](https://leetcode.cn/)。所有题目的著作权属于上述两个平台及相应的社区。
+//! 作者**不能**也**不会**保证题目描述、解法的正确性。
 //!
 //! ## 文档
 //!
@@ -87,7 +100,10 @@
 //! 最新更改到 GitHub 之前执行本地文档构建。
 //!
 //! ```bash
-//! mkdir -p ./docs && rm -rf ./docs/* && cargo doc && cp -r target/doc/* ./docs/
+//! mkdir -p ./docs \
+//! && rm -rf ./docs/* \
+//! && RUSTDOCFLAGS='--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html' cargo doc \
+//! && cp -r target/doc/* ./docs/
 //! ```
 //!
 //! ## 解法验证
