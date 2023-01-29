@@ -16,4 +16,6 @@ pub mod p000_0xx {
     pub mod p000_006;
     /// Problem #7 *Reverse Integer*
     pub mod p000_007;
+    /// Problem #8 *String to Integer (atoi)*
+    pub mod p000_008;
 }
