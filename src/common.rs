@@ -10,7 +10,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-use std::fmt;
+use std::fmt::{self, Display};
 
 /// Test case wrapper struct
 ///
@@ -99,17 +99,22 @@ where
         }
     }
 
+    /// Returns the index value in String form.
     pub fn label(&self) -> String {
         self.index.to_string()
     }
 }
 
+/// A easy to use test case collection struct that also provide functions for 
+/// simple test case creation.
 pub struct CaseGroup<T, G, P> {
     cases: Vec<Case<T, G, P>>,
     count: i32,
 }
 
 impl<T, G, P> CaseGroup<T, G, P> {
+
+    /// Create a new CaseGroup instance.
     pub fn new() -> CaseGroup<T, G, P> {
         CaseGroup {
             cases: vec![],
@@ -117,13 +122,77 @@ impl<T, G, P> CaseGroup<T, G, P> {
         }
     }
 
+    /// Add existing test case instance to the collection.
+    /// 
+    /// Note: an additional `index` value will be set by calling this method.
     pub fn add(&mut self, mut case: Case<T, G, P>) {
         self.count += 1;
         case.index = self.count;
         self.cases.push(case);
     }
 
+    /// Get all test cases within current test case collection.
     pub fn all(self) -> Vec<Case<T, G, P>> {
         self.cases
     }
 }
+
+/// Generate `create` & `create_param` implementation for different types
+///
+/// # Note
+/// The `<String, G, P>` generics combination has been implemented individually,
+/// so you probably should not implement on your own.
+#[macro_export]
+macro_rules! codegen_case_create_impl {
+    ($t:ty, $g:ty, $p:ty) => {
+        /// Implement two handy methods on CaseGroup struct.
+        impl CaseGroup<$t, $g, $p> {
+            /// Create a new test case (no input parameters) matching selected
+            /// generic types.
+            pub fn create(&mut self, ipt: $t, exp: Vec<$g>) {
+                self.add(Case::new(ipt, exp));
+            }
+
+            /// Create a new test case (with input parameters) matching
+            /// selected generic types.
+            pub fn create_param(&mut self, ipt: $t, exp: Vec<$g>, params: Vec<$p>) {
+                self.add(Case::new_params(ipt, params, exp));
+            }
+        }
+    };
+}
+
+/// Implement two handy methods on CaseGroup<String, G, P> struct.
+impl<G, P> CaseGroup<String, G, P> {
+    /// Create a new test case (mo input parameters) matching
+    /// &str and other generic types.
+    /// 
+    /// # Argument
+    /// * `ipt` - this argument is set to `&str` to simplify method calls.
+    /// * `exp` - expected values in Vec<G> form.
+    pub fn create(&mut self, ipt: &str, exp: Vec<G>)
+    where
+        P: PartialEq + Display,
+        G: PartialEq + Display,
+    {
+        self.add(Case::new(ipt.to_string(), exp));
+    }
+
+    /// Create a new test case (with input parameters) matching
+    /// &str and other generic types.
+    /// 
+    /// # Argument
+    /// * `ipt` - this argument is set to `&str` to simplify method calls.
+    /// * `exp` - expected values in Vec<G> form.
+    /// * `params` - expected values in Vec<P> form.
+    pub fn create_param(&mut self, ipt: &str, exp: Vec<G>, params: Vec<P>)
+    where
+        G: PartialEq + Display,
+        P: PartialEq + Display,
+    {
+        self.add(Case::new_params(ipt.to_string(), params, exp));
+    }
+}
+
+
+codegen_case_create_impl!(i32, i32, i32);
