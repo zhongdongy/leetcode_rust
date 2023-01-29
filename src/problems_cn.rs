@@ -15,4 +15,6 @@ pub mod p000_0xx {
     pub mod p000_006;
     /// 问题 #7《整数反转》
     pub mod p000_007;
+    /// 问题 #8《字符串转换整数 (atoi)》
+    pub mod p000_008;
 }

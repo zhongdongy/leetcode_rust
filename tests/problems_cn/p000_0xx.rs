@@ -1,9 +1,11 @@
 use super::super::cases_cn::c000_0xx::c000_005;
 use super::super::cases_cn::c000_0xx::c000_006;
 use super::super::cases_cn::c000_0xx::c000_007;
+use super::super::cases_cn::c000_0xx::c000_008;
 use leetcode_rust::problems_cn::p000_0xx::p000_005;
 use leetcode_rust::problems_cn::p000_0xx::p000_006;
 use leetcode_rust::problems_cn::p000_0xx::p000_007;
+use leetcode_rust::problems_cn::p000_0xx::p000_008;
 
 /// 题目 000_005: 最长回文子串
 #[test]
@@ -33,3 +35,10 @@ fn p000_007_reverse_integer() {
     }
 }
 
+/// 题目 000_008: 字符串转换整数 (atoi)
+#[test]
+fn p000_008_convert_string_to_integer() {
+    for case in c000_008::use_cases() {
+        case.is_valid(p000_008::my_atoi((&case.input).to_string()));
+    }
+}

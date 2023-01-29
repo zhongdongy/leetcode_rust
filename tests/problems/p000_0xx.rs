@@ -39,8 +39,6 @@ fn p000_007_reverse_integer() {
 #[test]
 fn p000_008_convert_string_to_integer() {
     for case in c000_008::use_cases() {
-        // if case.label() == String::from("24") {
-            case.is_valid(p000_008::my_atoi((&case.input).to_string()));
-        // }
+        case.is_valid(p000_008::my_atoi((&case.input).to_string()));
     }
 }

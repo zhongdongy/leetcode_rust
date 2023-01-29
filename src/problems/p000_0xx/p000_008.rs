@@ -82,9 +82,11 @@
 //!
 //! Constraints:
 //!
-//! - $0 \leqslant s.length \leqslant 200$
+//! - `0 $\leqslant$ s.length $\leqslant$ 200`
 //! - `s` consists of English letters (lower-case and upper-case), digits 
 //! (`0-9`), '` `', '`+`', '`-`', and '`.`'.
+//! 
+//! Source: <https://leetcode.com/problems/string-to-integer-atoi/>
 
 ////////////////////////////////////////////////////////////////////////////////
 
