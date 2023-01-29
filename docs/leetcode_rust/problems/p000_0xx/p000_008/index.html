@@ -7,28 +7,29 @@
 
 <!-- To automatically render math in text elements, include the auto-render extension: -->
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../leetcode_rust/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../leetcode_rust/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2 class="location"><a href="#">Module p000_008</a></h2><div class="sidebar-elems"><section><ul class="block"><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Module <a href="../../../index.html">leetcode_rust</a>::<wbr><a href="../../index.html">problems</a>::<wbr><a href="../index.html">p000_0xx</a>::<wbr><a class="mod" href="#">p000_008</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../../../../src/leetcode_rust/problems/p000_0xx/p000_008.rs.html#1-270">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Problem #8 <em>String to Integer (atoi)</em></p>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../leetcode_rust/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../leetcode_rust/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2 class="location"><a href="#">Module p000_008</a></h2><div class="sidebar-elems"><section><ul class="block"><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Module <a href="../../../index.html">leetcode_rust</a>::<wbr><a href="../../index.html">problems</a>::<wbr><a href="../index.html">p000_0xx</a>::<wbr><a class="mod" href="#">p000_008</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../../../../src/leetcode_rust/problems/p000_0xx/p000_008.rs.html#1-274">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Problem #8 <em>String to Integer (atoi)</em></p>
 <h2 id="description"><a href="#description">Description</a></h2>
 <p>Implement the <code>myAtoi(string s)</code> function, which converts a string to a
-32-bit signed integer (similar to C/C++’s atoi function).</p>
-<p>The algorithm for myAtoi(string s) is as follows:</p>
+32-bit signed integer (similar to C/C++’s <code>atoi</code> function).</p>
+<p>The algorithm for <code>myAtoi(string s)</code> is as follows:</p>
 <p>Read in and ignore any leading whitespace.</p>
 <p>Check if the next character (if not already at the end of the string) is
-‘-’ or ‘+’. Read this character in if it is either. This determines if the
+‘<code>-</code>’ or ‘<code>+</code>’. Read this character in if it is either. This determines if the
 final result is negative or positive respectively. Assume the result is
 positive if neither is present.</p>
 <p>Read in next the characters until the next non-digit character or the end
-of the input is reached. The rest of the string is ignored.
-Convert these digits into an integer (i.e. “123” -&gt; 123, “0032” -&gt; 32). If
-no digits were read, then the integer is 0. Change the sign as necessary
+of the input is reached. The rest of the string is ignored.</p>
+<p>Convert these digits into an integer (i.e. “123” -&gt; 123, “0032” -&gt; 32). If
+no digits were read, then the integer is <code>0</code>. Change the sign as necessary
 (from step 2).</p>
-<p>If the integer is out of the 32-bit signed integer range [-231, 231 - 1],
-then clamp the integer so that it remains in the range. Specifically,
-integers less than -231 should be clamped to -231, and integers greater
-than 231 - 1 should be clamped to 231 - 1.
-Return the integer as the final result.
-Note:</p>
-<p>Only the space character ’ ’ is considered a whitespace character.
+<p>If the integer is out of the 32-bit signed integer range 
+$[-2^{31}, 2^{31} - 1]$, then clamp the integer so that it remains in the 
+range. Specifically, integers less than $-2^{31}$ should be clamped to 
+$-2^{31}$, and integers greater than $2^{31} - 1$ should be clamped to 
+$2^{31} - 1$.</p>
+<p>Return the integer as the final result.</p>
+<p>Note:</p>
+<p>Only the space character ‘<code> </code>’ is considered a whitespace character.
 Do not ignore any characters other than the leading whitespace or the rest
 of the string after the digits.</p>
 <p>Example 1:</p>
@@ -43,7 +44,7 @@ Step 2: &quot;42&quot; (no characters read because there is neither a &#39;-&#39
 Step 3: &quot;42&quot; (&quot;42&quot; is read in)
            ^
 The parsed integer is 42.
-Since 42 is in the range [-231, 231 - 1], the final result is 42.
+Since 42 is in the range $[-2^{31}, 2^{31} - 1]$, the final result is 42.
 </code></pre></div>
 <p>Example 2:</p>
 <div class="example-wrap"><pre class="language-plain"><code>Input: s = &quot;   -42&quot;
@@ -56,7 +57,7 @@ Step 2: &quot;   -42&quot; (&#39;-&#39; is read, so the result should be negativ
 Step 3: &quot;   -42&quot; (&quot;42&quot; is read in)
                ^
 The parsed integer is -42.
-Since -42 is in the range [-231, 231 - 1], the final result is -42.
+Since -42 is in the range $[-2^{31}, 2^{31} - 1]$, the final result is -42.
 </code></pre></div>
 <p>Example 3:</p>
 <div class="example-wrap"><pre class="language-plain"><code>Input: s = &quot;4193 with words&quot;
@@ -66,17 +67,16 @@ Step 1: &quot;4193 with words&quot; (no characters read because there is no lead
          ^
 Step 2: &quot;4193 with words&quot; (no characters read because there is neither a &#39;-&#39; nor &#39;+&#39;)
          ^
-Step 3: &quot;4193 with words&quot; (&quot;4193&quot; is read in; reading stops because the next
-character is a non-digit)
+Step 3: &quot;4193 with words&quot; (&quot;4193&quot; is read in; reading stops because the next character is a non-digit)
              ^
 The parsed integer is 4193.
-Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
+Since 4193 is in the range $[-2^{31}, 2^{31} - 1]$, the final result is 4193.
 </code></pre></div>
 <p>Constraints:</p>
 <ul>
 <li>$0 \leqslant s.length \leqslant 200$</li>
-<li>s consists of English letters (lower-case and upper-case), digits (0-9),
-’ ’, ‘+’, ‘-’, and ‘.’.</li>
+<li><code>s</code> consists of English letters (lower-case and upper-case), digits 
+(<code>0-9</code>), ‘<code> </code>’, ‘<code>+</code>’, ‘<code>-</code>’, and ‘<code>.</code>’.</li>
 </ul>
 </div></details><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.my_atoi.html" title="leetcode_rust::problems::p000_0xx::p000_008::my_atoi fn">my_atoi</a></div><div class="item-right docblock-short">Convert string to 32-bit integer</div></div></div></section></div></main><script>
   // Manipulate some page contents
@@ -97,6 +97,7 @@ Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
         { left: '\\(', right: '\\)', display: false },
         { left: '\\[', right: '\\]', display: true }
       ],
+      ignoredTags: ["script", "noscript", "style", "textarea", , "option"],
       // • rendering keys, e.g.:
       throwOnError: false
     });

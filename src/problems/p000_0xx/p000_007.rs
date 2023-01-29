@@ -40,6 +40,7 @@
 /// # Argument
 /// * `x` - 32-bit signed integer to alter
 ///
+/// # Examples
 /// ```
 /// use leetcode_rust::problems::p000_0xx::p000_007::reverse_integer;
 /// assert_eq!(reverse_integer(-2147483647), 0);

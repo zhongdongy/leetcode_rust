@@ -30,6 +30,7 @@
 /// # Arguments
 /// * `s` - original string to search.
 ///
+/// # Examples
 /// ```
 /// use leetcode_rust::problems::p000_0xx::p000_005::longest_palindrome;
 /// let mut result_value = longest_palindrome(String::from("abbab"));
