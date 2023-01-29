@@ -11,7 +11,7 @@ repository = "https://github.com/zhongdongy/leetcode_rust"
 [dependencies]
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["rlib"]
 
 [[bin]]
 name = "leetcode_rust"

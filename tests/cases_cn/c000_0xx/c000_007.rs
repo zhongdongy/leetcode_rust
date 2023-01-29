@@ -1,7 +1,7 @@
 use leetcode_rust::common::Case;
 
-pub fn use_cases() -> Vec<Case<i32, i32>> {
-    let mut cases: Vec<Case<i32, i32>> = vec![];
+pub fn use_cases() -> Vec<Case<i32, i32, i32>> {
+    let mut cases: Vec<Case<i32, i32, i32>> = vec![];
     cases.push(Case::new(-2147483648, vec![0]));
     cases.push(Case::new(2147483647, vec![0]));
     cases.push(Case::new(0, vec![0]));
