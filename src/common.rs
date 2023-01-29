@@ -169,7 +169,7 @@ impl<G, P> CaseGroup<String, G, P> {
     /// 
     /// # Argument
     /// * `ipt` - this argument is set to `&str` to simplify method calls.
-    /// * `exp` - expected values in Vec<G> form.
+    /// * `exp` - expected values in `Vec<G>` form.
     pub fn create(&mut self, ipt: &str, exp: Vec<G>)
     where
         P: PartialEq + Display,
@@ -183,8 +183,8 @@ impl<G, P> CaseGroup<String, G, P> {
     /// 
     /// # Argument
     /// * `ipt` - this argument is set to `&str` to simplify method calls.
-    /// * `exp` - expected values in Vec<G> form.
-    /// * `params` - expected values in Vec<P> form.
+    /// * `exp` - expected values in `Vec<G>` form.
+    /// * `params` - expected values in `Vec<P>` form.
     pub fn create_param(&mut self, ipt: &str, exp: Vec<G>, params: Vec<P>)
     where
         G: PartialEq + Display,

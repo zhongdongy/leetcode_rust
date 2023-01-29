@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src\common.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>common.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="stylesheet" href="../../static.files/theme.css"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><meta name="author" content="Zhongdong Yang <zhongdong_y@outlook.com>">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/common.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>common.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="stylesheet" href="../../static.files/theme.css"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><meta name="author" content="Zhongdong Yang <zhongdong_y@outlook.com>">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
 
@@ -100,50 +100,162 @@
 <a href="#91" id="91">91</a>
 <a href="#92" id="92">92</a>
 <a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
+<a href="#97" id="97">97</a>
+<a href="#98" id="98">98</a>
+<a href="#99" id="99">99</a>
+<a href="#100" id="100">100</a>
+<a href="#101" id="101">101</a>
+<a href="#102" id="102">102</a>
+<a href="#103" id="103">103</a>
+<a href="#104" id="104">104</a>
+<a href="#105" id="105">105</a>
+<a href="#106" id="106">106</a>
+<a href="#107" id="107">107</a>
+<a href="#108" id="108">108</a>
+<a href="#109" id="109">109</a>
+<a href="#110" id="110">110</a>
+<a href="#111" id="111">111</a>
+<a href="#112" id="112">112</a>
+<a href="#113" id="113">113</a>
+<a href="#114" id="114">114</a>
+<a href="#115" id="115">115</a>
+<a href="#116" id="116">116</a>
+<a href="#117" id="117">117</a>
+<a href="#118" id="118">118</a>
+<a href="#119" id="119">119</a>
+<a href="#120" id="120">120</a>
+<a href="#121" id="121">121</a>
+<a href="#122" id="122">122</a>
+<a href="#123" id="123">123</a>
+<a href="#124" id="124">124</a>
+<a href="#125" id="125">125</a>
+<a href="#126" id="126">126</a>
+<a href="#127" id="127">127</a>
+<a href="#128" id="128">128</a>
+<a href="#129" id="129">129</a>
+<a href="#130" id="130">130</a>
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
+<a href="#133" id="133">133</a>
+<a href="#134" id="134">134</a>
+<a href="#135" id="135">135</a>
+<a href="#136" id="136">136</a>
+<a href="#137" id="137">137</a>
+<a href="#138" id="138">138</a>
+<a href="#139" id="139">139</a>
+<a href="#140" id="140">140</a>
+<a href="#141" id="141">141</a>
+<a href="#142" id="142">142</a>
+<a href="#143" id="143">143</a>
+<a href="#144" id="144">144</a>
+<a href="#145" id="145">145</a>
+<a href="#146" id="146">146</a>
+<a href="#147" id="147">147</a>
+<a href="#148" id="148">148</a>
+<a href="#149" id="149">149</a>
+<a href="#150" id="150">150</a>
+<a href="#151" id="151">151</a>
+<a href="#152" id="152">152</a>
+<a href="#153" id="153">153</a>
+<a href="#154" id="154">154</a>
+<a href="#155" id="155">155</a>
+<a href="#156" id="156">156</a>
+<a href="#157" id="157">157</a>
+<a href="#158" id="158">158</a>
+<a href="#159" id="159">159</a>
+<a href="#160" id="160">160</a>
+<a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a>
+<a href="#181" id="181">181</a>
+<a href="#182" id="182">182</a>
+<a href="#183" id="183">183</a>
+<a href="#184" id="184">184</a>
+<a href="#185" id="185">185</a>
+<a href="#186" id="186">186</a>
+<a href="#187" id="187">187</a>
+<a href="#188" id="188">188</a>
+<a href="#189" id="189">189</a>
+<a href="#190" id="190">190</a>
+<a href="#191" id="191">191</a>
+<a href="#192" id="192">192</a>
+<a href="#193" id="193">193</a>
+<a href="#194" id="194">194</a>
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
 </pre><pre class="rust"><code><span class="doccomment">//! # Common Contents
-//! 
-//! This module provide common structs, enums and functions used in solutions, 
+//!
+//! This module provide common structs, enums and functions used in solutions,
 //! test cases, test suites.
-//! 
+//!
 //! # 公共内容
-//! 
+//!
 //! 此模块提供用于解法、测试用例、测试程序使用的公共 Struct、Enum 和函数。
-//! 
+//!
 
 </span><span class="comment">////////////////////////////////////////////////////////////////////////////////
 
-</span><span class="kw">use </span>std::fmt;
+</span><span class="kw">use </span>std::fmt::{<span class="self">self</span>, Display};
 
 <span class="doccomment">/// Test case wrapper struct
 ///
 /// # Generics
-/// * `T` - type of expectations, must implement `PartialEq` and `Display` traits
-/// * `G` - type of optional parameters
-</span><span class="kw">pub struct </span>Case&lt;T, G&gt; {
+/// * `T` - type of test input
+/// * `G` - type of expectations, must implement `PartialEq` and `Display` traits
+/// * `P` - type of optional parameters
+</span><span class="kw">pub struct </span>Case&lt;T, G, P&gt; {
     <span class="doccomment">/// Input value of test case
     </span><span class="kw">pub </span>input: T,
 
     <span class="doccomment">/// Optional parameters when executing test case
-    </span><span class="kw">pub </span>params: Vec&lt;G&gt;,
+    </span><span class="kw">pub </span>params: Vec&lt;P&gt;,
 
     <span class="doccomment">/// Expected values of given input
-    </span><span class="kw">pub </span>values: Vec&lt;T&gt;,
+    </span><span class="kw">pub </span>values: Vec&lt;G&gt;,
+
+    <span class="doccomment">/// Test case index (for labeling)
+    </span>index: i32,
 }
 
-<span class="kw">impl</span>&lt;T, G&gt; Case&lt;T, G&gt;
+<span class="kw">impl</span>&lt;T, G, P&gt; Case&lt;T, G, P&gt;
 <span class="kw">where
     </span>T: PartialEq + fmt::Display,
+    G: PartialEq + fmt::Display,
+    P: PartialEq + fmt::Display,
 {
     <span class="doccomment">/// Create new test case with no parameters
     ///
     /// # Arguments
     /// * `input` - test input
     /// * `values` - expected values, accept single- or multi-value vector
-    </span><span class="kw">pub fn </span>new(input: T, values: Vec&lt;T&gt;) -&gt; Case&lt;T, G&gt; {
+    </span><span class="kw">pub fn </span>new(input: T, values: Vec&lt;G&gt;) -&gt; Case&lt;T, G, P&gt; {
         Case {
             input: input,
             params: <span class="macro">vec!</span>[],
             values: values,
+            index: <span class="number">0</span>,
         }
     }
 
@@ -153,11 +265,12 @@
     /// * `input` - test input
     /// * `params` - test parameters that vary among different cases
     /// * `values` - expected values, accept single- or multi-value vector
-    </span><span class="kw">pub fn </span>new_params(input: T, params: Vec&lt;G&gt;, values: Vec&lt;T&gt;) -&gt; Case&lt;T, G&gt; {
+    </span><span class="kw">pub fn </span>new_params(input: T, params: Vec&lt;P&gt;, values: Vec&lt;G&gt;) -&gt; Case&lt;T, G, P&gt; {
         Case {
             input: input,
             params: params,
             values: values,
+            index: <span class="number">0</span>,
         }
     }
 
@@ -169,10 +282,10 @@
     ///
     /// ```
     /// use leetcode_rust::common::Case;
-    /// let case:Case&lt;String, i32&gt; = Case::new(String::from(&quot;A&quot;), vec![String::from(&quot;A&quot;)]);
+    /// let case:Case&lt;String, String, i32&gt; = Case::new(String::from(&quot;A&quot;), vec![String::from(&quot;A&quot;)]);
     /// case.is_valid(String::from(&quot;A&quot;))
     /// ```
-    </span><span class="kw">pub fn </span>is_valid(<span class="kw-2">&amp;</span><span class="self">self</span>, result: T) {
+    </span><span class="kw">pub fn </span>is_valid(<span class="kw-2">&amp;</span><span class="self">self</span>, result: G) {
         <span class="kw">if </span><span class="self">self</span>.values.len() == <span class="number">0 </span>{
             <span class="macro">assert!</span>(<span class="bool-val">false</span>);
         }
@@ -185,14 +298,111 @@
         <span class="kw">if </span><span class="self">self</span>.values.len() == <span class="number">1 </span>{
             <span class="macro">assert!</span>(
                 <span class="bool-val">false</span>,
-                <span class="string">&quot;Result `{}` != expectation `{}`&quot;</span>,
-                <span class="kw-2">&amp;</span>result, <span class="self">self</span>.values[<span class="number">0</span>]
+                <span class="string">&quot;[#{}] INPUT=`{}`, OUTPUT=`{}`, EXPECTATION=`{}`&quot;</span>,
+                <span class="self">self</span>.index, <span class="kw-2">&amp;</span><span class="self">self</span>.input, <span class="kw-2">&amp;</span>result, <span class="self">self</span>.values[<span class="number">0</span>]
             );
         } <span class="kw">else </span>{
             <span class="macro">assert!</span>(<span class="bool-val">false</span>, <span class="string">&quot;Result `{}` doesn&#39;t match any expectations&quot;</span>, <span class="kw-2">&amp;</span>result);
         }
     }
+
+    <span class="doccomment">/// Returns the index value in String form.
+    </span><span class="kw">pub fn </span>label(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String {
+        <span class="self">self</span>.index.to_string()
+    }
 }
+
+<span class="doccomment">/// A easy to use test case collection struct that also provide functions for 
+/// simple test case creation.
+</span><span class="kw">pub struct </span>CaseGroup&lt;T, G, P&gt; {
+    cases: Vec&lt;Case&lt;T, G, P&gt;&gt;,
+    count: i32,
+}
+
+<span class="kw">impl</span>&lt;T, G, P&gt; CaseGroup&lt;T, G, P&gt; {
+
+    <span class="doccomment">/// Create a new CaseGroup instance.
+    </span><span class="kw">pub fn </span>new() -&gt; CaseGroup&lt;T, G, P&gt; {
+        CaseGroup {
+            cases: <span class="macro">vec!</span>[],
+            count: <span class="number">0</span>,
+        }
+    }
+
+    <span class="doccomment">/// Add existing test case instance to the collection.
+    /// 
+    /// Note: an additional `index` value will be set by calling this method.
+    </span><span class="kw">pub fn </span>add(<span class="kw-2">&amp;mut </span><span class="self">self</span>, <span class="kw-2">mut </span>case: Case&lt;T, G, P&gt;) {
+        <span class="self">self</span>.count += <span class="number">1</span>;
+        case.index = <span class="self">self</span>.count;
+        <span class="self">self</span>.cases.push(case);
+    }
+
+    <span class="doccomment">/// Get all test cases within current test case collection.
+    </span><span class="kw">pub fn </span>all(<span class="self">self</span>) -&gt; Vec&lt;Case&lt;T, G, P&gt;&gt; {
+        <span class="self">self</span>.cases
+    }
+}
+
+<span class="doccomment">/// Generate `create` &amp; `create_param` implementation for different types
+///
+/// # Note
+/// The `&lt;String, G, P&gt;` generics combination has been implemented individually,
+/// so you probably should not implement on your own.
+</span><span class="attr">#[macro_export]
+</span><span class="macro">macro_rules! </span>codegen_case_create_impl {
+    (<span class="macro-nonterminal">$t</span>:ty, <span class="macro-nonterminal">$g</span>:ty, <span class="macro-nonterminal">$p</span>:ty) =&gt; {
+        <span class="doccomment">/// Implement two handy methods on CaseGroup struct.
+        </span><span class="kw">impl </span>CaseGroup&lt;<span class="macro-nonterminal">$t</span>, <span class="macro-nonterminal">$g</span>, <span class="macro-nonterminal">$p</span>&gt; {
+            <span class="doccomment">/// Create a new test case (no input parameters) matching selected
+            /// generic types.
+            </span><span class="kw">pub fn </span>create(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="macro-nonterminal">$t</span>, exp: Vec&lt;<span class="macro-nonterminal">$g</span>&gt;) {
+                <span class="self">self</span>.add(Case::new(ipt, exp));
+            }
+
+            <span class="doccomment">/// Create a new test case (with input parameters) matching
+            /// selected generic types.
+            </span><span class="kw">pub fn </span>create_param(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="macro-nonterminal">$t</span>, exp: Vec&lt;<span class="macro-nonterminal">$g</span>&gt;, params: Vec&lt;<span class="macro-nonterminal">$p</span>&gt;) {
+                <span class="self">self</span>.add(Case::new_params(ipt, params, exp));
+            }
+        }
+    };
+}
+
+<span class="doccomment">/// Implement two handy methods on CaseGroup&lt;String, G, P&gt; struct.
+</span><span class="kw">impl</span>&lt;G, P&gt; CaseGroup&lt;String, G, P&gt; {
+    <span class="doccomment">/// Create a new test case (mo input parameters) matching
+    /// &amp;str and other generic types.
+    /// 
+    /// # Argument
+    /// * `ipt` - this argument is set to `&amp;str` to simplify method calls.
+    /// * `exp` - expected values in `Vec&lt;G&gt;` form.
+    </span><span class="kw">pub fn </span>create(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="kw-2">&amp;</span>str, exp: Vec&lt;G&gt;)
+    <span class="kw">where
+        </span>P: PartialEq + Display,
+        G: PartialEq + Display,
+    {
+        <span class="self">self</span>.add(Case::new(ipt.to_string(), exp));
+    }
+
+    <span class="doccomment">/// Create a new test case (with input parameters) matching
+    /// &amp;str and other generic types.
+    /// 
+    /// # Argument
+    /// * `ipt` - this argument is set to `&amp;str` to simplify method calls.
+    /// * `exp` - expected values in `Vec&lt;G&gt;` form.
+    /// * `params` - expected values in `Vec&lt;P&gt;` form.
+    </span><span class="kw">pub fn </span>create_param(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="kw-2">&amp;</span>str, exp: Vec&lt;G&gt;, params: Vec&lt;P&gt;)
+    <span class="kw">where
+        </span>G: PartialEq + Display,
+        P: PartialEq + Display,
+    {
+        <span class="self">self</span>.add(Case::new_params(ipt.to_string(), params, exp));
+    }
+}
+
+
+<span class="macro">codegen_case_create_impl!</span>(i32, i32, i32);
 </code></pre></div>
 </section></div></main><script>
   // Manipulate some page contents
