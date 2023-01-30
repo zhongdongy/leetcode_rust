@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["is_palindrome","Check if a given input is a palindrome number"]]};

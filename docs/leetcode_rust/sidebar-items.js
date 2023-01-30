@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"macro":[["codegen_case_create_impl","Generate `create` & `create_param` implementation for different types"]],"mod":[["common","Common Contents"],["problems","Solutions to LeetCode problems"],["problems_cn","适用于国内版力扣的问题解法"]]};
+window.SIDEBAR_ITEMS = {"macro":[["codegen_case_create_impl","Generate `create` & `create_param` implementation for different types"],["new_case",""]],"mod":[["common","Common Contents"],["problems","Solutions to LeetCode problems"],["problems_cn","适用于国内版力扣的问题解法"]]};
