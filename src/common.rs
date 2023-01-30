@@ -105,7 +105,7 @@ where
     }
 }
 
-/// A easy to use test case collection struct that also provide functions for 
+/// A easy to use test case collection struct that also provide functions for
 /// simple test case creation.
 pub struct CaseGroup<T, G, P> {
     cases: Vec<Case<T, G, P>>,
@@ -113,7 +113,6 @@ pub struct CaseGroup<T, G, P> {
 }
 
 impl<T, G, P> CaseGroup<T, G, P> {
-
     /// Create a new CaseGroup instance.
     pub fn new() -> CaseGroup<T, G, P> {
         CaseGroup {
@@ -123,7 +122,7 @@ impl<T, G, P> CaseGroup<T, G, P> {
     }
 
     /// Add existing test case instance to the collection.
-    /// 
+    ///
     /// Note: an additional `index` value will be set by calling this method.
     pub fn add(&mut self, mut case: Case<T, G, P>) {
         self.count += 1;
@@ -166,7 +165,7 @@ macro_rules! codegen_case_create_impl {
 impl<G, P> CaseGroup<String, G, P> {
     /// Create a new test case (mo input parameters) matching
     /// &str and other generic types.
-    /// 
+    ///
     /// # Argument
     /// * `ipt` - this argument is set to `&str` to simplify method calls.
     /// * `exp` - expected values in `Vec<G>` form.
@@ -180,7 +179,7 @@ impl<G, P> CaseGroup<String, G, P> {
 
     /// Create a new test case (with input parameters) matching
     /// &str and other generic types.
-    /// 
+    ///
     /// # Argument
     /// * `ipt` - this argument is set to `&str` to simplify method calls.
     /// * `exp` - expected values in `Vec<G>` form.
@@ -194,5 +193,12 @@ impl<G, P> CaseGroup<String, G, P> {
     }
 }
 
-
 codegen_case_create_impl!(i32, i32, i32);
+codegen_case_create_impl!(i32, bool, i32);
+
+#[macro_export]
+macro_rules! new_case {
+    ($self:ident.$func:ident, $input:expr, $($output:expr),+) => {
+        $self.$func($input,vec![$($output),+]);
+    };
+}
