@@ -2,6 +2,9 @@
 //! 
 //! The `new_case!` macro is very useful to simplify TestCase generation 
 //! process and you should definitely try it out.
+//! 
+//! All macros have been exported to crate level. You might want to use it via
+//! `leetcode_rust::macro_name!`
 
 ////////////////////////////////////////////////////////////////////////////////
 
