@@ -13,7 +13,7 @@ use leetcode_rust::problems_cn::p000_0xx::p000_009;
 #[test]
 fn p000_005_longest_palindrome() {
     for case in c000_005::use_cases() {
-        case.is_valid(p000_005::longest_palindrome((&case.input).to_string()));
+        case.is_valid(p000_005::longest_palindrome((case.input()).to_string()));
     }
 }
 
@@ -22,7 +22,7 @@ fn p000_005_longest_palindrome() {
 fn p000_006_zigzag_conversion() {
     for case in c000_006::use_cases() {
         case.is_valid(p000_006::zigzag_conversion(
-            (&case.input).to_string(),
+            (case.input()).to_string(),
             case.params[0],
             Some(p000_006::Algorithm::STACK),
         ));
@@ -33,7 +33,7 @@ fn p000_006_zigzag_conversion() {
 #[test]
 fn p000_007_reverse_integer() {
     for case in c000_007::use_cases() {
-        case.is_valid(p000_007::reverse_integer(case.input));
+        case.is_valid(p000_007::reverse_integer(*case.input()));
     }
 }
 
@@ -41,7 +41,7 @@ fn p000_007_reverse_integer() {
 #[test]
 fn p000_008_convert_string_to_integer() {
     for case in c000_008::use_cases() {
-        case.is_valid(p000_008::my_atoi((&case.input).to_string()));
+        case.is_valid(p000_008::my_atoi((case.input()).to_string()));
     }
 }
 
@@ -49,6 +49,6 @@ fn p000_008_convert_string_to_integer() {
 #[test]
 fn p000_009_is_palindrome_number() {
     for case in c000_009::use_cases() {
-        case.is_valid(p000_009::is_palindrome(case.input));
+        case.is_valid(p000_009::is_palindrome(*case.input()));
     }
 }

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["is_match","Simplified regular expression match algorithm"]]};

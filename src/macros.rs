@@ -41,6 +41,18 @@ macro_rules! codegen_case_create_impl {
             pub fn create_param(&mut self, ipt: $t, exp: Vec<$g>, params: Vec<$p>) {
                 self.add(Case::new_params(ipt, params, exp));
             }
+            
+            /// Create a new test case (no input parameters but multi-inputs) 
+            /// matching selected generic types.
+            pub fn create_multi(&mut self, ipts: Vec<$t>, exp: Vec<$g>) {
+                self.add(Case::new_multi(ipts, exp));
+            }
+
+            /// Create a new test case (with input parameters and multi-inputs) 
+            /// matching selected generic types.
+            pub fn create_param_multi(&mut self, ipts: Vec<$t>, exp: Vec<$g>, params: Vec<$p>) {
+                self.add(Case::new_params_multi(ipts, params, exp));
+            }
         }
     };
 }

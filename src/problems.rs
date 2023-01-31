@@ -20,4 +20,6 @@ pub mod p000_0xx {
     pub mod p000_008;
     /// Problem #9 *Palindrome Number*
     pub mod p000_009;
+    /// Problem #10 *Regular Expression Matching*
+    pub mod p000_010;
 }

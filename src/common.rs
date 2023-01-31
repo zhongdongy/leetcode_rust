@@ -10,18 +10,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-use std::fmt::{self, Display};
 use crate::macros::codegen_case_create_impl;
+use std::fmt::{self, Display};
 
 /// Test case wrapper struct
 ///
 /// # Generics
-/// * `T` - type of test input
+/// * `T` - type of test inputs
 /// * `G` - type of expectations, must implement `PartialEq` and `Display` traits
 /// * `P` - type of optional parameters
 pub struct Case<T, G, P> {
-    /// Input value of test case
-    pub input: T,
+    /// Input values of test case
+    pub inputs: Vec<T>,
 
     /// Optional parameters when executing test case
     pub params: Vec<P>,
@@ -46,7 +46,21 @@ where
     /// * `values` - expected values, accept single- or multi-value vector
     pub fn new(input: T, values: Vec<G>) -> Case<T, G, P> {
         Case {
-            input: input,
+            inputs: vec![input],
+            params: vec![],
+            values: values,
+            index: 0,
+        }
+    }
+
+    /// Create new test case with no parameters but multiple inputs
+    ///
+    /// # Arguments
+    /// * `inputs` - test input, accept single- or multi-value vector
+    /// * `values` - expected values, accept single- or multi-value vector
+    pub fn new_multi(inputs: Vec<T>, values: Vec<G>) -> Case<T, G, P> {
+        Case {
+            inputs: inputs,
             params: vec![],
             values: values,
             index: 0,
@@ -61,7 +75,22 @@ where
     /// * `values` - expected values, accept single- or multi-value vector
     pub fn new_params(input: T, params: Vec<P>, values: Vec<G>) -> Case<T, G, P> {
         Case {
-            input: input,
+            inputs: vec![input],
+            params: params,
+            values: values,
+            index: 0,
+        }
+    }
+
+    /// Create new test case with parameters and multi input
+    ///
+    /// # Arguments
+    /// * `inputs` - test input, accept single- or multi-value vector
+    /// * `params` - test parameters that vary among different cases
+    /// * `values` - expected values, accept single- or multi-value vector
+    pub fn new_params_multi(inputs: Vec<T>, params: Vec<P>, values: Vec<G>) -> Case<T, G, P> {
+        Case {
+            inputs: inputs,
             params: params,
             values: values,
             index: 0,
@@ -90,11 +119,26 @@ where
         }
 
         if self.values.len() == 1 {
-            assert!(
-                false,
-                "[#{}] INPUT=`{}`, OUTPUT=`{}`, EXPECTATION=`{}`",
-                self.index, &self.input, &result, self.values[0]
-            );
+            if self.inputs.len() == 1 {
+                assert!(
+                    false,
+                    "[#{}] INPUT=`{}`, OUTPUT=`{}`, EXPECTATION=`{}`",
+                    self.index, &self.inputs[0], &result, self.values[0]
+                );
+            } else {
+                let mut input_arr: Vec<String> = vec![];
+                for ipt in &self.inputs {
+                    input_arr.push(ipt.to_string());
+                }
+                assert!(
+                    false,
+                    "[#{}] INPUT=`[{}]`, OUTPUT=`{}`, EXPECTATION=`{}`",
+                    self.index,
+                    input_arr.join(", "),
+                    &result,
+                    self.values[0]
+                );
+            }
         } else {
             assert!(false, "Result `{}` doesn't match any expectations", &result);
         }
@@ -104,12 +148,20 @@ where
     pub fn label(&self) -> String {
         self.index.to_string()
     }
+
+    /// Returns the first element of inputs
+    pub fn input(&self) -> &T {
+        &self.inputs[0]
+    }
 }
 
 /// A easy to use test case collection struct that also provide functions for
 /// simple test case creation.
 pub struct CaseGroup<T, G, P> {
+    /// A vector containing all test cases.
     cases: Vec<Case<T, G, P>>,
+
+    // Number of test cases included. Used when labeling each case
     count: i32,
 }
 
@@ -139,7 +191,7 @@ impl<T, G, P> CaseGroup<T, G, P> {
 
 /// Implement two handy methods on CaseGroup<String, G, P> struct.
 impl<G, P> CaseGroup<String, G, P> {
-    /// Create a new test case (mo input parameters) matching
+    /// Create a new test case (no input parameters) matching
     /// &str and other generic types.
     ///
     /// # Argument
@@ -167,8 +219,43 @@ impl<G, P> CaseGroup<String, G, P> {
     {
         self.add(Case::new_params(ipt.to_string(), params, exp));
     }
+
+    /// Create a new test case (no input parameters but multiple inputs)
+    /// matching &str and other generic types.
+    ///
+    /// # Argument
+    /// * `ipts` - this argument is set to `&str` to simplify method calls.
+    /// * `exp` - expected values in `Vec<G>` form.
+    pub fn create_multi(&mut self, ipts: Vec<&str>, exp: Vec<G>)
+    where
+        P: PartialEq + Display,
+        G: PartialEq + Display,
+    {
+        self.add(Case::new_multi(
+            ipts.iter().map(|x| x.to_string()).collect(),
+            exp,
+        ));
+    }
+
+    /// Create a new test case (with input parameters and multiple inputs)
+    /// matching &str and other generic types.
+    ///
+    /// # Argument
+    /// * `ipts` - this argument is set to `&str` to simplify method calls.
+    /// * `exp` - expected values in `Vec<G>` form.
+    /// * `params` - expected values in `Vec<P>` form.
+    pub fn create_param_multi(&mut self, ipts: Vec<&str>, exp: Vec<G>, params: Vec<P>)
+    where
+        G: PartialEq + Display,
+        P: PartialEq + Display,
+    {
+        self.add(Case::new_params_multi(
+            ipts.iter().map(|x| x.to_string()).collect(),
+            params,
+            exp,
+        ));
+    }
 }
 
 codegen_case_create_impl!(i32, i32, i32);
 codegen_case_create_impl!(i32, bool, i32);
-
