@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["is_palindrome","检查传入参数是不是一个回文数"]]};
