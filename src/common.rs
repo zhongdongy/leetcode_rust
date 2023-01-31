@@ -11,6 +11,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 use std::fmt::{self, Display};
+use crate::macros::codegen_case_create_impl;
 
 /// Test case wrapper struct
 ///
@@ -136,31 +137,6 @@ impl<T, G, P> CaseGroup<T, G, P> {
     }
 }
 
-/// Generate `create` & `create_param` implementation for different types
-///
-/// # Note
-/// The `<String, G, P>` generics combination has been implemented individually,
-/// so you probably should not implement on your own.
-#[macro_export]
-macro_rules! codegen_case_create_impl {
-    ($t:ty, $g:ty, $p:ty) => {
-        /// Implement two handy methods on CaseGroup struct.
-        impl CaseGroup<$t, $g, $p> {
-            /// Create a new test case (no input parameters) matching selected
-            /// generic types.
-            pub fn create(&mut self, ipt: $t, exp: Vec<$g>) {
-                self.add(Case::new(ipt, exp));
-            }
-
-            /// Create a new test case (with input parameters) matching
-            /// selected generic types.
-            pub fn create_param(&mut self, ipt: $t, exp: Vec<$g>, params: Vec<$p>) {
-                self.add(Case::new_params(ipt, params, exp));
-            }
-        }
-    };
-}
-
 /// Implement two handy methods on CaseGroup<String, G, P> struct.
 impl<G, P> CaseGroup<String, G, P> {
     /// Create a new test case (mo input parameters) matching
@@ -196,9 +172,3 @@ impl<G, P> CaseGroup<String, G, P> {
 codegen_case_create_impl!(i32, i32, i32);
 codegen_case_create_impl!(i32, bool, i32);
 
-#[macro_export]
-macro_rules! new_case {
-    ($self:ident.$func:ident, $input:expr, $($output:expr),+) => {
-        $self.$func($input,vec![$($output),+]);
-    };
-}
