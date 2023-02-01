@@ -51,6 +51,7 @@ use std::collections::HashMap;
 pub fn is_match(s: String, p: String) -> bool {
     alg_1(s, p)
     // TODO: Try to implement with another more effecient approach in the future.
+    // alg_3_from_leetcode(s, p) // This approach comes from LeetCode.
 }
 
 /// Node struct representing each match pattern segment.
@@ -74,7 +75,7 @@ impl MatchTree {
     /// Match next character (English letters only)
     ///
     /// #TODO: document this function
-    /// 
+    ///
     /// # Arguments
     /// * `s` - input string of each step in bytes form
     /// * `nodes` - pattern nodes left to match
@@ -145,7 +146,7 @@ impl MatchTree {
 }
 
 /// Create a new MatchTree instance.
-/// 
+///
 /// #TODO: document this function
 ///
 /// # Arguments
@@ -202,7 +203,6 @@ fn alg_1(s: String, p: String) -> bool {
         labeled_results: HashMap::new(),
     };
 
-    println!("{:?}", nodes);
     tree.match_next(&s.as_bytes(), nodes.as_slice())
 }
 
@@ -282,4 +282,76 @@ fn alg_2(s: String, p: String) -> bool {
     }
 
     recur(s.as_bytes(), &match_tree)
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+struct State {
+    ch: u8,
+    wildcard: bool,
+}
+
+/// A demo submission from LeetCode
+///
+/// Source: <https://leetcode.com/problems/regular-expression-matching/submissions/889316368/>
+///
+/// # Arguments
+/// * `s` - input string
+/// * `p` - pattern to match
+#[allow(unused)]
+fn alg_3_from_leetcode(s: String, p: String) -> bool {
+    let states: Vec<State> = p
+        .bytes()
+        .enumerate()
+        .filter_map(|(i, ch)| {
+            if ch == b'*' {
+                None
+            } else {
+                Some(State {
+                    ch,
+                    wildcard: p.as_bytes().get(i + 1).copied() == Some(b'*'),
+                })
+            }
+        })
+        .chain([State {
+            ch: 0,
+            wildcard: false,
+        }])
+        .collect();
+    let state_count = states.len();
+
+    let mut cur_states = vec![false; state_count];
+    let add_state = |dest: &mut Vec<bool>, mut i: usize| {
+        while !dest[i] {
+            dest[i] = true;
+            if states[i].wildcard {
+                i += 1;
+            } else {
+                break;
+            }
+        }
+    };
+
+    // Initialization
+    add_state(&mut cur_states, 0);
+
+    // Iterate through s.
+    for ch in s.into_bytes() {
+        if cur_states.is_empty() {
+            break;
+        }
+        let mut new_states = vec![false; state_count];
+        for i in 0..state_count {
+            if cur_states[i] && (states[i].ch == b'.' || states[i].ch == ch) {
+                if states[i].wildcard {
+                    add_state(&mut new_states, i);
+                } else {
+                    add_state(&mut new_states, i + 1);
+                }
+            }
+        }
+        cur_states = new_states;
+    }
+
+    cur_states.last().copied().unwrap_or(false)
 }

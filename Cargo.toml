@@ -1,6 +1,6 @@
 [package]
 name = "leetcode_rust"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 authors = ["Zhongdong Yang <zhongdong_y@outlook.com>"]
 categories = ["problems", "algorithm"]
@@ -10,8 +10,15 @@ repository = "https://github.com/zhongdongy/leetcode_rust"
 
 [dependencies]
 
+[dev-dependencies]
+criterion = "0.3"
+
 [lib]
 crate-type = ["rlib"]
 
 [[bin]]
 name = "leetcode_rust"
+
+[[bench]]
+name = "benchmark"
+harness = false
