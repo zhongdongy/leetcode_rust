@@ -1,85 +1,85 @@
-//! # Description
+//! # 问题描述
 //!
-//! Given an input string `s` and a pattern `p`, implement regular expression
-//! matching with support for '`.`' and '`*`' where:
-//!
-//! - '`.`' Matches any single character.​​​​
-//! - '`*`' Matches zero or more of the preceding element.
-//! The matching should cover the **entire** input string (not partial).
-//!
-//! Example 1:
-//!
-//! ```plain
-//! Input: s = "aa", p = "a"
-//! Output: false
-//! Explanation: "a" does not match the entire string "aa".
-//! ```
-//!
-//! Example 2:
-//!
-//! ```plain
-//! Input: s = "aa", p = "a*"
-//! Output: true
-//! Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
-//! ```
-//!
-//! Example 3:
-//!
-//! ```plain
-//! Input: s = "ab", p = ".*"
-//! Output: true
-//! Explanation: ".*" means "zero or more (*) of any character (.)".
-//! ```
-//!
-//! Constraints:
-//!
-//! - `1 $\leqslant$ s.length $\leqslant$ 20`
-//! - `1 $\leqslant$ p.length $\leqslant$ 30`
-//! - `s` contains only lowercase English letters.
-//! - `p` contains only lowercase English letters, '`.`', and '`*`'.
-//! - It is guaranteed for each appearance of the character '`*`', there will be a previous valid character to match.
+//! 给你一个字符串 `s` 和一个字符规律 `p`，请你来实现一个支持 '`.`' 和 '`*`' 的正则表达式匹配。
 //! 
-//! Source: <https://leetcode.com/problems/regular-expression-matching/>
+//! - '`.`' 匹配任意单个字符
+//! - '`*`' 匹配零个或多个前面的那一个元素
+//! - 所谓匹配，是要涵盖**整个**字符串 `s` 的，而不是部分字符串。
+//! 
+//!  
+//! 示例 1：
+//! 
+//! ```plain
+//! 输入：s = "aa", p = "a"
+//! 输出：false
+//! 解释："a" 无法匹配 "aa" 整个字符串。
+//! ```
+//! 
+//! 示例 2:
+//! 
+//! ```plain
+//! 输入：s = "aa", p = "a*"
+//! 输出：true
+//! 解释：因为 '*' 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 'a'。因此，字符串 "aa" 可被视为 'a' 重复了一次。
+//! ```
+//! 
+//! 示例 3：
+//! 
+//! ```plain
+//! 输入：s = "ab", p = ".*"
+//! 输出：true
+//! 解释：".*" 表示可匹配零个或多个（'*'）任意字符（'.'）。
+//! ```
+//! 
+//! 提示：
+//! 
+//! - `1 $\leqslant$ s.length $\leqslant$ 20`
+//! - `1 $\leqslant$ p.length $\leqslant$ 30`
+//! - `s` 只包含从 `a-z` 的小写字母。
+//! - `p` 只包含从 `a-z` 的小写字母，以及字符 `.` 和 `*`。
+//! - 保证每次出现字符 `*` 时，前面都匹配到有效的字符
+//! 
+//! 来源：<https://leetcode.cn/problems/regular-expression-matching>
 
 ////////////////////////////////////////////////////////////////////////////////
 
 use std::collections::HashMap;
 
-/// Simplified regular expression match algorithm
+/// 简化版的正则表达式匹配算法
 ///
-/// # Arguments
-/// * `s` - input string
-/// * `p` - pattern
+/// # 参数
+/// * `s` - 输入字符串
+/// * `p` - 模式
 pub fn is_match(s: String, p: String) -> bool {
     alg_1(s, p)
     // TODO: Try to implement with another more effecient approach in the future.
     // alg_3_from_leetcode(s, p) // This approach comes from LeetCode.
 }
 
-/// Node struct representing each match pattern segment.
+/// 节点 struct，用于描述模式中的每个部分
 #[derive(Debug)]
 struct MatchRuleNode {
-    allow_empty: bool,  // Symbol "*"
-    allow_repeat: bool, // Symbol "*"
-    allow_any: bool,    // Symbol "."
+    allow_empty: bool,  // 符号 "*"
+    allow_repeat: bool, // 符号 "*"
+    allow_any: bool,    // 符号 "."
     u8: u8,
 }
 
-/// A struct holding parsed pattern.
+/// 用于记录已经解析、判定过的模式的 struct
 ///
-/// Call `match_next` with the whole input and parsed nodes to run matching.
+/// 传入完整待匹配字符串和解析后的模式来调用 `match_next` 方法
 #[derive(Debug)]
 struct MatchTree {
     labeled_results: HashMap<(usize, usize), bool>,
 }
 impl MatchTree {
-    /// Match next character (English letters only)
+    /// 匹配剩下的部分（仅匹配英文字母）
     ///
-    /// #TODO: document this function
+    /// #TODO: 为这个函数写注释
     ///
-    /// # Arguments
-    /// * `s` - input string of each step in bytes form
-    /// * `nodes` - pattern nodes left to match
+    /// # 参数
+    /// * `s` - 字节数组形式的待匹配部分
+    /// * `nodes` - 等待匹配的模式
     fn match_next(&mut self, s: &[u8], nodes: &[MatchRuleNode]) -> bool {
         macro_rules! label_pair {
             ($s:expr, $p:expr) => {{
@@ -146,12 +146,12 @@ impl MatchTree {
     }
 }
 
-/// Create a new MatchRuleNode vector.
+/// 解析并构建 MatchRuleNode 数组
 ///
-/// #TODO: document this function
+/// #TODO: 为函数写注释
 ///
-/// # Arguments
-/// * `p` - pattern
+/// # 参数
+/// * `p` - 待解析的模式
 fn parse_pattern(p: &str) -> Vec<MatchRuleNode> {
     let mut nodes = vec![];
 
@@ -192,11 +192,11 @@ fn parse_pattern(p: &str) -> Vec<MatchRuleNode> {
     nodes
 }
 
-/// Using struct to parse patterns and match input string.
+/// 使用模式匹配构建的 struct 来匹配传入字符串
 ///
-/// # Arguments
-/// * `s` - input string
-/// * `p` - pattern
+/// # 参数
+/// * `s` - 传入字符串
+/// * `p` - 模式字符串
 #[allow(unused)]
 fn alg_1(s: String, p: String) -> bool {
     let mut nodes = parse_pattern(p.as_str());
@@ -207,14 +207,14 @@ fn alg_1(s: String, p: String) -> bool {
     tree.match_next(&s.as_bytes(), nodes.as_slice())
 }
 
-/// A function based variant of algorithm 1.
+/// 使用模式匹配构建的元组来匹配传入字符串
 ///
-/// # Arguments
-/// * `s` - input string
-/// * `p` - pattern
+/// # 参数
+/// * `s` - 传入字符串
+/// * `p` - 模式字符串
 #[deprecated(
     since = "0.2.1",
-    note = "This function will cause \"Time Limit Exceeded\" error"
+    note = "此方法会导致 \"Time Limit Exceeded\" 错误"
 )]
 #[allow(unused)]
 fn alg_2(s: String, p: String) -> bool {

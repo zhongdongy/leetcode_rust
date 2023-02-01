@@ -3,11 +3,13 @@ use super::super::cases_cn::c000_0xx::c000_006;
 use super::super::cases_cn::c000_0xx::c000_007;
 use super::super::cases_cn::c000_0xx::c000_008;
 use super::super::cases_cn::c000_0xx::c000_009;
+use super::super::cases_cn::c000_0xx::c000_010;
 use leetcode_rust::problems_cn::p000_0xx::p000_005;
 use leetcode_rust::problems_cn::p000_0xx::p000_006;
 use leetcode_rust::problems_cn::p000_0xx::p000_007;
 use leetcode_rust::problems_cn::p000_0xx::p000_008;
 use leetcode_rust::problems_cn::p000_0xx::p000_009;
+use leetcode_rust::problems_cn::p000_0xx::p000_010;
 
 /// 题目 000_005: 最长回文子串
 #[test]
@@ -50,5 +52,16 @@ fn p000_008_convert_string_to_integer() {
 fn p000_009_is_palindrome_number() {
     for case in c000_009::use_cases() {
         case.is_valid(p000_009::is_palindrome(*case.input()));
+    }
+}
+
+/// 题目 000_010: 正则表达式匹配
+#[test]
+fn p000_010_regular_expression_matching() {
+    for case in c000_010::use_cases() {
+        case.is_valid(p000_010::is_match(
+            case.inputs[0].clone(),
+            case.inputs[1].clone(),
+        ));
     }
 }

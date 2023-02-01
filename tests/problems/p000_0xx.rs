@@ -59,9 +59,6 @@ fn p000_009_is_palindrome_number() {
 #[test]
 fn p000_010_regular_expression_matching() {
     for case in c000_010::use_cases() {
-        if case.inputs[0] != String::from("aaaaaaaaaaaaaaaaaaab") {
-            continue;
-        }
         case.is_valid(p000_010::is_match(
             case.inputs[0].clone(),
             case.inputs[1].clone(),

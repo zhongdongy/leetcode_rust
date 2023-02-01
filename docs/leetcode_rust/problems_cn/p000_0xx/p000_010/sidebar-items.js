@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["is_match","简化版的正则表达式匹配算法"]]};

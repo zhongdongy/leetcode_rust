@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src\problems\p000_0xx\p000_010.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>p000_010.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="stylesheet" href="../../../../static.files/theme.css"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"><meta name="author" content="Zhongdong Yang <zhongdong_y@outlook.com>">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src\problems_cn\p000_0xx\p000_010.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>p000_010.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="stylesheet" href="../../../../static.files/theme.css"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"><meta name="author" content="Zhongdong Yang <zhongdong_y@outlook.com>">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
 
@@ -365,88 +365,88 @@
 <a href="#356" id="356">356</a>
 <a href="#357" id="357">357</a>
 <a href="#358" id="358">358</a>
-</pre><pre class="rust"><code><span class="doccomment">//! # Description
+</pre><pre class="rust"><code><span class="doccomment">//! # 问题描述
 //!
-//! Given an input string `s` and a pattern `p`, implement regular expression
-//! matching with support for &#39;`.`&#39; and &#39;`*`&#39; where:
-//!
-//! - &#39;`.`&#39; Matches any single character.​​​​
-//! - &#39;`*`&#39; Matches zero or more of the preceding element.
-//! The matching should cover the **entire** input string (not partial).
-//!
-//! Example 1:
-//!
-//! ```plain
-//! Input: s = &quot;aa&quot;, p = &quot;a&quot;
-//! Output: false
-//! Explanation: &quot;a&quot; does not match the entire string &quot;aa&quot;.
-//! ```
-//!
-//! Example 2:
-//!
-//! ```plain
-//! Input: s = &quot;aa&quot;, p = &quot;a*&quot;
-//! Output: true
-//! Explanation: &#39;*&#39; means zero or more of the preceding element, &#39;a&#39;. Therefore, by repeating &#39;a&#39; once, it becomes &quot;aa&quot;.
-//! ```
-//!
-//! Example 3:
-//!
-//! ```plain
-//! Input: s = &quot;ab&quot;, p = &quot;.*&quot;
-//! Output: true
-//! Explanation: &quot;.*&quot; means &quot;zero or more (*) of any character (.)&quot;.
-//! ```
-//!
-//! Constraints:
-//!
-//! - `1 $\leqslant$ s.length $\leqslant$ 20`
-//! - `1 $\leqslant$ p.length $\leqslant$ 30`
-//! - `s` contains only lowercase English letters.
-//! - `p` contains only lowercase English letters, &#39;`.`&#39;, and &#39;`*`&#39;.
-//! - It is guaranteed for each appearance of the character &#39;`*`&#39;, there will be a previous valid character to match.
+//! 给你一个字符串 `s` 和一个字符规律 `p`，请你来实现一个支持 &#39;`.`&#39; 和 &#39;`*`&#39; 的正则表达式匹配。
 //! 
-//! Source: &lt;https://leetcode.com/problems/regular-expression-matching/&gt;
+//! - &#39;`.`&#39; 匹配任意单个字符
+//! - &#39;`*`&#39; 匹配零个或多个前面的那一个元素
+//! - 所谓匹配，是要涵盖**整个**字符串 `s` 的，而不是部分字符串。
+//! 
+//!  
+//! 示例 1：
+//! 
+//! ```plain
+//! 输入：s = &quot;aa&quot;, p = &quot;a&quot;
+//! 输出：false
+//! 解释：&quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。
+//! ```
+//! 
+//! 示例 2:
+//! 
+//! ```plain
+//! 输入：s = &quot;aa&quot;, p = &quot;a*&quot;
+//! 输出：true
+//! 解释：因为 &#39;*&#39; 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 &#39;a&#39;。因此，字符串 &quot;aa&quot; 可被视为 &#39;a&#39; 重复了一次。
+//! ```
+//! 
+//! 示例 3：
+//! 
+//! ```plain
+//! 输入：s = &quot;ab&quot;, p = &quot;.*&quot;
+//! 输出：true
+//! 解释：&quot;.*&quot; 表示可匹配零个或多个（&#39;*&#39;）任意字符（&#39;.&#39;）。
+//! ```
+//! 
+//! 提示：
+//! 
+//! - `1 $\leqslant$ s.length $\leqslant$ 20`
+//! - `1 $\leqslant$ p.length $\leqslant$ 30`
+//! - `s` 只包含从 `a-z` 的小写字母。
+//! - `p` 只包含从 `a-z` 的小写字母，以及字符 `.` 和 `*`。
+//! - 保证每次出现字符 `*` 时，前面都匹配到有效的字符
+//! 
+//! 来源：&lt;https://leetcode.cn/problems/regular-expression-matching&gt;
 
 </span><span class="comment">////////////////////////////////////////////////////////////////////////////////
 
 </span><span class="kw">use </span>std::collections::HashMap;
 
-<span class="doccomment">/// Simplified regular expression match algorithm
+<span class="doccomment">/// 简化版的正则表达式匹配算法
 ///
-/// # Arguments
-/// * `s` - input string
-/// * `p` - pattern
+/// # 参数
+/// * `s` - 输入字符串
+/// * `p` - 模式
 </span><span class="kw">pub fn </span>is_match(s: String, p: String) -&gt; bool {
     alg_1(s, p)
     <span class="comment">// TODO: Try to implement with another more effecient approach in the future.
     // alg_3_from_leetcode(s, p) // This approach comes from LeetCode.
 </span>}
 
-<span class="doccomment">/// Node struct representing each match pattern segment.
+<span class="doccomment">/// 节点 struct，用于描述模式中的每个部分
 </span><span class="attr">#[derive(Debug)]
 </span><span class="kw">struct </span>MatchRuleNode {
-    allow_empty: bool,  <span class="comment">// Symbol &quot;*&quot;
-    </span>allow_repeat: bool, <span class="comment">// Symbol &quot;*&quot;
-    </span>allow_any: bool,    <span class="comment">// Symbol &quot;.&quot;
+    allow_empty: bool,  <span class="comment">// 符号 &quot;*&quot;
+    </span>allow_repeat: bool, <span class="comment">// 符号 &quot;*&quot;
+    </span>allow_any: bool,    <span class="comment">// 符号 &quot;.&quot;
     </span>u8: u8,
 }
 
-<span class="doccomment">/// A struct holding parsed pattern.
+<span class="doccomment">/// 用于记录已经解析、判定过的模式的 struct
 ///
-/// Call `match_next` with the whole input and parsed nodes to run matching.
+/// 传入完整待匹配字符串和解析后的模式来调用 `match_next` 方法
 </span><span class="attr">#[derive(Debug)]
 </span><span class="kw">struct </span>MatchTree {
     labeled_results: HashMap&lt;(usize, usize), bool&gt;,
 }
 <span class="kw">impl </span>MatchTree {
-    <span class="doccomment">/// Match next character (English letters only)
+    <span class="doccomment">/// 匹配剩下的部分（仅匹配英文字母）
     ///
-    /// #TODO: document this function
+    /// #TODO: 为这个函数写注释
     ///
-    /// # Arguments
-    /// * `s` - input string of each step in bytes form
-    /// * `nodes` - pattern nodes left to match
+    /// # 参数
+    /// * `s` - 字节数组形式的待匹配部分
+    /// * `nodes` - 等待匹配的模式
     </span><span class="kw">fn </span>match_next(<span class="kw-2">&amp;mut </span><span class="self">self</span>, s: <span class="kw-2">&amp;</span>[u8], nodes: <span class="kw-2">&amp;</span>[MatchRuleNode]) -&gt; bool {
         <span class="macro">macro_rules! </span>label_pair {
             (<span class="macro-nonterminal">$s</span>:expr, <span class="macro-nonterminal">$p</span>:expr) =&gt; {{
@@ -513,12 +513,12 @@
     }
 }
 
-<span class="doccomment">/// Create a new MatchRuleNode vector.
+<span class="doccomment">/// 解析并构建 MatchRuleNode 数组
 ///
-/// #TODO: document this function
+/// #TODO: 为函数写注释
 ///
-/// # Arguments
-/// * `p` - pattern
+/// # 参数
+/// * `p` - 待解析的模式
 </span><span class="kw">fn </span>parse_pattern(p: <span class="kw-2">&amp;</span>str) -&gt; Vec&lt;MatchRuleNode&gt; {
     <span class="kw">let </span><span class="kw-2">mut </span>nodes = <span class="macro">vec!</span>[];
 
@@ -559,11 +559,11 @@
     nodes
 }
 
-<span class="doccomment">/// Using struct to parse patterns and match input string.
+<span class="doccomment">/// 使用模式匹配构建的 struct 来匹配传入字符串
 ///
-/// # Arguments
-/// * `s` - input string
-/// * `p` - pattern
+/// # 参数
+/// * `s` - 传入字符串
+/// * `p` - 模式字符串
 </span><span class="attr">#[allow(unused)]
 </span><span class="kw">fn </span>alg_1(s: String, p: String) -&gt; bool {
     <span class="kw">let </span><span class="kw-2">mut </span>nodes = parse_pattern(p.as_str());
@@ -574,14 +574,14 @@
     tree.match_next(<span class="kw-2">&amp;</span>s.as_bytes(), nodes.as_slice())
 }
 
-<span class="doccomment">/// A function based variant of algorithm 1.
+<span class="doccomment">/// 使用模式匹配构建的元组来匹配传入字符串
 ///
-/// # Arguments
-/// * `s` - input string
-/// * `p` - pattern
+/// # 参数
+/// * `s` - 传入字符串
+/// * `p` - 模式字符串
 </span><span class="attr">#[deprecated(
     since = <span class="string">&quot;0.2.1&quot;</span>,
-    note = <span class="string">&quot;This function will cause \&quot;Time Limit Exceeded\&quot; error&quot;
+    note = <span class="string">&quot;此方法会导致 \&quot;Time Limit Exceeded\&quot; 错误&quot;
 </span>)]
 #[allow(unused)]
 </span><span class="kw">fn </span>alg_2(s: String, p: String) -&gt; bool {
