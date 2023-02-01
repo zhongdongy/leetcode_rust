@@ -22,4 +22,6 @@ pub mod p000_0xx {
     pub mod p000_009;
     /// Problem #10 *Regular Expression Matching*
     pub mod p000_010;
+    /// Problem #11 *Container With Most Water*
+    pub mod p000_011;
 }
