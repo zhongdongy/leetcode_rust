@@ -11,7 +11,7 @@ repository = "https://github.com/zhongdongy/leetcode_rust"
 [dependencies]
 
 [dev-dependencies]
-criterion = "0.3"
+criterion = "0.4"
 
 [lib]
 crate-type = ["rlib"]

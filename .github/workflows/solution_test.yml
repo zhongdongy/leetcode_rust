@@ -6,10 +6,21 @@ jobs:
     name: Rust toolchain CI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - uses: actions/cache@v3
+        id: "cache-cargo"
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - if: ${{ steps.cache-cargo.outputs.cache-hit != 'true' }}
+        run: "cargo check"
       - name: "Unit test for LeetCode solutions"
         run: "cargo test --lib problems:: --release"
       - name: "Targeted test for LeetCode solutions"
