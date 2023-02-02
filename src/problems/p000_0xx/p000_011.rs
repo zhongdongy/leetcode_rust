@@ -34,6 +34,8 @@
 //! - `n == height.length`
 //! - `2 $\leqslant$ n $\leqslant$ $10^5$`
 //! - `0 $\leqslant$ height[i] $\leqslant$ $10^4$`
+//! 
+//! Find out [this blog](https://dongs.xyz/post/algorithm-container-with-most-water/) about this problem (though it's in Chinese).
 //!
 //! Sources: <https://leetcode.com/problems/container-with-most-water/description/>
 
