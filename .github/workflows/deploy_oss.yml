@@ -6,7 +6,7 @@ jobs:
     name: Deploy to Aliyun OSS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: "mv docs dist"
       - name: Deploy OSS
         uses: JayMeDotDot/aliyun-OSS-deployer@v1.0.0
