@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="问题 #12《整数转罗马数字》"><meta name="keywords" content="rust, rustlang, rust-lang, p000_012"><title>leetcode_rust::problems_cn::p000_0xx::p000_012 - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="stylesheet" href="../../../../static.files/theme.css"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"><meta name="author" content="Zhongdong Yang <zhongdong_y@outlook.com>">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../leetcode_rust/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../leetcode_rust/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2 class="location"><a href="#">Module p000_012</a></h2><div class="sidebar-elems"><section><ul class="block"><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Module <a href="../../../index.html">leetcode_rust</a>::<wbr><a href="../../index.html">problems_cn</a>::<wbr><a href="../index.html">p000_0xx</a>::<wbr><a class="mod" href="#">p000_012</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../../../../src/leetcode_rust/problems_cn/p000_0xx/p000_012.rs.html#1-124">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>问题 #12《整数转罗马数字》</p>
+<h2 id="问题描述"><a href="#问题描述">问题描述</a></h2>
+<p>罗马数字包含以下七种字符： <code>I</code>，<code>V</code>，<code>X</code>，<code>L</code>，<code>C</code>，<code>D</code> 和 <code>M</code>。</p>
+<div class="example-wrap"><pre class="language-plain"><code>字符          数值
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+</code></pre></div>
+<p>例如， 罗马数字 <code>2</code> 写做 <code>II</code> ，即为两个并列的 <code>1</code>。<code>12</code> 写做 <code>XII</code> ，即为 <code>X</code> + 
+<code>II</code>。 <code>27</code> 写做 <code>XXVII</code>, 即为 <code>XX</code> + <code>V</code> + <code>II</code>。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 <code>4</code> 不写做 <code>IIII</code>，
+而是 <code>IV</code>。数字 <code>1</code> 在数字 <code>5</code> 的左边，所表示的数等于大数 <code>5</code> 减小数 <code>1</code> 得到的数值 
+<code>4</code> 。同样地，数字 <code>9</code> 表示为 <code>IX</code>。这个特殊的规则只适用于以下六种情况：</p>
+<p><code>I</code> 可以放在 <code>V</code> (<code>5</code>) 和 <code>X</code> (<code>10</code>) 的左边，来表示 <code>4</code> 和 <code>9</code>。
+<code>X</code> 可以放在 <code>L</code> (<code>50</code>) 和 <code>C</code> (<code>100</code>) 的左边，来表示 <code>40</code> 和 <code>90</code>。 
+<code>C</code> 可以放在 <code>D</code> (<code>500</code>) 和 <code>M</code> (<code>1000</code>) 的左边，来表示 <code>400</code> 和 <code>900</code>。
+给你一个整数，将其转为罗马数字。</p>
+<p> </p>
+<p>示例 1:</p>
+<div class="example-wrap"><pre class="language-plain"><code>输入: num = 3
+输出: &quot;III&quot;
+</code></pre></div>
+<p>示例 2:</p>
+<div class="example-wrap"><pre class="language-plain"><code>输入: num = 4
+输出: &quot;IV&quot;
+</code></pre></div>
+<p>示例 3:</p>
+<div class="example-wrap"><pre class="language-plain"><code>输入: num = 9
+输出: &quot;IX&quot;
+</code></pre></div>
+<p>示例 4:</p>
+<div class="example-wrap"><pre class="language-plain"><code>输入: num = 58
+输出: &quot;LVIII&quot;
+解释: L = 50, V = 5, III = 3.
+</code></pre></div>
+<p>示例 5:</p>
+<div class="example-wrap"><pre class="language-plain"><code>输入: num = 1994
+输出: &quot;MCMXCIV&quot;
+解释: M = 1000, CM = 900, XC = 90, IV = 4.
+</code></pre></div>
+<p>提示：</p>
+<ul>
+<li><code>1 $\leqslant$ num \leqslant$ 3999</code></li>
+</ul>
+<p>来源：<a href="https://leetcode.cn/problems/integer-to-roman">https://leetcode.cn/problems/integer-to-roman</a></p>
+</div></details><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.int_to_roman.html" title="leetcode_rust::problems_cn::p000_0xx::p000_012::int_to_roman fn">int_to_roman</a></div><div class="item-right docblock-short">整数转罗马数字</div></div></div></section></div></main><script>
+  // Manipulate some page contents
+  window.addEventListener('DOMContentLoaded', function () {
+    try {
+      document.querySelector('nav.mobile-topbar > h2 > a').textContent = "LeetCode (Rust)";
+
+      document.querySelector('nav.sidebar > h2.location > a').textContent = "LeetCode (Rust)";
+    } catch (e) {
+    }
+
+    renderMathInElement(document.body, {
+      // customised options
+      // • auto-render specific keys, e.g.:
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      ignoredTags: ["script", "noscript", "style", "textarea", , "option"],
+      // • rendering keys, e.g.:
+      throwOnError: false
+    });
+  })
+</script>
+<div id="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="leetcode_rust" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0 (fc594f156 2023-01-24)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
