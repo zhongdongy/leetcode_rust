@@ -258,4 +258,5 @@ impl<G, P> CaseGroup<String, G, P> {
 }
 
 codegen_case_create_impl!(i32, i32, i32);
+codegen_case_create_impl!(i32, String, i32);
 codegen_case_create_impl!(i32, bool, i32);
