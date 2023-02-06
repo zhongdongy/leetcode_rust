@@ -5,6 +5,7 @@ use super::super::cases_cn::c000_0xx::c000_008;
 use super::super::cases_cn::c000_0xx::c000_009;
 use super::super::cases_cn::c000_0xx::c000_010;
 use super::super::cases_cn::c000_0xx::c000_011;
+use super::super::cases_cn::c000_0xx::c000_012;
 use leetcode_rust::problems_cn::p000_0xx::p000_005;
 use leetcode_rust::problems_cn::p000_0xx::p000_006;
 use leetcode_rust::problems_cn::p000_0xx::p000_007;
@@ -12,6 +13,7 @@ use leetcode_rust::problems_cn::p000_0xx::p000_008;
 use leetcode_rust::problems_cn::p000_0xx::p000_009;
 use leetcode_rust::problems_cn::p000_0xx::p000_010;
 use leetcode_rust::problems_cn::p000_0xx::p000_011;
+use leetcode_rust::problems_cn::p000_0xx::p000_012;
 
 /// 题目 000_005: 最长回文子串
 #[test]
@@ -74,6 +76,16 @@ fn p000_011_max_area() {
     for case in c000_011::use_cases() {
         case.is_valid(p000_011::max_area(
             case.inputs.to_vec()
+        ));
+    }
+}
+
+/// 题目 000_012：整数转罗马数字
+#[test]
+fn p000_012_int_to_roman() {
+    for case in c000_012::use_cases() {
+        case.is_valid(p000_012::int_to_roman(
+            *case.input()
         ));
     }
 }
