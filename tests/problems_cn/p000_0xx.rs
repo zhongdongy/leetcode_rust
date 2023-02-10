@@ -1,21 +1,5 @@
-use super::super::cases_cn::c000_0xx::c000_005;
-use super::super::cases_cn::c000_0xx::c000_006;
-use super::super::cases_cn::c000_0xx::c000_007;
-use super::super::cases_cn::c000_0xx::c000_008;
-use super::super::cases_cn::c000_0xx::c000_009;
-use super::super::cases_cn::c000_0xx::c000_010;
-use super::super::cases_cn::c000_0xx::c000_011;
-use super::super::cases_cn::c000_0xx::c000_012;
-use super::super::cases_cn::c000_0xx::c000_013;
-use leetcode_rust::problems_cn::p000_0xx::p000_005;
-use leetcode_rust::problems_cn::p000_0xx::p000_006;
-use leetcode_rust::problems_cn::p000_0xx::p000_007;
-use leetcode_rust::problems_cn::p000_0xx::p000_008;
-use leetcode_rust::problems_cn::p000_0xx::p000_009;
-use leetcode_rust::problems_cn::p000_0xx::p000_010;
-use leetcode_rust::problems_cn::p000_0xx::p000_011;
-use leetcode_rust::problems_cn::p000_0xx::p000_012;
-use leetcode_rust::problems_cn::p000_0xx::p000_013;
+use super::super::cases_cn::c000_0xx::*;
+use leetcode_rust::problems_cn::p000_0xx::*;
 
 /// 题目 000_005: 最长回文子串
 #[test]
@@ -97,5 +81,12 @@ fn p000_012_int_to_roman() {
 fn p000_013_integer_to_roman() {
     for case in c000_013::use_cases() {
         case.is_valid(p000_013::roman_to_int(case.input().clone()));
+    }
+}
+/// 题目 000_014：最长公共前缀
+#[test]
+fn p000_014_longest_common_prefix() {
+    for case in c000_014::use_cases() {
+        case.is_valid(p000_014::longest_common_prefix(case.inputs.to_vec()));
     }
 }

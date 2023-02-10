@@ -1,21 +1,5 @@
-use crate::cases::c000_0xx::c000_005;
-use crate::cases::c000_0xx::c000_006;
-use crate::cases::c000_0xx::c000_007;
-use crate::cases::c000_0xx::c000_008;
-use crate::cases::c000_0xx::c000_009;
-use crate::cases::c000_0xx::c000_010;
-use crate::cases::c000_0xx::c000_011;
-use crate::cases::c000_0xx::c000_012;
-use crate::cases::c000_0xx::c000_013;
-use leetcode_rust::problems::p000_0xx::p000_005;
-use leetcode_rust::problems::p000_0xx::p000_006;
-use leetcode_rust::problems::p000_0xx::p000_007;
-use leetcode_rust::problems::p000_0xx::p000_008;
-use leetcode_rust::problems::p000_0xx::p000_009;
-use leetcode_rust::problems::p000_0xx::p000_010;
-use leetcode_rust::problems::p000_0xx::p000_011;
-use leetcode_rust::problems::p000_0xx::p000_012;
-use leetcode_rust::problems::p000_0xx::p000_013;
+use crate::cases::c000_0xx::*;
+use leetcode_rust::problems::p000_0xx::*;
 
 /// Test Problem 000_005: Longest Palindrome Substring
 #[test]
@@ -93,5 +77,13 @@ fn p000_012_integer_to_roman() {
 fn p000_013_integer_to_roman() {
     for case in c000_013::use_cases() {
         case.is_valid(p000_013::roman_to_int(case.input().clone()));
+    }
+}
+
+/// Test Problem 000_014: Longest Common Prefix
+#[test]
+fn p000_014_longest_common_prefix() {
+    for case in c000_014::use_cases() {
+        case.is_valid(p000_014::longest_common_prefix(case.inputs.to_vec()));
     }
 }

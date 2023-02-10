@@ -28,4 +28,6 @@ pub mod p000_0xx {
     pub mod p000_012;
     /// Problem #13 *Roman to Integer*
     pub mod p000_013;
+    /// Problem #14 *Longest Common Prefix*
+    pub mod p000_014;
 }
