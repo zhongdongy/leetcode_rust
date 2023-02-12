@@ -60,9 +60,7 @@ fn p000_010_regular_expression_matching() {
 #[test]
 fn p000_011_max_area() {
     for case in c000_011::use_cases() {
-        case.is_valid(p000_011::max_area(
-            case.inputs.to_vec()
-        ));
+        case.is_valid(p000_011::max_area(case.inputs.to_vec()));
     }
 }
 
@@ -70,9 +68,7 @@ fn p000_011_max_area() {
 #[test]
 fn p000_012_int_to_roman() {
     for case in c000_012::use_cases() {
-        case.is_valid(p000_012::int_to_roman(
-            *case.input()
-        ));
+        case.is_valid(p000_012::int_to_roman(*case.input()));
     }
 }
 
@@ -83,10 +79,19 @@ fn p000_013_integer_to_roman() {
         case.is_valid(p000_013::roman_to_int(case.input().clone()));
     }
 }
+
 /// 题目 000_014：最长公共前缀
 #[test]
 fn p000_014_longest_common_prefix() {
     for case in c000_014::use_cases() {
         case.is_valid(p000_014::longest_common_prefix(case.inputs.to_vec()));
+    }
+}
+
+/// 题目 000_015：三数之和
+#[test]
+fn p000_015_three_sum() {
+    for case in c000_015::use_cases() {
+        case.is_valid(p000_015::three_sum(case.input().clone()));
     }
 }

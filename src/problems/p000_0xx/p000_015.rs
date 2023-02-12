@@ -48,6 +48,14 @@
 /// # Arguments
 /// * `nums` - input number pairs
 pub fn three_sum(nums: Vec<i32>) -> Vec<Vec<i32>> {
+    algorithm_2(nums)
+}
+
+/// Personal implementation
+///
+/// # Arguments
+/// * `nums` - input numbers to check for triplets.
+fn algorithm_2(nums: Vec<i32>) -> Vec<Vec<i32>> {
     let mut res: Vec<Vec<i32>> = vec![];
 
     if nums.len() >= 3 {
@@ -58,18 +66,9 @@ pub fn three_sum(nums: Vec<i32>) -> Vec<Vec<i32>> {
         while i < sorted_nums.len() - 1 {
             let a = sorted_nums[i];
 
-            if i <= sorted_nums.len() - 3 && a == sorted_nums[i + 1] && a == sorted_nums[i + 2] {
-                if a == 0 {
-                    if !triplet_exists(&res, &0, &0, &0) {
-                        res.push(vec![0, 0, 0]);
-                    }
-                }
-                if sorted_nums.len() > i + 4 {
-                    let next_different =
-                        i + 1 + bin_search(&sorted_nums[(i + 3)..].to_vec(), &(a + 1));
-                    i = next_different;
-                    continue;
-                }
+            if i > 0 && sorted_nums[i - 1] == sorted_nums[i] {
+                i += 1;
+                continue;
             }
 
             let mut j = i + 1;
@@ -78,18 +77,33 @@ pub fn three_sum(nums: Vec<i32>) -> Vec<Vec<i32>> {
                 let b = sorted_nums[j];
 
                 if a + b > 0 {
+                    break;
+                }
+
+                if i + 1 < j && b == sorted_nums[j - 1] {
+                    // Already searched last time, continue
                     j += 1;
                     continue;
                 }
 
-                let k = j + 1 + bin_search(&sorted_nums[(j + 1)..].to_vec(), &(-a - b));
+                let mut start = 0;
+                let mut end = sorted_nums[(j + 1)..].len() - 1;
+
+                while start < end {
+                    let middle = (end + start) / 2;
+                    if sorted_nums[(j + 1)..][middle] < -a - b {
+                        start = middle + 1;
+                    } else {
+                        end = middle;
+                    }
+                }
+
+                let k = j + 1 + start;
 
                 let c = sorted_nums[k];
 
                 if a + b + c == 0 {
-                    if !triplet_exists(&res, &a, &b, &c) {
-                        res.push(vec![a, b, c]);
-                    }
+                    res.push(vec![a, b, c]);
                 }
                 j += 1;
             }
@@ -101,9 +115,51 @@ pub fn three_sum(nums: Vec<i32>) -> Vec<Vec<i32>> {
     res
 }
 
+/// Sample algorithm implementation from LeetCode (fastest)
+///
+/// # Arguments
+/// * `nums` - input numbers to check for triplets.
+#[allow(dead_code)]
+pub fn algorithm_1(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+    let mut res = vec![];
+    let len = nums.len();
+    nums.sort_unstable();
+
+    for i in 0..len {
+        let left = nums[i];
+
+        if i > 0 && nums[i - 1] == left {
+            continue;
+        }
+
+        let mut middle = i + 1;
+        let mut right = len - 1;
+
+        while middle < right {
+            let curr_sum = left + nums[middle] + nums[right];
+
+            if curr_sum == 0 {
+                res.push(vec![left, nums[middle], nums[right]]);
+                middle += 1;
+
+                while middle < right && nums[middle - 1] == nums[middle] {
+                    middle += 1;
+                }
+
+                right -= 1;
+            } else if curr_sum < 0 {
+                middle += 1;
+            } else {
+                right -= 1;
+            }
+        }
+    }
+
+    res
+}
+
 #[cfg(test)]
 mod tests {
-    use super::bin_search;
     use super::three_sum;
 
     #[test]
@@ -116,51 +172,4 @@ mod tests {
         assert_eq!(vec![vec![0, 0, 0]], three_sum(vec![0, 0, 0]));
         assert_eq!(vec![vec![0, 0, 0]], three_sum(vec![0, 0, 0, 0]));
     }
-
-    #[test]
-    fn test_bin_search() {
-        assert_eq!(bin_search(&vec![0, 1, 2], &2), 2);
-        assert_eq!(bin_search(&vec![0, 1, 2, 3, 4], &5), 4);
-        assert_eq!(bin_search(&vec![0, 1, 2, 3, 4], &4), 4);
-        assert_eq!(bin_search(&vec![0, 0, 1, 2, 3], &0), 0);
-        assert_eq!(bin_search(&vec![0, 0, 1, 1, 3], &1), 2);
-    }
-}
-
-pub fn bin_search(v: &Vec<i32>, n: &i32) -> usize {
-    let mut start = 0;
-    let mut end = v.len() - 1;
-
-    while start < end {
-        let middle = (end + start) / 2;
-        if v[middle] < *n {
-            start = middle + 1;
-        } else {
-            end = middle;
-        }
-    }
-
-    start
-}
-
-pub fn triplet_exists(res: &Vec<Vec<i32>>, a: &i32, b: &i32, _c: &i32) -> bool {
-    let mut exists = false;
-    if res.len() > 0 {
-        let mut test_idx = res.len() - 1;
-        loop {
-            let temp = &res[test_idx];
-            if temp[0] != *a {
-                break;
-            }
-            if temp[0] == *a && temp[1] == *b {
-                exists = true;
-                break;
-            }
-            if test_idx == 0 {
-                break;
-            }
-            test_idx -= 1;
-        }
-    }
-    exists
 }

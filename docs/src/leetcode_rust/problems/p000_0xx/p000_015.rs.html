@@ -173,6 +173,15 @@
 <a href="#164" id="164">164</a>
 <a href="#165" id="165">165</a>
 <a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
 </pre><pre class="rust"><code><span class="doccomment">//! # Description
 //!
 //! Given an integer array `nums`, return all the triplets `[nums[i], nums[j],
@@ -223,6 +232,14 @@
 /// # Arguments
 /// * `nums` - input number pairs
 </span><span class="kw">pub fn </span>three_sum(nums: Vec&lt;i32&gt;) -&gt; Vec&lt;Vec&lt;i32&gt;&gt; {
+    algorithm_2(nums)
+}
+
+<span class="doccomment">/// Personal implementation
+///
+/// # Arguments
+/// * `nums` - input numbers to check for triplets.
+</span><span class="kw">fn </span>algorithm_2(nums: Vec&lt;i32&gt;) -&gt; Vec&lt;Vec&lt;i32&gt;&gt; {
     <span class="kw">let </span><span class="kw-2">mut </span>res: Vec&lt;Vec&lt;i32&gt;&gt; = <span class="macro">vec!</span>[];
 
     <span class="kw">if </span>nums.len() &gt;= <span class="number">3 </span>{
@@ -233,18 +250,9 @@
         <span class="kw">while </span>i &lt; sorted_nums.len() - <span class="number">1 </span>{
             <span class="kw">let </span>a = sorted_nums[i];
 
-            <span class="kw">if </span>i &lt;= sorted_nums.len() - <span class="number">3 </span>&amp;&amp; a == sorted_nums[i + <span class="number">1</span>] &amp;&amp; a == sorted_nums[i + <span class="number">2</span>] {
-                <span class="kw">if </span>a == <span class="number">0 </span>{
-                    <span class="kw">if </span>!triplet_exists(<span class="kw-2">&amp;</span>res, <span class="kw-2">&amp;</span><span class="number">0</span>, <span class="kw-2">&amp;</span><span class="number">0</span>, <span class="kw-2">&amp;</span><span class="number">0</span>) {
-                        res.push(<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]);
-                    }
-                }
-                <span class="kw">if </span>sorted_nums.len() &gt; i + <span class="number">4 </span>{
-                    <span class="kw">let </span>next_different =
-                        i + <span class="number">1 </span>+ bin_search(<span class="kw-2">&amp;</span>sorted_nums[(i + <span class="number">3</span>)..].to_vec(), <span class="kw-2">&amp;</span>(a + <span class="number">1</span>));
-                    i = next_different;
-                    <span class="kw">continue</span>;
-                }
+            <span class="kw">if </span>i &gt; <span class="number">0 </span>&amp;&amp; sorted_nums[i - <span class="number">1</span>] == sorted_nums[i] {
+                i += <span class="number">1</span>;
+                <span class="kw">continue</span>;
             }
 
             <span class="kw">let </span><span class="kw-2">mut </span>j = i + <span class="number">1</span>;
@@ -253,18 +261,33 @@
                 <span class="kw">let </span>b = sorted_nums[j];
 
                 <span class="kw">if </span>a + b &gt; <span class="number">0 </span>{
-                    j += <span class="number">1</span>;
+                    <span class="kw">break</span>;
+                }
+
+                <span class="kw">if </span>i + <span class="number">1 </span>&lt; j &amp;&amp; b == sorted_nums[j - <span class="number">1</span>] {
+                    <span class="comment">// Already searched last time, continue
+                    </span>j += <span class="number">1</span>;
                     <span class="kw">continue</span>;
                 }
 
-                <span class="kw">let </span>k = j + <span class="number">1 </span>+ bin_search(<span class="kw-2">&amp;</span>sorted_nums[(j + <span class="number">1</span>)..].to_vec(), <span class="kw-2">&amp;</span>(-a - b));
+                <span class="kw">let </span><span class="kw-2">mut </span>start = <span class="number">0</span>;
+                <span class="kw">let </span><span class="kw-2">mut </span>end = sorted_nums[(j + <span class="number">1</span>)..].len() - <span class="number">1</span>;
+
+                <span class="kw">while </span>start &lt; end {
+                    <span class="kw">let </span>middle = (end + start) / <span class="number">2</span>;
+                    <span class="kw">if </span>sorted_nums[(j + <span class="number">1</span>)..][middle] &lt; -a - b {
+                        start = middle + <span class="number">1</span>;
+                    } <span class="kw">else </span>{
+                        end = middle;
+                    }
+                }
+
+                <span class="kw">let </span>k = j + <span class="number">1 </span>+ start;
 
                 <span class="kw">let </span>c = sorted_nums[k];
 
                 <span class="kw">if </span>a + b + c == <span class="number">0 </span>{
-                    <span class="kw">if </span>!triplet_exists(<span class="kw-2">&amp;</span>res, <span class="kw-2">&amp;</span>a, <span class="kw-2">&amp;</span>b, <span class="kw-2">&amp;</span>c) {
-                        res.push(<span class="macro">vec!</span>[a, b, c]);
-                    }
+                    res.push(<span class="macro">vec!</span>[a, b, c]);
                 }
                 j += <span class="number">1</span>;
             }
@@ -276,9 +299,51 @@
     res
 }
 
+<span class="doccomment">/// Sample algorithm implementation from LeetCode (fastest)
+///
+/// # Arguments
+/// * `nums` - input numbers to check for triplets.
+</span><span class="attr">#[allow(dead_code)]
+</span><span class="kw">pub fn </span>algorithm_1(<span class="kw-2">mut </span>nums: Vec&lt;i32&gt;) -&gt; Vec&lt;Vec&lt;i32&gt;&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>res = <span class="macro">vec!</span>[];
+    <span class="kw">let </span>len = nums.len();
+    nums.sort_unstable();
+
+    <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..len {
+        <span class="kw">let </span>left = nums[i];
+
+        <span class="kw">if </span>i &gt; <span class="number">0 </span>&amp;&amp; nums[i - <span class="number">1</span>] == left {
+            <span class="kw">continue</span>;
+        }
+
+        <span class="kw">let </span><span class="kw-2">mut </span>middle = i + <span class="number">1</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>right = len - <span class="number">1</span>;
+
+        <span class="kw">while </span>middle &lt; right {
+            <span class="kw">let </span>curr_sum = left + nums[middle] + nums[right];
+
+            <span class="kw">if </span>curr_sum == <span class="number">0 </span>{
+                res.push(<span class="macro">vec!</span>[left, nums[middle], nums[right]]);
+                middle += <span class="number">1</span>;
+
+                <span class="kw">while </span>middle &lt; right &amp;&amp; nums[middle - <span class="number">1</span>] == nums[middle] {
+                    middle += <span class="number">1</span>;
+                }
+
+                right -= <span class="number">1</span>;
+            } <span class="kw">else if </span>curr_sum &lt; <span class="number">0 </span>{
+                middle += <span class="number">1</span>;
+            } <span class="kw">else </span>{
+                right -= <span class="number">1</span>;
+            }
+        }
+    }
+
+    res
+}
+
 <span class="attr">#[cfg(test)]
 </span><span class="kw">mod </span>tests {
-    <span class="kw">use </span><span class="kw">super</span>::bin_search;
     <span class="kw">use </span><span class="kw">super</span>::three_sum;
 
     <span class="attr">#[test]
@@ -291,53 +356,6 @@
         <span class="macro">assert_eq!</span>(<span class="macro">vec!</span>[<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]], three_sum(<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]));
         <span class="macro">assert_eq!</span>(<span class="macro">vec!</span>[<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]], three_sum(<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]));
     }
-
-    <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_bin_search() {
-        <span class="macro">assert_eq!</span>(bin_search(<span class="kw-2">&amp;</span><span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>], <span class="kw-2">&amp;</span><span class="number">2</span>), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(bin_search(<span class="kw-2">&amp;</span><span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="kw-2">&amp;</span><span class="number">5</span>), <span class="number">4</span>);
-        <span class="macro">assert_eq!</span>(bin_search(<span class="kw-2">&amp;</span><span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="kw-2">&amp;</span><span class="number">4</span>), <span class="number">4</span>);
-        <span class="macro">assert_eq!</span>(bin_search(<span class="kw-2">&amp;</span><span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="kw-2">&amp;</span><span class="number">0</span>), <span class="number">0</span>);
-        <span class="macro">assert_eq!</span>(bin_search(<span class="kw-2">&amp;</span><span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>], <span class="kw-2">&amp;</span><span class="number">1</span>), <span class="number">2</span>);
-    }
-}
-
-<span class="kw">pub fn </span>bin_search(v: <span class="kw-2">&amp;</span>Vec&lt;i32&gt;, n: <span class="kw-2">&amp;</span>i32) -&gt; usize {
-    <span class="kw">let </span><span class="kw-2">mut </span>start = <span class="number">0</span>;
-    <span class="kw">let </span><span class="kw-2">mut </span>end = v.len() - <span class="number">1</span>;
-
-    <span class="kw">while </span>start &lt; end {
-        <span class="kw">let </span>middle = (end + start) / <span class="number">2</span>;
-        <span class="kw">if </span>v[middle] &lt; <span class="kw-2">*</span>n {
-            start = middle + <span class="number">1</span>;
-        } <span class="kw">else </span>{
-            end = middle;
-        }
-    }
-
-    start
-}
-
-<span class="kw">pub fn </span>triplet_exists(res: <span class="kw-2">&amp;</span>Vec&lt;Vec&lt;i32&gt;&gt;, a: <span class="kw-2">&amp;</span>i32, b: <span class="kw-2">&amp;</span>i32, _c: <span class="kw-2">&amp;</span>i32) -&gt; bool {
-    <span class="kw">let </span><span class="kw-2">mut </span>exists = <span class="bool-val">false</span>;
-    <span class="kw">if </span>res.len() &gt; <span class="number">0 </span>{
-        <span class="kw">let </span><span class="kw-2">mut </span>test_idx = res.len() - <span class="number">1</span>;
-        <span class="kw">loop </span>{
-            <span class="kw">let </span>temp = <span class="kw-2">&amp;</span>res[test_idx];
-            <span class="kw">if </span>temp[<span class="number">0</span>] != <span class="kw-2">*</span>a {
-                <span class="kw">break</span>;
-            }
-            <span class="kw">if </span>temp[<span class="number">0</span>] == <span class="kw-2">*</span>a &amp;&amp; temp[<span class="number">1</span>] == <span class="kw-2">*</span>b {
-                exists = <span class="bool-val">true</span>;
-                <span class="kw">break</span>;
-            }
-            <span class="kw">if </span>test_idx == <span class="number">0 </span>{
-                <span class="kw">break</span>;
-            }
-            test_idx -= <span class="number">1</span>;
-        }
-    }
-    exists
 }
 </code></pre></div>
 </section></div></main><script>

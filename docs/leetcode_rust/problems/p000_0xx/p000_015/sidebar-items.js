@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":[["bin_search",""],["three_sum","3Sum"],["triplet_exists",""]]};
+window.SIDEBAR_ITEMS = {"fn":[["algorithm_1","Sample algorithm implementation from LeetCode (fastest)"],["three_sum","3Sum"]]};
