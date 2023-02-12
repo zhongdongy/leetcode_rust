@@ -1,5 +1,4 @@
-use super::super::cases_cn::c000_0xx::*;
-use leetcode_rust::problems_cn::p000_0xx::*;
+use leetcode_rust::{cases_cn::c000_0xx::*, problems_cn::p000_0xx::*};
 
 /// 题目 000_005: 最长回文子串
 #[test]

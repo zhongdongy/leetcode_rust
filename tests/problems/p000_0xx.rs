@@ -1,5 +1,4 @@
-use crate::cases::c000_0xx::*;
-use leetcode_rust::problems::p000_0xx::*;
+use leetcode_rust::{cases::c000_0xx::*, problems::p000_0xx::*};
 
 /// Test Problem 000_005: Longest Palindrome Substring
 #[test]

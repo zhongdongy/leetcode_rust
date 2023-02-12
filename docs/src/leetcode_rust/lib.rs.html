@@ -161,9 +161,6 @@
 <a href="#152" id="152">152</a>
 <a href="#153" id="153">153</a>
 <a href="#154" id="154">154</a>
-<a href="#155" id="155">155</a>
-<a href="#156" id="156">156</a>
-<a href="#157" id="157">157</a>
 </pre><pre class="rust"><code><span class="doccomment">//! # LeetCode Solutions in Rust
 //! 
 //! ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongdongy/leetcode_rust/solution_test.yml?label=LeetCode%20Solution%20Tests&amp;logo=github&amp;style=plastic)
@@ -191,10 +188,7 @@
 //! Cloudflare directly fetches the contents and build on Pages).
 //!
 //! ```bash
-//! mkdir -p ./docs \
-//! &amp;&amp; rm -rf ./docs/* \
-//! &amp;&amp; RUSTDOCFLAGS=&#39;--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html&#39; cargo doc \
-//! &amp;&amp; cp -r target/doc/* ./docs/
+//! ./docsgen.sh
 //! ```
 //!
 //! ## Test
@@ -266,15 +260,12 @@
 //! 最新更改到 GitHub 之前执行本地文档构建。
 //!
 //! ```bash
-//! mkdir -p ./docs \
-//! &amp;&amp; rm -rf ./docs/* \
-//! &amp;&amp; RUSTDOCFLAGS=&#39;--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html&#39; cargo doc \
-//! &amp;&amp; cp -r target/doc/* ./docs/
+//! ./docsgen.sh
 //! ```
 //!
 //! ## 解法验证
 //!
-//! 所有的解法验证程序都位于 `tests/problems` 目录下，并按照题目编号进行分组。
+//! 所有的解法验证程序都位于 `tests/problems_cn` 目录下，并按照题目编号进行分组。
 //! 每个问题组（如 `p000_0xx.rs` 代表编号 000 到 099 的题目）对应一个单独的测试用例目录
 //! （如 `cases/c000_0xx/`）。每个问题的验证程序都提供了国际版、国内版两组测试用例，但其中的
 //! 大部分都相同样的。要使用某个问题的测试用例，只需要将其引入，然后调用公有的 `use_case()` 
@@ -318,9 +309,12 @@
 </span><span class="comment">////////////////////////////////////////////////////////////////////////////////
 
 </span><span class="kw">pub mod </span>macros;
+<span class="kw">pub mod </span>models;
 <span class="kw">pub mod </span>common;
 <span class="kw">pub mod </span>problems;
-<span class="kw">pub mod </span>problems_cn;</code></pre></div>
+<span class="kw">pub mod </span>problems_cn;
+<span class="kw">pub mod </span>cases;
+<span class="kw">pub mod </span>cases_cn;</code></pre></div>
 </section></div></main><script>
   // Manipulate some page contents
   window.addEventListener('DOMContentLoaded', function () {

@@ -23,10 +23,7 @@ environment limitations, the docs must be built before pushing to GitHub (so
 Cloudflare directly fetches the contents and build on Pages).
 
 ```bash
-mkdir -p ./docs \
-  && rm -rf ./docs/* \
-  && RUSTDOCFLAGS='--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html' cargo doc \
-  && cp -r target/doc/* ./docs/
+./docsgen.sh
 ```
 
 ## Test
@@ -99,15 +96,12 @@ cargo test --test solutions p000_005
 最新更改到 GitHub 之前执行本地文档构建。
 
 ```bash
-mkdir -p ./docs \
-  && rm -rf ./docs/* \
-  && RUSTDOCFLAGS='--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html' cargo doc \
-  && cp -r target/doc/* ./docs/
+./docsgen.sh
 ```
 
 ## 解法验证
 
-所有的解法验证程序都位于 `tests/problems` 目录下，并按照题目编号进行分组。
+所有的解法验证程序都位于 `tests/problems_cn` 目录下，并按照题目编号进行分组。
 每个问题组（如 `p000_0xx.rs` 代表编号 000 到 099 的题目）对应一个单独的测试用例目录
 （如 `cases/c000_0xx/`）。每个问题的验证程序都提供了国际版、国内版两组测试用例，但其中的
 大部分都相同样的。要使用某个问题的测试用例，只需要将其引入，然后调用公有的 `use_case()` 
