@@ -87,3 +87,11 @@ fn p000_014_longest_common_prefix() {
         case.is_valid(p000_014::longest_common_prefix(case.inputs.to_vec()));
     }
 }
+
+/// Test Problem 000_015: 3Sum
+#[test]
+fn p000_015_three_sum() {
+    for case in c000_015::use_cases() {
+        case.is_valid(p000_015::three_sum(case.input().clone()));
+    }
+}
