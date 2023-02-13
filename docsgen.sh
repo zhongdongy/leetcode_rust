@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function insert_tags () {
-  awk '{sub(/<\/head>/,"<link rel=\"stylesheet\" href=\"/criterion.css\"><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap\" rel=\"stylesheet\">\n</head>"); print}' $1 > docs/tmp.html && mv docs/tmp.html $1
+  awk '{sub(/<\/head>/,"<link rel=\"stylesheet\" href=\"/criterion.css\">\n</head>"); print}' $1 > docs/tmp.html && mv docs/tmp.html $1
 }
 export -f insert_tags
 
