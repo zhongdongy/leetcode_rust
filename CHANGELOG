@@ -1,5 +1,10 @@
 ## Version 0.2.5 (2023-02-13)
 
+### Common
+1. Fix: should prepare test cases before entering benchmark rounds.
+
+## Version 0.2.5 (2023-02-13)
+
 ### Solutions
 1. Added solutions to [LeetCode #15: three sum](https://leetcode.com/problems/3sum/) and [LeetCode CN #15: three sum](https://leetcode.cn/problems/3sum/)
 
