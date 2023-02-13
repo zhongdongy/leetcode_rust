@@ -109,34 +109,64 @@
 <a href="#100" id="100">100</a>
 <a href="#101" id="101">101</a>
 <a href="#102" id="102">102</a>
+<a href="#103" id="103">103</a>
+<a href="#104" id="104">104</a>
+<a href="#105" id="105">105</a>
+<a href="#106" id="106">106</a>
+<a href="#107" id="107">107</a>
+<a href="#108" id="108">108</a>
+<a href="#109" id="109">109</a>
+<a href="#110" id="110">110</a>
+<a href="#111" id="111">111</a>
+<a href="#112" id="112">112</a>
+<a href="#113" id="113">113</a>
+<a href="#114" id="114">114</a>
+<a href="#115" id="115">115</a>
+<a href="#116" id="116">116</a>
+<a href="#117" id="117">117</a>
 </pre><pre class="rust"><code><span class="doccomment">//! # 问题描述
 //!
-//! 编写一个函数来查找字符串数组中的最长公共前缀。
+//! 给你一个整数数组 `nums` ，判断是否存在三元组 `[nums[i], nums[j], nums[k]]` 满足
+//! `i != j`、`i != k` 且 `j != k` ，同时还满足 `nums[i] + nums[j] + nums[k] == 0`。
+//! 请你返回所有和为 `0` 且不重复的三元组。
 //! 
-//! 如果不存在公共前缀，返回空字符串 `&quot;&quot;`。
+//! 注意：答案中不可以包含重复的三元组。
 //! 
 //! 示例 1：
 //! 
 //! ```plain
-//! 输入：strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
-//! 输出：&quot;fl&quot;
+//! 输入：nums = [-1,0,1,2,-1,-4]
+//! 输出：[[-1,-1,2],[-1,0,1]]
+//! 解释：
+//! nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0 。
+//! nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0 。
+//! nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
+//! 不同的三元组是 [-1,0,1] 和 [-1,-1,2] 。
+//! 注意，输出的顺序和三元组的顺序并不重要。
 //! ```
 //! 
 //! 示例 2：
 //! 
 //! ```plain
-//! 输入：strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]
-//! 输出：&quot;&quot;
-//! 解释：输入不存在公共前缀。
+//! 输入：nums = [0,1,1]
+//! 输出：[]
+//! 解释：唯一可能的三元组和不为 0 。
 //! ```
+//! 
+//! 示例 3：
+//! 
+//! ```plain
+//! 输入：nums = [0,0,0]
+//! 输出：[[0,0,0]]
+//! 解释：唯一可能的三元组和为 0 。
+//! ``` 
 //! 
 //! 提示：
 //! 
-//! - `1 $\leqslant$ strs.length $\leqslant$ 200`
-//! - `0 $\leqslant$ strs[i].length $\leqslant$ 200`
-//! - `strs[i]` 仅由小写英文字母组成
+//! - `3 $\leqslant$ nums.length $\leqslant$ 3000`
+//! - `$-10^{5} \leqslant$ nums[i] $\leqslant 10^{5}$`
 //! 
-//! 来源：&lt;https://leetcode.cn/problems/longest-common-prefix/&gt;
+//! 来源：&lt;https://leetcode.cn/problems/3sum/&gt;
 
 </span><span class="comment">////////////////////////////////////////////////////////////////////////////////
 

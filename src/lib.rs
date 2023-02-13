@@ -5,7 +5,9 @@
 //! [阅读中文内容](#rust-语言下的力扣解法非官方)
 //! 
 //! Rust documentations see [https://leetcode-rust.zhongdongy.com](https://leetcode-rust.zhongdongy.com) 
-//! or [https://leetcode-rust.pages.dev/](https://leetcode-rust.pages.dev/).
+//! or [https://leetcode-rust.pages.dev/](https://leetcode-rust.pages.dev/). 
+//! Additional benchmarks available on 
+//! [https://leetcode-rust.zhongdongy.com/criterion/report/](https://leetcode-rust.zhongdongy.com/criterion/report/index.html)
 //!
 //! Note: all problems descriptions collected from 
 //! [LeetCode website](https://leetcode.com/), [力扣](https://leetcode.cn/) and 
@@ -80,6 +82,8 @@
 //! [For English readers](#leetcode-solutions-in-rust)
 //! 
 //! 关于 Crate 提供的各个解法的 Rust 文档，请参阅 [https://leetcode-rust.dongs.xyz/](https://leetcode-rust.dongs.xyz/)。
+//! 部分 Benchmark 记录 (由 Criterion.rs 提供) 请参阅 
+//! [https://leetcode-rust.dongs.xyz/criterion/report/](https://leetcode-rust.dongs.xyz/criterion/report/index.html)
 //! 
 //! 请注意，所有的题目来源于 [LeetCode 网站](https://leetcode.com/)和
 //! [力扣](https://leetcode.cn/)。所有题目的著作权属于上述两个平台及相应的社区。
