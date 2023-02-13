@@ -17,3 +17,7 @@
 #footer {
   line-height: 40px;
 }
+
+.body th {
+  font-weight: 300;
+}
