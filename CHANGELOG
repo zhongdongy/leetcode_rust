@@ -1,4 +1,11 @@
-## Version 0.2.5 (2023-02-13)
+## Version 0.2.7 (2023-02-16)
+
+### Documentations
+
+1. Fix: issues in doctests. 
+2. Update: add more details for macros and test case modules.
+
+## Version 0.2.6 (2023-02-13)
 
 ### Common
 1. Fix: should prepare test cases before entering benchmark rounds.

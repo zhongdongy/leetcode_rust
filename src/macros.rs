@@ -89,6 +89,17 @@ macro_rules! codegen_vector_case_create_impl {
     };
 }
 
+/// Use a simplified syntax to create nested Vectors (as per needed by several 
+/// LeetCode problems.)
+/// 
+/// # Examples:
+/// 
+/// ```rust
+/// use leetcode_rust::vec2d;
+/// 
+/// let v = vec2d![[1,2,3],[2,3,4]];
+/// assert_eq!(v[0], vec![1,2,3]);
+/// ```
 #[macro_export]
 macro_rules! vec2d {
     ($([$($x:expr),* $(,)*]),+ $(,)*) => {{

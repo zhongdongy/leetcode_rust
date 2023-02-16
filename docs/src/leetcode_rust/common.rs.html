@@ -784,9 +784,9 @@
     /// * `&amp;self` - inmutable borrow to object itself
     /// * `result` - solution output
     ///
-    /// ```
+    /// ```rust
     /// use leetcode_rust::common::VectorCase;
-    /// let case:VectorCase&lt;String, String, i32&gt; = VectorCase::new(String::from(&quot;A&quot;), vec![String::from(&quot;A&quot;)]);
+    /// let case:VectorCase&lt;String, String, i32&gt; = VectorCase::new(vec![String::from(&quot;A&quot;)], vec![String::from(&quot;A&quot;)]);
     /// case.is_valid(String::from(&quot;A&quot;))
     /// ```
     </span><span class="kw">pub fn </span>is_valid(<span class="kw-2">&amp;</span><span class="self">self</span>, result: G)

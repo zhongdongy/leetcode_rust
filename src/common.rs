@@ -346,9 +346,9 @@ where
     /// * `&self` - inmutable borrow to object itself
     /// * `result` - solution output
     ///
-    /// ```
+    /// ```rust
     /// use leetcode_rust::common::VectorCase;
-    /// let case:VectorCase<String, String, i32> = VectorCase::new(String::from("A"), vec![String::from("A")]);
+    /// let case:VectorCase<String, String, i32> = VectorCase::new(vec![String::from("A")], vec![String::from("A")]);
     /// case.is_valid(String::from("A"))
     /// ```
     pub fn is_valid(&self, result: G)
