@@ -1,1 +1,6 @@
+//! Use models module defines several JSON based models for test usage.
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// Test case models
 pub mod case;

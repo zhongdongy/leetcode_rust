@@ -1,5 +1,11 @@
 ## Version 0.2.8 (2023-02-18)
 
+### Common
+
+1. Remove: unnecessary macros and implementations.
+
+## Version 0.2.8 (2023-02-18)
+
 ### Solutions
 
 1. Added solutions to [LeetCode #16: three sum closest](https://leetcode.com/problems/3sum-closest/) and [LeetCode CN #16: three sum closest](https://leetcode.cn/problems/3sum-closest/)

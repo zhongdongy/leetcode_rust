@@ -1,7 +1,7 @@
 use std::fs;
 
 use crate::{
-    common::{VectorCase, VectorCaseGroup},
+    common::{Case, CaseGroup},
     new_case, vec2d,
 };
 
@@ -9,8 +9,8 @@ use serde_json;
 
 use crate::models::case::*;
 
-pub fn use_cases() -> Vec<VectorCase<Vec<i32>, Vec<Vec<i32>>, i32>> {
-    let mut case_group: VectorCaseGroup<Vec<i32>, Vec<Vec<i32>>, i32> = VectorCaseGroup::new();
+pub fn use_cases() -> Vec<Case<Vec<i32>, Vec<Vec<i32>>, i32>> {
+    let mut case_group: CaseGroup<Vec<i32>, Vec<Vec<i32>>, i32> = CaseGroup::new();
 
     macro_rules! new {
         ({$val1:expr, $val2:expr})=>{

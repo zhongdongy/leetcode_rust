@@ -37,6 +37,7 @@
 ///
 /// # Arguments
 /// * `nums` - input number pairs
+/// * `target` - the expected target number
 pub fn three_sum_closest(nums: Vec<i32>, target: i32) -> i32 {
     algorithm(nums, target)
 }

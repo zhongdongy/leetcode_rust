@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["case",""]]};
+window.SIDEBAR_ITEMS = {"mod":[["case","Test case models"]]};

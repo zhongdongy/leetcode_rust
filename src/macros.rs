@@ -20,7 +20,7 @@ macro_rules! new_case {
   };
 }
 
-/// Helper macro to call `create` method of CaseGroup<T, G, P> instance
+/// Helper macro to call `create_param` method of CaseGroup<T, G, P> instance
 ///
 /// # Note
 /// You must pass in the casegroup.create method as first parameter of the
@@ -69,38 +69,6 @@ macro_rules! codegen_case_create_impl {
     };
 }
 
-#[macro_export]
-macro_rules! codegen_vector_case_create_impl {
-    ($t:ty, $g:ty, $p:ty) => {
-        /// Implement two handy methods on CaseGroup struct.
-        impl VectorCaseGroup<$t, $g, $p> {
-            /// Create a new test case (no input parameters) matching selected
-            /// generic types.
-            pub fn create(&mut self, ipt: $t, exp: Vec<$g>) {
-                self.add(VectorCase::new(vec![ipt], exp));
-            }
-
-            /// Create a new test case (with input parameters) matching
-            /// selected generic types.
-            pub fn create_param(&mut self, ipt: $t, exp: Vec<$g>, params: Vec<$p>) {
-                self.add(VectorCase::new_params(vec![ipt], params, exp));
-            }
-
-            /// Create a new test case (no input parameters but multi-inputs)
-            /// matching selected generic types.
-            pub fn create_multi(&mut self, ipts: Vec<$t>, exp: Vec<$g>) {
-                self.add(VectorCase::new_multi(ipts, exp));
-            }
-
-            /// Create a new test case (with input parameters and multi-inputs)
-            /// matching selected generic types.
-            pub fn create_param_multi(&mut self, ipts: Vec<$t>, exp: Vec<$g>, params: Vec<$p>) {
-                self.add(VectorCase::new_params_multi(ipts, params, exp));
-            }
-        }
-    };
-}
-
 /// Use a simplified syntax to create nested Vectors (as per needed by several
 /// LeetCode problems.)
 ///
@@ -123,10 +91,10 @@ macro_rules! vec2d {
 pub(crate) use new_case;
 
 #[allow(unused_imports)]
+pub(crate) use new_case_param;
+
+#[allow(unused_imports)]
 pub(crate) use vec2d;
 
 #[allow(unused_imports)]
 pub(crate) use codegen_case_create_impl;
-
-#[allow(unused_imports)]
-pub(crate) use codegen_vector_case_create_impl;

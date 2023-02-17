@@ -107,38 +107,6 @@
 <a href="#98" id="98">98</a>
 <a href="#99" id="99">99</a>
 <a href="#100" id="100">100</a>
-<a href="#101" id="101">101</a>
-<a href="#102" id="102">102</a>
-<a href="#103" id="103">103</a>
-<a href="#104" id="104">104</a>
-<a href="#105" id="105">105</a>
-<a href="#106" id="106">106</a>
-<a href="#107" id="107">107</a>
-<a href="#108" id="108">108</a>
-<a href="#109" id="109">109</a>
-<a href="#110" id="110">110</a>
-<a href="#111" id="111">111</a>
-<a href="#112" id="112">112</a>
-<a href="#113" id="113">113</a>
-<a href="#114" id="114">114</a>
-<a href="#115" id="115">115</a>
-<a href="#116" id="116">116</a>
-<a href="#117" id="117">117</a>
-<a href="#118" id="118">118</a>
-<a href="#119" id="119">119</a>
-<a href="#120" id="120">120</a>
-<a href="#121" id="121">121</a>
-<a href="#122" id="122">122</a>
-<a href="#123" id="123">123</a>
-<a href="#124" id="124">124</a>
-<a href="#125" id="125">125</a>
-<a href="#126" id="126">126</a>
-<a href="#127" id="127">127</a>
-<a href="#128" id="128">128</a>
-<a href="#129" id="129">129</a>
-<a href="#130" id="130">130</a>
-<a href="#131" id="131">131</a>
-<a href="#132" id="132">132</a>
 </pre><pre class="rust"><code><span class="doccomment">//! A module defining several useful macros
 //!
 //! The `new_case!` macro is very useful to simplify TestCase generation
@@ -161,7 +129,7 @@
   };
 }
 
-<span class="doccomment">/// Helper macro to call `create` method of CaseGroup&lt;T, G, P&gt; instance
+<span class="doccomment">/// Helper macro to call `create_param` method of CaseGroup&lt;T, G, P&gt; instance
 ///
 /// # Note
 /// You must pass in the casegroup.create method as first parameter of the
@@ -210,38 +178,6 @@
     };
 }
 
-<span class="attr">#[macro_export]
-</span><span class="macro">macro_rules! </span>codegen_vector_case_create_impl {
-    (<span class="macro-nonterminal">$t</span>:ty, <span class="macro-nonterminal">$g</span>:ty, <span class="macro-nonterminal">$p</span>:ty) =&gt; {
-        <span class="doccomment">/// Implement two handy methods on CaseGroup struct.
-        </span><span class="kw">impl </span>VectorCaseGroup&lt;<span class="macro-nonterminal">$t</span>, <span class="macro-nonterminal">$g</span>, <span class="macro-nonterminal">$p</span>&gt; {
-            <span class="doccomment">/// Create a new test case (no input parameters) matching selected
-            /// generic types.
-            </span><span class="kw">pub fn </span>create(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="macro-nonterminal">$t</span>, exp: Vec&lt;<span class="macro-nonterminal">$g</span>&gt;) {
-                <span class="self">self</span>.add(VectorCase::new(<span class="macro">vec!</span>[ipt], exp));
-            }
-
-            <span class="doccomment">/// Create a new test case (with input parameters) matching
-            /// selected generic types.
-            </span><span class="kw">pub fn </span>create_param(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="macro-nonterminal">$t</span>, exp: Vec&lt;<span class="macro-nonterminal">$g</span>&gt;, params: Vec&lt;<span class="macro-nonterminal">$p</span>&gt;) {
-                <span class="self">self</span>.add(VectorCase::new_params(<span class="macro">vec!</span>[ipt], params, exp));
-            }
-
-            <span class="doccomment">/// Create a new test case (no input parameters but multi-inputs)
-            /// matching selected generic types.
-            </span><span class="kw">pub fn </span>create_multi(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipts: Vec&lt;<span class="macro-nonterminal">$t</span>&gt;, exp: Vec&lt;<span class="macro-nonterminal">$g</span>&gt;) {
-                <span class="self">self</span>.add(VectorCase::new_multi(ipts, exp));
-            }
-
-            <span class="doccomment">/// Create a new test case (with input parameters and multi-inputs)
-            /// matching selected generic types.
-            </span><span class="kw">pub fn </span>create_param_multi(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipts: Vec&lt;<span class="macro-nonterminal">$t</span>&gt;, exp: Vec&lt;<span class="macro-nonterminal">$g</span>&gt;, params: Vec&lt;<span class="macro-nonterminal">$p</span>&gt;) {
-                <span class="self">self</span>.add(VectorCase::new_params_multi(ipts, params, exp));
-            }
-        }
-    };
-}
-
 <span class="doccomment">/// Use a simplified syntax to create nested Vectors (as per needed by several
 /// LeetCode problems.)
 ///
@@ -264,14 +200,13 @@
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span>new_case;
 
 <span class="attr">#[allow(unused_imports)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span>new_case_param;
+
+<span class="attr">#[allow(unused_imports)]
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span>vec2d;
 
 <span class="attr">#[allow(unused_imports)]
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span>codegen_case_create_impl;
-
-<span class="attr">#[allow(unused_imports)]
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span>codegen_vector_case_create_impl;
-</code></pre></div>
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span>codegen_case_create_impl;</code></pre></div>
 </section></div></main><script>
   // Manipulate some page contents
   window.addEventListener('DOMContentLoaded', function () {
