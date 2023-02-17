@@ -7,7 +7,11 @@ export -f insert_tags
 
 mkdir -p ./docs
 rm -rf ./docs/*
-cargo clean
+# Following line commented because it will significantly increase build time.
+# We should clean manually.
+# cargo clean
+rm -rf ./target/criterion
+rm -rf ./target/doc
 RUSTDOCFLAGS='--extend-css assets/extended.css --html-in-header assets/head.html --html-after-content assets/after-content.html' cargo doc --no-deps
 cargo bench --bench benchmarks -- --plotting-backend plotters --color always
 cp -r target/doc/* ./docs/

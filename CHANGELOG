@@ -1,3 +1,9 @@
+## Version 0.2.8 (2023-02-18)
+
+### Solutions
+
+1. Added solutions to [LeetCode #16: three sum closest](https://leetcode.com/problems/3sum-closest/) and [LeetCode CN #16: three sum closest](https://leetcode.cn/problems/3sum-closest/)
+
 ## Version 0.2.7 (2023-02-16)
 
 ### Documentations
@@ -8,18 +14,22 @@
 ## Version 0.2.6 (2023-02-13)
 
 ### Common
+
 1. Fix: should prepare test cases before entering benchmark rounds.
 
 ## Version 0.2.5 (2023-02-13)
 
 ### Solutions
+
 1. Added solutions to [LeetCode #15: three sum](https://leetcode.com/problems/3sum/) and [LeetCode CN #15: three sum](https://leetcode.cn/problems/3sum/)
 
 ### Documentations
+
 1. Added documentation and comments to [LeetCode #15: three sum](https://leetcode.com/problems/3sum/) and [LeetCode CN #15: three sum](https://leetcode.cn/problems/3sum/)
 2. Add Benchmark report.
 
 ### Common
+
 1. Updated test case usage. Now it's simpler and more intuitive.
 2. Add extra test case support.
 3. Migrate test cases from `tests/` directory to `src/` so external code (and benchmarks) can make use of them.
@@ -30,11 +40,14 @@ Notes: LeetCode/LeetCode CN problems #9-#14 added in earlier versions.
 ## Version 0.1.2 (2023-01-29)
 
 ### Solutions
+
 1. Added solutions to [LeetCode #8: string to integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi)
 
 ### Documentations
+
 1. Added documentation and comments to [LeetCode #8: string to integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi)
 2. Added documentation to macro `codegen_case_create_impl` and `CaseGroup` struct.
 
 ### Common
+
 1. Updated test case usage. Now it's simpler and more intuitive.

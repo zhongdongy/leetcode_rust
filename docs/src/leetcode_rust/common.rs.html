@@ -422,20 +422,6 @@
 <a href="#413" id="413">413</a>
 <a href="#414" id="414">414</a>
 <a href="#415" id="415">415</a>
-<a href="#416" id="416">416</a>
-<a href="#417" id="417">417</a>
-<a href="#418" id="418">418</a>
-<a href="#419" id="419">419</a>
-<a href="#420" id="420">420</a>
-<a href="#421" id="421">421</a>
-<a href="#422" id="422">422</a>
-<a href="#423" id="423">423</a>
-<a href="#424" id="424">424</a>
-<a href="#425" id="425">425</a>
-<a href="#426" id="426">426</a>
-<a href="#427" id="427">427</a>
-<a href="#428" id="428">428</a>
-<a href="#429" id="429">429</a>
 </pre><pre class="rust"><code><span class="doccomment">//! # Common Contents
 //!
 //! This module provide common structs, enums and functions used in solutions,
@@ -450,7 +436,7 @@
 
 </span><span class="kw">use </span><span class="kw">crate</span>::macros::codegen_case_create_impl;
 <span class="kw">use </span><span class="kw">crate</span>::macros::codegen_vector_case_create_impl;
-<span class="kw">use </span>std::fmt::{<span class="self">self</span>, Debug, Display};
+<span class="kw">use </span>std::fmt::Debug;
 
 <span class="doccomment">/// Test case wrapper struct
 ///
@@ -474,9 +460,9 @@
 
 <span class="kw">impl</span>&lt;T, G, P&gt; Case&lt;T, G, P&gt;
 <span class="kw">where
-    </span>T: PartialEq + fmt::Display,
-    G: PartialEq + fmt::Display,
-    P: PartialEq + fmt::Display,
+    </span>T: PartialEq + Debug,
+    G: PartialEq + Debug,
+    P: PartialEq + Debug,
 {
     <span class="doccomment">/// Create new test case with no parameters
     ///
@@ -561,25 +547,22 @@
             <span class="kw">if </span><span class="self">self</span>.inputs.len() == <span class="number">1 </span>{
                 <span class="macro">assert!</span>(
                     <span class="bool-val">false</span>,
-                    <span class="string">&quot;[#{}] INPUT=`{}`, OUTPUT=`{}`, EXPECTATION=`{}`&quot;</span>,
+                    <span class="string">&quot;[#{}] INPUT=`{:?}`, OUTPUT=`{:?}`, EXPECTATION=`{:?}`&quot;</span>,
                     <span class="self">self</span>.index, <span class="kw-2">&amp;</span><span class="self">self</span>.inputs[<span class="number">0</span>], <span class="kw-2">&amp;</span>result, <span class="self">self</span>.values[<span class="number">0</span>]
                 );
             } <span class="kw">else </span>{
-                <span class="kw">let </span><span class="kw-2">mut </span>input_arr: Vec&lt;String&gt; = <span class="macro">vec!</span>[];
-                <span class="kw">for </span>ipt <span class="kw">in </span><span class="kw-2">&amp;</span><span class="self">self</span>.inputs {
-                    input_arr.push(ipt.to_string());
-                }
                 <span class="macro">assert!</span>(
                     <span class="bool-val">false</span>,
-                    <span class="string">&quot;[#{}] INPUT=`[{}]`, OUTPUT=`{}`, EXPECTATION=`{}`&quot;</span>,
-                    <span class="self">self</span>.index,
-                    input_arr.join(<span class="string">&quot;, &quot;</span>),
-                    <span class="kw-2">&amp;</span>result,
-                    <span class="self">self</span>.values[<span class="number">0</span>]
+                    <span class="string">&quot;[#{}] INPUT=`[{:?}]`, OUTPUT=`{:?}`, EXPECTATION=`{:?}`&quot;</span>,
+                    <span class="self">self</span>.index, <span class="self">self</span>.inputs, <span class="kw-2">&amp;</span>result, <span class="self">self</span>.values[<span class="number">0</span>]
                 );
             }
         } <span class="kw">else </span>{
-            <span class="macro">assert!</span>(<span class="bool-val">false</span>, <span class="string">&quot;Result `{}` doesn&#39;t match any expectations&quot;</span>, <span class="kw-2">&amp;</span>result);
+            <span class="macro">assert!</span>(
+                <span class="bool-val">false</span>,
+                <span class="string">&quot;Result `{:?}` doesn&#39;t match any expectations&quot;</span>,
+                <span class="kw-2">&amp;</span>result
+            );
         }
     }
 
@@ -629,18 +612,18 @@
 }
 
 <span class="doccomment">/// Implement two handy methods on CaseGroup&lt;String, G, P&gt; struct.
-</span><span class="kw">impl</span>&lt;G, P&gt; CaseGroup&lt;String, G, P&gt; {
+</span><span class="kw">impl</span>&lt;G, P&gt; CaseGroup&lt;String, G, P&gt;
+<span class="kw">where
+    </span>P: PartialEq + Debug,
+    G: PartialEq + Debug,
+{
     <span class="doccomment">/// Create a new test case (no input parameters) matching
     /// &amp;str and other generic types.
     ///
     /// # Argument
     /// * `ipt` - this argument is set to `&amp;str` to simplify method calls.
     /// * `exp` - expected values in `Vec&lt;G&gt;` form.
-    </span><span class="kw">pub fn </span>create(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="kw-2">&amp;</span>str, exp: Vec&lt;G&gt;)
-    <span class="kw">where
-        </span>P: PartialEq + Display,
-        G: PartialEq + Display,
-    {
+    </span><span class="kw">pub fn </span>create(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="kw-2">&amp;</span>str, exp: Vec&lt;G&gt;) {
         <span class="self">self</span>.add(Case::new(ipt.to_string(), exp));
     }
 
@@ -651,11 +634,7 @@
     /// * `ipt` - this argument is set to `&amp;str` to simplify method calls.
     /// * `exp` - expected values in `Vec&lt;G&gt;` form.
     /// * `params` - expected values in `Vec&lt;P&gt;` form.
-    </span><span class="kw">pub fn </span>create_param(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="kw-2">&amp;</span>str, exp: Vec&lt;G&gt;, params: Vec&lt;P&gt;)
-    <span class="kw">where
-        </span>G: PartialEq + Display,
-        P: PartialEq + Display,
-    {
+    </span><span class="kw">pub fn </span>create_param(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipt: <span class="kw-2">&amp;</span>str, exp: Vec&lt;G&gt;, params: Vec&lt;P&gt;) {
         <span class="self">self</span>.add(Case::new_params(ipt.to_string(), params, exp));
     }
 
@@ -665,11 +644,7 @@
     /// # Argument
     /// * `ipts` - this argument is set to `&amp;str` to simplify method calls.
     /// * `exp` - expected values in `Vec&lt;G&gt;` form.
-    </span><span class="kw">pub fn </span>create_multi(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipts: Vec&lt;<span class="kw-2">&amp;</span>str&gt;, exp: Vec&lt;G&gt;)
-    <span class="kw">where
-        </span>P: PartialEq + Display,
-        G: PartialEq + Display,
-    {
+    </span><span class="kw">pub fn </span>create_multi(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipts: Vec&lt;<span class="kw-2">&amp;</span>str&gt;, exp: Vec&lt;G&gt;) {
         <span class="self">self</span>.add(Case::new_multi(
             ipts.iter().map(|x| x.to_string()).collect(),
             exp,
@@ -683,11 +658,7 @@
     /// * `ipts` - this argument is set to `&amp;str` to simplify method calls.
     /// * `exp` - expected values in `Vec&lt;G&gt;` form.
     /// * `params` - expected values in `Vec&lt;P&gt;` form.
-    </span><span class="kw">pub fn </span>create_param_multi(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipts: Vec&lt;<span class="kw-2">&amp;</span>str&gt;, exp: Vec&lt;G&gt;, params: Vec&lt;P&gt;)
-    <span class="kw">where
-        </span>G: PartialEq + Display,
-        P: PartialEq + Display,
-    {
+    </span><span class="kw">pub fn </span>create_param_multi(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ipts: Vec&lt;<span class="kw-2">&amp;</span>str&gt;, exp: Vec&lt;G&gt;, params: Vec&lt;P&gt;) {
         <span class="self">self</span>.add(Case::new_params_multi(
             ipts.iter().map(|x| x.to_string()).collect(),
             params,
@@ -699,6 +670,7 @@
 <span class="macro">codegen_case_create_impl!</span>(i32, i32, i32);
 <span class="macro">codegen_case_create_impl!</span>(i32, String, i32);
 <span class="macro">codegen_case_create_impl!</span>(i32, bool, i32);
+<span class="macro">codegen_case_create_impl!</span>(Vec&lt;i32&gt;, i32, i32);
 
 <span class="kw">pub struct </span>VectorCase&lt;T, G, P&gt; {
     <span class="doccomment">/// Input values of test case

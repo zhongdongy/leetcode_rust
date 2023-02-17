@@ -12,7 +12,7 @@
 
 use crate::macros::codegen_case_create_impl;
 use crate::macros::codegen_vector_case_create_impl;
-use std::fmt::{self, Debug, Display};
+use std::fmt::Debug;
 
 /// Test case wrapper struct
 ///
@@ -36,9 +36,9 @@ pub struct Case<T, G, P> {
 
 impl<T, G, P> Case<T, G, P>
 where
-    T: PartialEq + fmt::Display,
-    G: PartialEq + fmt::Display,
-    P: PartialEq + fmt::Display,
+    T: PartialEq + Debug,
+    G: PartialEq + Debug,
+    P: PartialEq + Debug,
 {
     /// Create new test case with no parameters
     ///
@@ -123,25 +123,22 @@ where
             if self.inputs.len() == 1 {
                 assert!(
                     false,
-                    "[#{}] INPUT=`{}`, OUTPUT=`{}`, EXPECTATION=`{}`",
+                    "[#{}] INPUT=`{:?}`, OUTPUT=`{:?}`, EXPECTATION=`{:?}`",
                     self.index, &self.inputs[0], &result, self.values[0]
                 );
             } else {
-                let mut input_arr: Vec<String> = vec![];
-                for ipt in &self.inputs {
-                    input_arr.push(ipt.to_string());
-                }
                 assert!(
                     false,
-                    "[#{}] INPUT=`[{}]`, OUTPUT=`{}`, EXPECTATION=`{}`",
-                    self.index,
-                    input_arr.join(", "),
-                    &result,
-                    self.values[0]
+                    "[#{}] INPUT=`[{:?}]`, OUTPUT=`{:?}`, EXPECTATION=`{:?}`",
+                    self.index, self.inputs, &result, self.values[0]
                 );
             }
         } else {
-            assert!(false, "Result `{}` doesn't match any expectations", &result);
+            assert!(
+                false,
+                "Result `{:?}` doesn't match any expectations",
+                &result
+            );
         }
     }
 
@@ -191,18 +188,18 @@ impl<T, G, P> CaseGroup<T, G, P> {
 }
 
 /// Implement two handy methods on CaseGroup<String, G, P> struct.
-impl<G, P> CaseGroup<String, G, P> {
+impl<G, P> CaseGroup<String, G, P>
+where
+    P: PartialEq + Debug,
+    G: PartialEq + Debug,
+{
     /// Create a new test case (no input parameters) matching
     /// &str and other generic types.
     ///
     /// # Argument
     /// * `ipt` - this argument is set to `&str` to simplify method calls.
     /// * `exp` - expected values in `Vec<G>` form.
-    pub fn create(&mut self, ipt: &str, exp: Vec<G>)
-    where
-        P: PartialEq + Display,
-        G: PartialEq + Display,
-    {
+    pub fn create(&mut self, ipt: &str, exp: Vec<G>) {
         self.add(Case::new(ipt.to_string(), exp));
     }
 
@@ -213,11 +210,7 @@ impl<G, P> CaseGroup<String, G, P> {
     /// * `ipt` - this argument is set to `&str` to simplify method calls.
     /// * `exp` - expected values in `Vec<G>` form.
     /// * `params` - expected values in `Vec<P>` form.
-    pub fn create_param(&mut self, ipt: &str, exp: Vec<G>, params: Vec<P>)
-    where
-        G: PartialEq + Display,
-        P: PartialEq + Display,
-    {
+    pub fn create_param(&mut self, ipt: &str, exp: Vec<G>, params: Vec<P>) {
         self.add(Case::new_params(ipt.to_string(), params, exp));
     }
 
@@ -227,11 +220,7 @@ impl<G, P> CaseGroup<String, G, P> {
     /// # Argument
     /// * `ipts` - this argument is set to `&str` to simplify method calls.
     /// * `exp` - expected values in `Vec<G>` form.
-    pub fn create_multi(&mut self, ipts: Vec<&str>, exp: Vec<G>)
-    where
-        P: PartialEq + Display,
-        G: PartialEq + Display,
-    {
+    pub fn create_multi(&mut self, ipts: Vec<&str>, exp: Vec<G>) {
         self.add(Case::new_multi(
             ipts.iter().map(|x| x.to_string()).collect(),
             exp,
@@ -245,11 +234,7 @@ impl<G, P> CaseGroup<String, G, P> {
     /// * `ipts` - this argument is set to `&str` to simplify method calls.
     /// * `exp` - expected values in `Vec<G>` form.
     /// * `params` - expected values in `Vec<P>` form.
-    pub fn create_param_multi(&mut self, ipts: Vec<&str>, exp: Vec<G>, params: Vec<P>)
-    where
-        G: PartialEq + Display,
-        P: PartialEq + Display,
-    {
+    pub fn create_param_multi(&mut self, ipts: Vec<&str>, exp: Vec<G>, params: Vec<P>) {
         self.add(Case::new_params_multi(
             ipts.iter().map(|x| x.to_string()).collect(),
             params,
@@ -261,6 +246,7 @@ impl<G, P> CaseGroup<String, G, P> {
 codegen_case_create_impl!(i32, i32, i32);
 codegen_case_create_impl!(i32, String, i32);
 codegen_case_create_impl!(i32, bool, i32);
+codegen_case_create_impl!(Vec<i32>, i32, i32);
 
 pub struct VectorCase<T, G, P> {
     /// Input values of test case

@@ -94,3 +94,14 @@ fn p000_015_three_sum() {
         case.is_valid(p000_015::three_sum(case.input().clone()));
     }
 }
+
+/// Test Problem 000_016: 3Sum Closest
+#[test]
+fn p000_016_three_sum_closest() {
+    for case in c000_016::use_cases() {
+        case.is_valid(p000_016::three_sum_closest(
+            case.inputs.clone(),
+            case.params[0],
+        ));
+    }
+}

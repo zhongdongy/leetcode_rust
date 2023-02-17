@@ -32,4 +32,6 @@ pub mod p000_0xx {
     pub mod p000_014;
     /// Problem #15 *3Sum*
     pub mod p000_015;
+    /// Problem #16 *3Sum Closest*
+    pub mod p000_016;
 }

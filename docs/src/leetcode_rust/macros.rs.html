@@ -127,6 +127,18 @@
 <a href="#118" id="118">118</a>
 <a href="#119" id="119">119</a>
 <a href="#120" id="120">120</a>
+<a href="#121" id="121">121</a>
+<a href="#122" id="122">122</a>
+<a href="#123" id="123">123</a>
+<a href="#124" id="124">124</a>
+<a href="#125" id="125">125</a>
+<a href="#126" id="126">126</a>
+<a href="#127" id="127">127</a>
+<a href="#128" id="128">128</a>
+<a href="#129" id="129">129</a>
+<a href="#130" id="130">130</a>
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
 </pre><pre class="rust"><code><span class="doccomment">//! A module defining several useful macros
 //!
 //! The `new_case!` macro is very useful to simplify TestCase generation
@@ -147,6 +159,18 @@
   (<span class="macro-nonterminal">$self</span>:ident.<span class="macro-nonterminal">$func</span>:ident, <span class="macro-nonterminal">$input</span>:expr, $(<span class="macro-nonterminal">$output</span>:expr),+) =&gt; {
       <span class="macro-nonterminal">$self</span>.<span class="macro-nonterminal">$func</span>(<span class="macro-nonterminal">$input</span>,<span class="macro">vec!</span>[$(<span class="macro-nonterminal">$output</span>),+]);
   };
+}
+
+<span class="doccomment">/// Helper macro to call `create` method of CaseGroup&lt;T, G, P&gt; instance
+///
+/// # Note
+/// You must pass in the casegroup.create method as first parameter of the
+/// macro.
+</span><span class="attr">#[macro_export]
+</span><span class="macro">macro_rules! </span>new_case_param {
+    (<span class="macro-nonterminal">$self</span>:ident.<span class="macro-nonterminal">$func</span>:ident, <span class="macro-nonterminal">$input</span>:expr, <span class="macro-nonterminal">$output</span>:expr, <span class="macro-nonterminal">$param</span>:expr) =&gt; {
+        <span class="macro-nonterminal">$self</span>.<span class="macro-nonterminal">$func</span>(<span class="macro-nonterminal">$input</span>, <span class="macro-nonterminal">$output</span>, <span class="macro-nonterminal">$param</span>);
+    };
 }
 
 <span class="doccomment">/// Generate `create` &amp; `create_param` implementation for different types
@@ -218,14 +242,14 @@
     };
 }
 
-<span class="doccomment">/// Use a simplified syntax to create nested Vectors (as per needed by several 
+<span class="doccomment">/// Use a simplified syntax to create nested Vectors (as per needed by several
 /// LeetCode problems.)
-/// 
+///
 /// # Examples:
-/// 
+///
 /// ```rust
 /// use leetcode_rust::vec2d;
-/// 
+///
 /// let v = vec2d![[1,2,3],[2,3,4]];
 /// assert_eq!(v[0], vec![1,2,3]);
 /// ```
