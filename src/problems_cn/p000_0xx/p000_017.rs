@@ -5,7 +5,7 @@
 //! 
 //! 给出数字到字母的映射如下（与电话按键相同）。注意 `1` 不对应任何字母。
 //! 
-//! ![](https://eastwind-cdn.dongs.xyz/image/20230224010445.png)
+//! ![](https://eastwind-cdn.dongs.xyz/image/20230224010445.png?w=256)
 //! 
 //! 示例 1：
 //! 

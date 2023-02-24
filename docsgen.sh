@@ -1,5 +1,15 @@
 #!/bin/bash
 
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --doc-only)
+      DOC_ONLY='1'
+      shift
+      ;;
+  esac
+done
+
+
 function insert_tags () {
   awk '{sub(/<\/head>/,"<link rel=\"stylesheet\" href=\"/criterion.css\">\n</head>"); print}' $1 > docs/tmp.html && mv docs/tmp.html $1
 }
@@ -19,8 +29,10 @@ cp -r target/doc/* ./docs/
 cp docs/theme.css docs/static.files/theme.css
 cp -r assets/images ./docs/
 
-# Cargo benchmark
-cargo bench --bench benchmarks -- --plotting-backend plotters --color always
-cp -r target/criterion ./docs/
-find docs/criterion/ -name "*.html" -type f -print0 | xargs -0 -I {} bash -c 'insert_tags "{}"'
-cp assets/criterion.css docs/criterion.css
+if [[ $DOC_ONLY != '1' ]]; then 
+  # Cargo benchmark
+  cargo bench --bench benchmarks -- --plotting-backend plotters --color always
+  cp -r target/criterion ./docs/
+  find docs/criterion/ -name "*.html" -type f -print0 | xargs -0 -I {} bash -c 'insert_tags "{}"'
+  cp assets/criterion.css docs/criterion.css
+fi 

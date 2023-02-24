@@ -21,5 +21,28 @@
       // • rendering keys, e.g.:
       throwOnError: false
     });
+
+    // Adjust image size and position
+    document.querySelectorAll('.docblock p img').forEach(img => {
+      let box = img.getBoundingClientRect();
+      let w = box.width;
+      let h = box.height;
+      console.log(img.getAttribute('src'))
+      let search = new URL(img.getAttribute('src')).searchParams;
+      console.log(search);
+      console.log(search.get('w'));
+      if (parseInt(search.get("w")) > 0) {
+        img.style.width = `${search.get("w")}px`;
+        img.style.height = "auto";
+        img.parentElement.style.textAlign = "center";
+      }
+      else if (search.get("full-width") !== 1) {
+        if (h > w * 0.5) {
+          img.style.height = `${w * 0.5}px`;
+          img.style.width = "auto";
+          img.parentElement.style.textAlign = "center";
+        }
+      }
+    })
   })
 </script>

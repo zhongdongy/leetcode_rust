@@ -77,6 +77,29 @@
       // • rendering keys, e.g.:
       throwOnError: false
     });
+
+    // Adjust image size and position
+    document.querySelectorAll('.docblock p img').forEach(img => {
+      let box = img.getBoundingClientRect();
+      let w = box.width;
+      let h = box.height;
+      console.log(img.getAttribute('src'))
+      let search = new URL(img.getAttribute('src')).searchParams;
+      console.log(search);
+      console.log(search.get('w'));
+      if (parseInt(search.get("w")) > 0) {
+        img.style.width = `${search.get("w")}px`;
+        img.style.height = "auto";
+        img.parentElement.style.textAlign = "center";
+      }
+      else if (search.get("full-width") !== 1) {
+        if (h > w * 0.5) {
+          img.style.height = `${w * 0.5}px`;
+          img.style.width = "auto";
+          img.parentElement.style.textAlign = "center";
+        }
+      }
+    })
   })
 </script>
 <div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="leetcode_rust" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

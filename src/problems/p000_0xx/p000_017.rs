@@ -7,7 +7,7 @@
 //! A mapping of digits to letters (just like on the telephone buttons) is
 //! given below. Note that `1` does not map to any letters.
 //!
-//! ![](https://eastwind-cdn.dongs.xyz/image/20230224010445.png)
+//! ![](https://eastwind-cdn.dongs.xyz/image/20230224010445.png?w=256)
 //!
 //! Example 1:
 //!
