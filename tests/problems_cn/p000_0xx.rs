@@ -106,3 +106,11 @@ fn p000_016_three_sum_closest() {
         ));
     }
 }
+
+/// 题目 000_017: 电话号码的字母组合
+#[test]
+fn p000_017_letter_combinations() {
+    for case in c000_017::use_cases() {
+        case.is_valid(p000_017::letter_combinations(case.input().clone()));
+    }
+}

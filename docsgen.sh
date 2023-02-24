@@ -7,8 +7,8 @@ export -f insert_tags
 
 mkdir -p ./docs
 rm -rf ./docs/*
-# Following line commented because it will significantly increase build time.
-# We should clean manually.
+# With following line commented because it will significantly increase 
+# build time. We should clean manually.
 # cargo clean
 rm -rf ./target/criterion
 rm -rf ./target/doc
