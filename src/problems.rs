@@ -36,6 +36,6 @@ pub mod p000_0xx {
     pub mod p000_016;
     /// Problem #17 *Letter Combinations of a Phone Number*
     pub mod p000_017;
-    /// Problem #18 *4Sum*
-    pub mod p000_018;
+    // Problem #18 *4Sum*
+    // pub mod p000_018;
 }
