@@ -12,7 +12,7 @@ homepage = "https://leetcode-rust.dongs.xyz/"
 include = ["/src", "/tests", "/extra", "/benches"]
 
 [dev-dependencies]
-criterion = "0.4"
+criterion = "0.5"
 
 [lib]
 crate-type = ["rlib"]
